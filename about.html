@@ -3,7 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>About — Crown Studios</title>
+<title>About Crown Digital Studios — Nigeria's Premier 3D Animation Studio</title>
+
+<!-- SEO & Open Graph -->
+<meta name="description" content="Learn about Crown Digital Studios — Nigeria's premier 3D animation and visual storytelling studio. Meet our team, discover our story, values, and the craft behind every frame.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Crown Digital Studios — Nigeria's Premier 3D Animation Studio">
+<meta property="og:description" content="Where technical precision meets cinematic artistry. Crown Digital Studios crafts world-class 3D animation, brand films, and motion graphics — and trains the next generation of Nigerian animators.">
+<meta property="og:url" content="https://crowndigitalstudios.com/about.html">
+<meta property="og:image" content="https://raw.githubusercontent.com/Limboo05/Crown-Digital-Studio/main/Brand%20Logos/Crown%20Digital%20Logo%20v1%20-%20Black.png">
+<meta property="og:image:alt" content="Crown Digital Studios">
+<meta property="og:site_name" content="Crown Digital Studios">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Crown Digital Studios">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Limboo05/Crown-Digital-Studio/main/Brand%20Logos/Crown%20Digital%20Logo%20v1%20-%20Black.png">
+<link rel="canonical" href="https://crowndigitalstudios.com/about.html">
+
 <link rel="stylesheet" href="shared.css">
 <style>
 body { padding-top: var(--nav-h); }
@@ -259,26 +274,42 @@ body { padding-top: var(--nav-h); }
 
 <!-- PAGE HERO — CINEMATIC SPLIT -->
 <section class="ab-hero">
+  <!-- LEFT: Dark panel — headline + craft copy + CTAs -->
   <div class="ab-hero-left">
     <div class="ab-hero-noise"></div>
     <div class="ab-hero-left-content">
-      <div class="s-label" style="color:var(--gold2)"><span style="background:var(--gold2);width:28px;height:1px;display:inline-block"></span>&nbsp;&nbsp;Est. Nigeria</div>
+      <div class="s-label" style="color:var(--gold2);opacity:0;animation:fadeUp .6s ease 2.7s forwards">
+        <span style="background:var(--gold2);width:28px;height:1px;display:inline-block;vertical-align:middle;margin-right:8px"></span>Est. Nigeria
+      </div>
       <h1 class="ab-hero-title">
         <span class="abt-line"><span class="abt-inner">WE ARE</span></span>
         <span class="abt-line"><span class="abt-inner ab-stroke">CROWN</span></span>
         <span class="abt-line"><span class="abt-inner">STUDIOS</span></span>
       </h1>
       <p class="ab-hero-tagline">Top-tier creative studio. Cinematic storytelling. African excellence.</p>
-      <div class="ab-hero-badges">
+
+      <!-- OUR CRAFT QUOTE — lives in left col -->
+      <div class="ab-hero-craft" style="opacity:0;animation:fadeUp .8s ease 3.6s forwards">
+        <p class="ab-hero-craft-quote">"Every frame we create carries a heartbeat — a pulse of intention, story, and purpose."</p>
+        <p class="ab-hero-craft-body">At Crown Studios, we believe the most powerful storytelling happens at the intersection of <strong>technical mastery</strong> and <strong>genuine human emotion</strong>. We craft visual experiences that resonate, inspire, and move brands to new audiences.</p>
+      </div>
+
+      <div class="ab-hero-badges" style="opacity:0;animation:fadeUp .8s ease 3.85s forwards">
         <span class="ab-hbadge"><i class="bi bi-geo-alt-fill"></i> Nigeria</span>
         <span class="ab-hbadge"><i class="bi bi-camera-reels-fill"></i> 3D & Motion</span>
         <span class="ab-hbadge"><i class="bi bi-mortarboard-fill"></i> Training</span>
       </div>
+      <div class="ab-hero-ctas" style="opacity:0;animation:fadeUp .8s ease 4.05s forwards">
+        <a href="services.html" class="btn-gold"><span>Explore Services</span></a>
+        <a href="contact.html" class="btn-outline" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)">Start a Project</a>
+      </div>
     </div>
   </div>
+
+  <!-- RIGHT: Pure full-height image + stat chips — NO overflow text -->
   <div class="ab-hero-right">
     <div class="ab-hero-img-wrap">
-      <img src="Brand Images/Crown_Jnr2.png" alt="Crown Studios" class="ab-hero-img" onerror="this.style.display='none'">
+      <img src="Brand Images/Crown_Jnr2.png" alt="Crown Studios — Character Animation" class="ab-hero-img" onerror="this.style.background='linear-gradient(135deg,#0d1220,#1a0f05)'">
       <div class="ab-hero-img-over"></div>
       <div class="ab-hero-stat-chip top-right">
         <span class="ab-chip-num">50+</span>
@@ -288,26 +319,8 @@ body { padding-top: var(--nav-h); }
         <span class="ab-chip-num">100+</span>
         <span class="ab-chip-lbl">Students Trained</span>
       </div>
-    </div>
-    <!-- FOLLOW-UP TEXT BENEATH THE HERO IMAGE -->
-    <div class="ab-hero-img-followup" style="margin-top:28px;padding:24px 28px;border:1px solid var(--border2);background:var(--surface);position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold2),var(--blue));"></div>
-      <p style="font-family:var(--font-m);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
-        <span style="width:20px;height:1px;background:var(--gold);display:inline-block;"></span> Our Craft
-      </p>
-      <p style="font-family:var(--font-a);font-style:italic;font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:14px;">
-        "Every frame we create carries a heartbeat — a pulse of intention, story, and purpose that speaks before words ever could."
-      </p>
-      <p style="font-size:.8rem;color:var(--text2);line-height:1.75;margin-bottom:18px;">
-        At Crown Studios, we believe the most powerful storytelling happens at the intersection of <strong style="color:var(--text)">technical mastery</strong> and <strong style="color:var(--text)">genuine human emotion</strong>. Our team doesn't just produce content — we craft visual experiences that resonate, inspire, and move people to action.
-      </p>
-      <p style="font-size:.8rem;color:var(--text2);line-height:1.75;margin-bottom:20px;">
-        From the boardrooms of Nigeria's leading banks to the feeds of millions across social media — our animations carry brands into conversations they've never been able to join before.
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <a href="services.html" class="btn-gold" style="padding:11px 22px;font-size:.58rem;"><span>Explore Services</span></a>
-        <a href="contact.html" class="btn-outline" style="padding:10px 22px;font-size:.58rem;">Start a Project</a>
-      </div>
+      <!-- decorative grid overlay on image -->
+      <div class="ab-img-grid-overlay"></div>
     </div>
   </div>
 </section>
@@ -546,8 +559,30 @@ body { padding-top: var(--nav-h); }
   padding-top:var(--nav-h); overflow:hidden;
 }
 .ab-hero-left {
-  background:var(--black); padding:80px 60px;
-  display:flex; align-items:flex-end; position:relative; overflow:hidden;
+  background:var(--black); padding:80px 60px 80px;
+  display:flex; align-items:center; position:relative; overflow:hidden;
+  min-height:100svh;
+}
+/* new craft block inside left col */
+.ab-hero-craft {
+  margin:24px 0 28px;
+  padding:20px 24px;
+  border-left:2px solid var(--gold2);
+  background:rgba(252,179,30,.04);
+}
+.ab-hero-craft-quote {
+  font-family:var(--font-a); font-style:italic;
+  font-size:1rem; color:rgba(248,244,237,.75);
+  line-height:1.65; margin-bottom:10px;
+}
+.ab-hero-craft-body {
+  font-size:.8rem; color:rgba(248,244,237,.4);
+  line-height:1.75;
+}
+.ab-hero-craft-body strong { color:rgba(248,244,237,.7); font-style:normal; }
+/* CTA row in left col */
+.ab-hero-ctas {
+  display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;
 }
 .ab-hero-noise {
   position:absolute; inset:0; pointer-events:none;
@@ -571,15 +606,24 @@ body { padding-top: var(--nav-h); }
   max-width:340px; margin-bottom:24px;
   opacity:0; animation:fadeUp .8s ease 3.3s forwards;
 }
-.ab-hero-badges { display:flex; flex-wrap:wrap; gap:10px; opacity:0; animation:fadeUp .8s ease 3.5s forwards; }
+.ab-hero-badges { display:flex; flex-wrap:wrap; gap:10px; opacity:0; animation:fadeUp .8s ease 3.85s forwards; }
 .ab-hbadge {
   font-family:var(--font-m); font-size:.5rem; letter-spacing:.18em; text-transform:uppercase;
   padding:6px 14px; border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.5);
   display:flex; align-items:center; gap:6px;
 }
 .ab-hbadge i { color:var(--gold2); }
-.ab-hero-right { position:relative; overflow:hidden; background:var(--bg3); }
+/* Right col: pure image, no overflow content */
+.ab-hero-right { position:relative; overflow:hidden; background:var(--bg3); min-height:100svh; }
 .ab-hero-img-wrap { position:absolute; inset:0; }
+/* decorative grid over image */
+.ab-img-grid-overlay {
+  position:absolute; inset:0; pointer-events:none; z-index:2;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 30%,black 100%);
+}
 .ab-hero-img { width:100%; height:100%; object-fit:cover; object-position:top center; filter:grayscale(20%); transition:filter .6s; }
 .ab-hero-img-wrap:hover .ab-hero-img { filter:grayscale(0%); }
 .ab-hero-img-over {
@@ -678,7 +722,8 @@ body { padding-top: var(--nav-h); }
 /* ── RESPONSIVE ── */
 @media(max-width:1000px){
   .ab-hero { grid-template-columns:1fr; min-height:auto; }
-  .ab-hero-right { height:400px; }
+  .ab-hero-left { min-height:auto; padding:80px 40px 64px; align-items:flex-start; }
+  .ab-hero-right { height:480px; min-height:unset; }
   .ab-what-inner,.ab-apart-inner,.ab-cta-inner { grid-template-columns:1fr; gap:48px; }
   .ab-bento { grid-template-columns:1fr 1fr; }
   .ab-bento-wide,.ab-bento-tall { grid-column:auto; grid-row:auto; }
@@ -686,7 +731,8 @@ body { padding-top: var(--nav-h); }
   .ab-stat-item { padding:20px 32px; }
 }
 @media(max-width:640px){
-  .ab-hero-left { padding:60px 20px; }
+  .ab-hero-left { padding:60px 20px 52px; }
+  .ab-hero-right { height:360px; }
   .ab-what,.ab-values,.ab-team,.ab-contact-cta,.ab-apart { padding-left:20px; padding-right:20px; }
   .ab-bento { grid-template-columns:1fr; }
   .ab-apart-cards { grid-template-columns:1fr; }
