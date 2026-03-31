@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About — Crown Studios</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+body { padding-top: var(--nav-h); }
+
+/* PAGE HERO */
+.pg-hero { padding:100px 48px 80px; background:var(--bg2); position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+
+/* About page hero bg */
+.pg-hero { min-height: 480px; }
+.pg-hero-bg-img {
+  background-image: url("Brand Images/Crown_Jnr2.png");
+  background-size: cover; background-position: right center;
+}
+.pg-hero-bg-img::after {
+  background: linear-gradient(120deg,
+    rgba(248,244,237,0.96) 0%,
+    rgba(248,244,237,0.83) 45%,
+    rgba(248,244,237,0.45) 100%);
+}
+[data-theme="dark"] .pg-hero-bg-img::after {
+  background: linear-gradient(120deg,
+    rgba(7,5,3,0.97) 0%,
+    rgba(7,5,3,0.85) 45%,
+    rgba(7,5,3,0.5) 100%);
+}
+
+.pg-hero-grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse 60% 80% at 80% 50%,black,transparent 70%); animation:gD 18s linear infinite; }
+@keyframes gD { to { background-position:48px 48px; } }
+.pgh-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:2; }
+.pgh-visual { position:relative; height:380px; border:1px solid var(--border2); overflow:hidden; }
+.pgh-visual img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+.pgh-visual-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(7,5,3,.6),transparent 60%); }
+.pgh-visual-caption { position:absolute; bottom:20px; left:24px; font-family:var(--font-d); font-size:1rem; letter-spacing:.1em; color:#fff; }
+
+/* STORY */
+.story-sect { padding:90px 48px; background:var(--bg); }
+.story-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:start; }
+.story-sticky { position:sticky; top:calc(var(--nav-h)+24px); }
+.story-num { font-family:var(--font-d); font-size:8rem; color:var(--border2); line-height:1; }
+.story-blocks { display:flex; flex-direction:column; gap:48px; }
+.sb-block { padding-bottom:48px; border-bottom:1px solid var(--border); }
+.sb-block:last-child { border-bottom:none; padding-bottom:0; }
+.sb-label { font-family:var(--font-m); font-size:.52rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.sb-block h3 { font-family:var(--font-d); font-size:1.8rem; color:var(--text); margin-bottom:12px; }
+.sb-block p { font-size:.9rem; color:var(--text2); line-height:1.8; }
+.sb-block p strong { color:var(--text); }
+
+/* TEAM */
+.team-sect { padding:90px 48px; background:var(--bg2); }
+.team-inner { max-width:1100px; margin:0 auto; }
+.team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:56px; }
+.team-card {
+  position:relative; overflow:hidden; cursor:none;
+  border:1px solid var(--border);
+  background:var(--surface);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+  transform-style:preserve-3d;
+}
+.team-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-lg); }
+.team-card-img { position:relative; height:280px; overflow:hidden; background:var(--bg3); }
+.team-card-img img { width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .6s var(--ease), filter .4s; filter:grayscale(20%); }
+.team-card:hover .team-card-img img { transform:scale(1.06); filter:grayscale(0%); }
+.team-card-img-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+.team-card-img-placeholder i { font-size:5rem; color:var(--border2); }
+.team-card-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(7,5,3,.85) 0%, transparent 60%); opacity:0; transition:opacity .4s; }
+.team-card:hover .team-card-overlay { opacity:1; }
+.team-social { position:absolute; bottom:16px; left:0; right:0; display:flex; justify-content:center; gap:10px; opacity:0; transform:translateY(10px); transition:opacity .4s, transform .4s var(--ease); }
+.team-card:hover .team-social { opacity:1; transform:translateY(0); }
+.team-social a { width:36px; height:36px; border:1px solid rgba(255,255,255,.3); color:#fff; display:flex; align-items:center; justify-content:center; font-size:.9rem; text-decoration:none; transition:background .3s, border-color .3s; }
+.team-social a:hover { background:var(--gold); border-color:var(--gold); color:var(--black); }
+.team-card-body { padding:20px; }
+.team-role { font-family:var(--font-m); font-size:.5rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.team-name { font-family:var(--font-d); font-size:1.2rem; color:var(--text); margin-bottom:6px; }
+.team-bio { font-size:.75rem; color:var(--text3); line-height:1.65; }
+.team-badge { position:absolute; top:14px; right:14px; background:var(--gold); color:var(--black); font-family:var(--font-m); font-size:.45rem; letter-spacing:.15em; text-transform:uppercase; padding:4px 10px; }
+
+/* VALUES */
+.values-sect { padding:90px 48px; background:var(--bg); }
+.values-inner { max-width:1100px; margin:0 auto; }
+.values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+.val-card { padding:36px; background:var(--surface); border:1px solid var(--border); transition:transform .4s var(--ease), box-shadow .4s; cursor:none; }
+.val-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-lg); }
+.val-icon { font-size:1.8rem; color:var(--gold); margin-bottom:16px; display:block; }
+.val-title { font-family:var(--font-d); font-size:1.3rem; color:var(--text); margin-bottom:10px; }
+.val-desc { font-size:.82rem; color:var(--text3); line-height:1.7; }
+
+/* STATS */
+.stats-sect { padding:70px 48px; background:var(--black); }
+.stats-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+.stat-block { padding:40px 24px; text-align:center; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); transition:background .3s; }
+.stat-block:hover { background:rgba(245,200,66,.04); }
+.stat-n { font-family:var(--font-d); font-size:3.5rem; color:#f5c842; }
+.stat-l { font-family:var(--font-m); font-size:.52rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.35); margin-top:6px; }
+
+/* CONTACT */
+.contact-sect { padding:90px 48px; background:var(--bg); }
+.contact-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.2fr; gap:80px; align-items:start; }
+.ct-info h2 { font-family:var(--font-d); font-size:clamp(2.5rem,6vw,5rem); line-height:.92; margin-bottom:24px; }
+.ct-detail { display:flex; align-items:flex-start; gap:14px; padding:16px 0; border-bottom:1px solid var(--border); }
+.ct-detail:last-of-type { border-bottom:none; }
+.ct-ico { font-size:1.1rem; color:var(--gold); margin-top:2px; }
+.ct-txt { font-size:.85rem; color:var(--text2); line-height:1.6; }
+.ct-txt a { color:var(--text2); text-decoration:none; transition:color .3s; }
+.ct-txt a:hover { color:var(--gold); }
+.ct-txt strong { color:var(--text); display:block; font-size:.7rem; font-family:var(--font-m); letter-spacing:.15em; text-transform:uppercase; margin-bottom:2px; }
+.hours-block { margin-top:28px; padding:20px; border:1px solid rgba(200,144,10,.2); background:rgba(200,144,10,.04); }
+.hours-title { font-family:var(--font-m); font-size:.55rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.hours-body { font-size:.85rem; color:var(--text2); line-height:1.8; }
+
+/* Form */
+.f-group { margin-bottom:18px; }
+.f-group label { display:block; font-family:var(--font-m); font-size:.52rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text3); margin-bottom:6px; }
+.f-group input,.f-group select,.f-group textarea { width:100%; background:var(--bg2); border:1px solid var(--border2); color:var(--text); font-family:var(--font-b); font-size:.88rem; padding:12px 14px; outline:none; transition:border-color .3s,background .3s; appearance:none; }
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus { border-color:var(--gold); background:transparent; }
+.f-group textarea { resize:none; height:110px; }
+.f-group select option { background:var(--surface); }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.cf-submit { width:100%; font-family:var(--font-m); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--black); background:var(--gold); border:none; padding:16px; cursor:none; transition:background .3s,box-shadow .3s,transform .2s; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; gap:8px; }
+.cf-submit::before { content:''; position:absolute; inset:0; background:var(--gold2); transform:translateX(-100%) skewX(-12deg); transition:transform .4s var(--ease); }
+.cf-submit:hover { box-shadow:0 0 28px var(--gold-glow); transform:translateY(-1px); }
+.cf-submit:hover::before { transform:translateX(0) skewX(0); }
+.cf-submit span,.cf-submit i { position:relative; z-index:1; }
+
+@media(max-width:900px){
+  .pgh-inner { grid-template-columns:1fr; }
+  .pgh-visual { height:240px; }
+  .story-inner { grid-template-columns:1fr; }
+  .story-sticky { position:relative; top:auto; }
+  .story-num { font-size:5rem; }
+  .team-grid { grid-template-columns:repeat(2,1fr); }
+  .values-grid { grid-template-columns:repeat(2,1fr); }
+  .stats-inner { grid-template-columns:repeat(2,1fr); }
+  .contact-inner { grid-template-columns:1fr; gap:48px; }
+  .f-row { grid-template-columns:1fr; }
+}
+@media(max-width:600px){
+  .pg-hero,.story-sect,.values-sect,.stats-sect,.contact-sect,.team-sect { padding-left:20px; padding-right:20px; }
+  .values-grid { grid-template-columns:1fr; }
+  .stats-inner { grid-template-columns:1fr 1fr; }
+  .team-grid { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="cs-cursor"></div><div id="cs-ring"></div>
+<!-- MOBILE DRAWER -->
+<div class="mob-nav" id="cs-mob-nav">
+  <a href="index.html"><i class="mn-icon bi bi-house-fill"></i>Home</a>
+
+  <!-- Services accordion -->
+  <button class="mob-dd-toggle">
+    <i class="mn-icon bi bi-camera-video-fill"></i>Services
+    <i class="bi bi-chevron-right mob-dd-arrow"></i>
+  </button>
+  <div class="mob-dd-items">
+    <a href="services.html#video-editing"><i class="bi bi-scissors"></i>Video Editing</a>
+    <a href="services.html#3d-animation"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+    <a href="services.html#2d-animation"><i class="bi bi-stars"></i>2D Animation</a>
+    <a href="services.html#motion-graphics"><i class="bi bi-play-circle-fill"></i>Motion Graphics</a>
+    <a href="services.html#video-production"><i class="bi bi-camera-video-fill"></i>Video Production</a>
+    <a href="services.html#web-design"><i class="bi bi-code-slash"></i>Web Design & Dev</a>
+    <a href="services.html#3d-design"><i class="bi bi-buildings-fill"></i>3D Design & Viz</a>
+    <a href="services.html#graphic-design"><i class="bi bi-vector-pen"></i>Graphic Design</a>
+    <a href="services.html#brand-design"><i class="bi bi-palette-fill"></i>Brand Design</a>
+  </div>
+
+  <!-- Training accordion -->
+  <button class="mob-dd-toggle">
+    <i class="mn-icon bi bi-mortarboard-fill"></i>Training
+    <i class="bi bi-chevron-right mob-dd-arrow"></i>
+  </button>
+  <div class="mob-dd-items">
+    <a href="training.html#courses"><i class="bi bi-box-seam-fill"></i>3D Animation — Maya</a>
+    <a href="training.html#courses"><i class="bi bi-scissors"></i>2D Animation</a>
+    <a href="training.html#courses"><i class="bi bi-camera-video-fill"></i>Video Editing</a>
+    <a href="training.html#courses"><i class="bi bi-robot"></i>AI Filmmaking</a>
+    <a href="training.html#courses"><i class="bi bi-stars"></i>AI Animation</a>
+    <a href="training.html#courses"><i class="bi bi-palette-fill"></i>Graphic Design</a>
+    <a href="training.html"><i class="bi bi-mortarboard-fill"></i>All Courses</a>
+  </div>
+
+  <a href="about.html"><i class="mn-icon bi bi-shield-fill-check"></i>About</a>
+  <a href="contact.html"><i class="mn-icon bi bi-telephone-fill"></i>Contact</a>
+  <a href="training.html" class="mob-cta">Enroll Now</a>
+</div>
+
+<nav id="cs-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="logo-dark" style="height:32px">
+    <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="logo-light" style="height:32px">
+     
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+
+    <!-- SERVICES DROPDOWN -->
+    <li class="has-wide-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down dd-arrow"></i></a>
+      <div class="nav-dropdown">
+        <span class="dd-label">Creative Services</span>
+        <a href="services.html#video-editing"><i class="bi bi-scissors"></i>Video Editing</a>
+        <a href="services.html#3d-animation"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+        <a href="services.html#2d-animation"><i class="bi bi-stars"></i>2D Animation</a>
+        <a href="services.html#motion-graphics"><i class="bi bi-play-circle-fill"></i>Motion Graphics</a>
+        <a href="services.html#video-production"><i class="bi bi-camera-video-fill"></i>Video Production</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">Design & Development</span>
+        <a href="services.html#web-design"><i class="bi bi-code-slash"></i>Web Design & Dev</a>
+        <a href="services.html#3d-design"><i class="bi bi-buildings-fill"></i>3D Design & Viz</a>
+        <a href="services.html#graphic-design"><i class="bi bi-vector-pen"></i>Graphic Design</a>
+        <a href="services.html#brand-design"><i class="bi bi-palette-fill"></i>Brand Design</a>
+      </div>
+    </li>
+
+    <!-- TRAINING DROPDOWN -->
+    <li>
+      <a href="training.html">Training <i class="bi bi-chevron-down dd-arrow"></i></a>
+      <div class="nav-dropdown">
+        <span class="dd-label">Courses</span>
+        <a href="training.html#courses"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+        <a href="training.html#courses"><i class="bi bi-scissors"></i>2D Animation</a>
+        <a href="training.html#courses"><i class="bi bi-camera-video-fill"></i>Video Editing</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">AI Programs</span>
+        <a href="training.html#courses"><i class="bi bi-robot"></i>AI Filmmaking</a>
+        <a href="training.html#courses"><i class="bi bi-stars"></i>AI Animation</a>
+      </div>
+    </li>
+
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" aria-label="Toggle theme"></button>
+    <a href="training.html" class="nav-cta">Enroll Now</a>
+    <button class="hamburger" id="cs-ham"><div class="ham-dots"><div class="ham-dot"></div><div class="ham-dot"></div><div class="ham-dot"></div><div class="ham-dot"></div></div></button>
+  </div>
+</nav>
+
+<div id="cs-loader">
+  <div class="ld-logo-wrap">
+    <div class="ld-ring"></div><div class="ld-ring2"></div><div class="ld-ring3"></div>
+    <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ld-logo-img" alt="Crown Digital">
+  </div>
+  <div class="ld-word">CROWN DIGITAL</div>
+  <div class="ld-sub">Nigeria's Premier 3D Studio</div>
+  <div class="ld-bar-track"><div class="ld-bar-fill"></div></div>
+  <div style="margin-top:8px;font-family:var(--font-m);font-size:.5rem;color:rgba(255,255,255,.2)" id="ld-pct">0%</div>
+</div>
+
+ 
+
+
+<!-- PAGE HERO — CINEMATIC SPLIT -->
+<section class="ab-hero">
+  <div class="ab-hero-left">
+    <div class="ab-hero-noise"></div>
+    <div class="ab-hero-left-content">
+      <div class="s-label" style="color:var(--gold2)"><span style="background:var(--gold2);width:28px;height:1px;display:inline-block"></span>&nbsp;&nbsp;Est. Nigeria</div>
+      <h1 class="ab-hero-title">
+        <span class="abt-line"><span class="abt-inner">WE ARE</span></span>
+        <span class="abt-line"><span class="abt-inner ab-stroke">CROWN</span></span>
+        <span class="abt-line"><span class="abt-inner">STUDIOS</span></span>
+      </h1>
+      <p class="ab-hero-tagline">Top-tier creative studio. Cinematic storytelling. African excellence.</p>
+      <div class="ab-hero-badges">
+        <span class="ab-hbadge"><i class="bi bi-geo-alt-fill"></i> Nigeria</span>
+        <span class="ab-hbadge"><i class="bi bi-camera-reels-fill"></i> 3D & Motion</span>
+        <span class="ab-hbadge"><i class="bi bi-mortarboard-fill"></i> Training</span>
+      </div>
+    </div>
+  </div>
+  <div class="ab-hero-right">
+    <div class="ab-hero-img-wrap">
+      <img src="Brand Images/Crown_Jnr2.png" alt="Crown Studios" class="ab-hero-img" onerror="this.style.display='none'">
+      <div class="ab-hero-img-over"></div>
+      <div class="ab-hero-stat-chip top-right">
+        <span class="ab-chip-num">50+</span>
+        <span class="ab-chip-lbl">Brands Served</span>
+      </div>
+      <div class="ab-hero-stat-chip bottom-left">
+        <span class="ab-chip-num">100+</span>
+        <span class="ab-chip-lbl">Students Trained</span>
+      </div>
+    </div>
+    <!-- FOLLOW-UP TEXT BENEATH THE HERO IMAGE -->
+    <div class="ab-hero-img-followup" style="margin-top:28px;padding:24px 28px;border:1px solid var(--border2);background:var(--surface);position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold2),var(--blue));"></div>
+      <p style="font-family:var(--font-m);font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+        <span style="width:20px;height:1px;background:var(--gold);display:inline-block;"></span> Our Craft
+      </p>
+      <p style="font-family:var(--font-a);font-style:italic;font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:14px;">
+        "Every frame we create carries a heartbeat — a pulse of intention, story, and purpose that speaks before words ever could."
+      </p>
+      <p style="font-size:.8rem;color:var(--text2);line-height:1.75;margin-bottom:18px;">
+        At Crown Studios, we believe the most powerful storytelling happens at the intersection of <strong style="color:var(--text)">technical mastery</strong> and <strong style="color:var(--text)">genuine human emotion</strong>. Our team doesn't just produce content — we craft visual experiences that resonate, inspire, and move people to action.
+      </p>
+      <p style="font-size:.8rem;color:var(--text2);line-height:1.75;margin-bottom:20px;">
+        From the boardrooms of Nigeria's leading banks to the feeds of millions across social media — our animations carry brands into conversations they've never been able to join before.
+      </p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="services.html" class="btn-gold" style="padding:11px 22px;font-size:.58rem;"><span>Explore Services</span></a>
+        <a href="contact.html" class="btn-outline" style="padding:10px 22px;font-size:.58rem;">Start a Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="cs-marquee"><div class="cs-marquee-inner"></div></div>
+
+<!-- WHAT WE DO — EDITORIAL BLOCK -->
+<section class="ab-what">
+  <div class="ab-what-inner">
+    <div class="ab-what-left reveal">
+      <div class="ab-big-label">01</div>
+      <div class="s-label">Who We Are</div>
+      <h2 class="s-title">THE <span class="outline">STUDIO</span><br>THAT <span class="outline-blue">DELIVERS</span></h2>
+    </div>
+    <div class="ab-what-right reveal rd2">
+      <p class="ab-body-text">We are a <strong>top-tier creative studio</strong> helping brands, agencies, and companies transform ideas into captivating visual stories. We craft cinematic edits that don't just look stunning — they <em>drive results.</em></p>
+      <p class="ab-body-text">From character animation to product visualization, we specialize in helping <strong>banks, corporate brands, and startups</strong> stand out in a crowded market. Whether it's unveiling a product, explaining a complex service, or building campaign visuals — we design content that connects emotionally while highlighting business value.</p>
+      <div class="ab-what-ctas">
+        <a href="services.html" class="btn-gold"><span>Our Services <i class="bi bi-arrow-right"></i></span></a>
+        <a href="contact.html" class="btn-outline">Start a Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT SETS US APART — DIAGONAL SPLIT -->
+<section class="ab-apart">
+  <div class="ab-apart-inner">
+    <div class="ab-apart-text reveal">
+      <div class="ab-big-label light">02</div>
+      <div class="s-label gold-label">What Sets Us Apart</div>
+      <h2 class="s-title" style="color:#f8f4ed">ARTISTRY<br>MEETS<br><span style="-webkit-text-stroke:2px var(--gold2);color:transparent">STRATEGY</span></h2>
+      <p style="font-family:var(--font-a);font-size:1.05rem;color:rgba(248,244,237,.6);line-height:1.8;max-width:420px;margin:20px 0">We solve the challenge of turning abstract concepts into clear, compelling, and visually dynamic narratives. Our work blends artistry with marketing strategy — every frame communicates purpose.</p>
+      <div class="ab-apart-quote">
+        <span class="ab-quote-mark">"</span>
+        <p>We don't just animate — we build worlds that <em>move people and move markets.</em></p>
+      </div>
+    </div>
+    <div class="ab-apart-cards reveal rd2">
+      <div class="ab-acard">
+        <i class="bi bi-palette-fill ab-acard-icon"></i>
+        <h4>Creative Storytelling</h4>
+        <p>Every frame is designed to carry emotional weight and narrative purpose — not just visual beauty.</p>
+      </div>
+      <div class="ab-acard">
+        <i class="bi bi-bullseye ab-acard-icon"></i>
+        <h4>Marketing Strategy</h4>
+        <p>We collaborate closely with your team to ensure visuals align with your goals, audience, and brand identity.</p>
+      </div>
+      <div class="ab-acard">
+        <i class="bi bi-cpu-fill ab-acard-icon"></i>
+        <h4>Technical Precision</h4>
+        <p>From Maya rendering to Premiere colour grading — our technical standards match international studio benchmarks.</p>
+      </div>
+      <div class="ab-acard">
+        <i class="bi bi-mortarboard-fill ab-acard-icon"></i>
+        <h4>Industry Training</h4>
+        <p>We don't just produce content — we grow the next generation of African animators through our mentorship academy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS — BOLD COUNTER ROW -->
+<div class="ab-stats-band">
+  <div class="ab-stat-item reveal"><span class="ab-stat-n counter" data-target="50" data-suf="+">0</span><span class="ab-stat-l">Projects Delivered</span></div>
+  <div class="ab-stat-div"></div>
+  <div class="ab-stat-item reveal rd1"><span class="ab-stat-n counter" data-target="6" data-suf="">0</span><span class="ab-stat-l">Courses Offered</span></div>
+  <div class="ab-stat-div"></div>
+  <div class="ab-stat-item reveal rd2"><span class="ab-stat-n counter" data-target="100" data-suf="+">0</span><span class="ab-stat-l">Students Trained</span></div>
+  <div class="ab-stat-div"></div>
+  <div class="ab-stat-item reveal rd3"><span class="ab-stat-n counter" data-target="5" data-suf="">0</span><span class="ab-stat-l">Years of Excellence</span></div>
+</div>
+
+<!-- VALUES — BENTO GRID -->
+<section class="ab-values">
+  <div class="ab-values-inner">
+    <div class="ab-values-header reveal">
+      <div class="ab-big-label">03</div>
+      <div class="s-label">Core Principles</div>
+      <h2 class="s-title">WHAT WE<br><span class="outline">STAND FOR</span></h2>
+    </div>
+    <div class="ab-bento reveal rd1">
+      <div class="ab-bento-cell ab-bento-wide" style="--bc:var(--gold2)">
+        <i class="bi bi-shield-fill-check ab-bento-icon"></i>
+        <h3 class="ab-bento-title">CRAFT</h3>
+        <p>We obsess over every frame. Our animators approach each project with the care of fine art and the discipline of engineering. Quality is non-negotiable.</p>
+      </div>
+      <div class="ab-bento-cell" style="--bc:var(--blue)">
+        <i class="bi bi-graph-up-arrow ab-bento-icon"></i>
+        <h3 class="ab-bento-title">IMPACT</h3>
+        <p>Beautiful animation is only half the job. Every visual is designed with marketing strategy in mind — we measure success by brand outcomes.</p>
+      </div>
+      <div class="ab-bento-cell" style="--bc:var(--teal)">
+        <i class="bi bi-flower1 ab-bento-icon"></i>
+        <h3 class="ab-bento-title">GROWTH</h3>
+        <p>We invest in growing the African creative industry through training, mentorship, and community — people first, always.</p>
+      </div>
+      <div class="ab-bento-cell ab-bento-tall" style="--bc:var(--red)">
+        <i class="bi bi-lightning-charge-fill ab-bento-icon"></i>
+        <h3 class="ab-bento-title">EXCELLENCE</h3>
+        <p>We hold our work to international standards. If it carries the Crown, it has to be extraordinary. No compromises.</p>
+      </div>
+      <div class="ab-bento-cell" style="--bc:#a855f7">
+        <i class="bi bi-globe-americas ab-bento-icon"></i>
+        <h3 class="ab-bento-title">LEGACY</h3>
+        <p>African creativity has no ceiling. We are building proof of that — one cinematic frame at a time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="ab-team">
+  <div class="ab-team-inner">
+    <div class="ab-values-header reveal">
+      <div class="ab-big-label">04</div>
+      <div class="s-label">The People</div>
+      <h2 class="s-title">MEET THE<br><span class="outline-blue">TEAM</span></h2>
+    </div>
+    <div class="team-grid" style="margin-top:56px">
+      <div class="team-card reveal">
+        <div class="team-card-img">
+          <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-social">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+        <span class="team-badge">Founder</span>
+        <div class="team-card-body">
+          <p class="team-role">Creative Director</p>
+          <h3 class="team-name">Crown Digital</h3>
+          <p class="team-bio">Visionary behind Crown Studios. Expert in 3D animation, cinematic storytelling, and brand-driven visual production.</p>
+        </div>
+      </div>
+      <div class="team-card reveal rd1">
+        <div class="team-card-img">
+          <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-social"><a href="#"><i class="bi bi-instagram"></i></a></div>
+        <div class="team-card-body">
+          <p class="team-role">Lead Animator</p>
+          <h3 class="team-name">Animation Lead</h3>
+          <p class="team-bio">Specialist in character animation, rigging, and motion design using Autodesk Maya.</p>
+        </div>
+      </div>
+      <div class="team-card reveal rd2">
+        <div class="team-card-img">
+          <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-social"><a href="#"><i class="bi bi-instagram"></i></a></div>
+        <div class="team-card-body">
+          <p class="team-role">Video Production</p>
+          <h3 class="team-name">Post-Production Lead</h3>
+          <p class="team-bio">Expert in cinematic colour grading, sound design, and broadcast-ready delivery.</p>
+        </div>
+      </div>
+      <div class="team-card reveal rd3">
+        <div class="team-card-img">
+          <div class="team-card-img-placeholder"><i class="bi bi-person-fill"></i></div>
+        </div>
+        <div class="team-card-overlay"></div>
+        <div class="team-social"><a href="#"><i class="bi bi-instagram"></i></a></div>
+        <div class="team-card-body">
+          <p class="team-role">Training Coordinator</p>
+          <h3 class="team-name">Academy Lead</h3>
+          <p class="team-bio">Manages the Crown Training Academy — designing curriculum and mentoring students.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA — FULL-WIDTH DRAMATIC -->
+<section class="ab-contact-cta" id="contact">
+  <div class="ab-cta-noise"></div>
+  <div class="ab-cta-inner">
+    <div class="ab-cta-left reveal">
+      <div class="s-label gold-label">Let's Build Something</div>
+      <h2 class="s-title" style="color:#f8f4ed;font-size:clamp(3rem,8vw,7rem);line-height:.88">READY TO<br><span style="-webkit-text-stroke:2px var(--gold2);color:transparent">CONNECT?</span></h2>
+      <p style="font-family:var(--font-a);font-size:1.05rem;color:rgba(248,244,237,.55);max-width:380px;line-height:1.8;margin:20px 0">Whether you have a project in mind, want to enroll in training, or just want to learn more — we would love to hear from you.</p>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px">
+        <div class="ab-cta-detail">
+          <i class="bi bi-envelope-fill ab-cta-ico"></i>
+          <div>
+            <span class="ab-cta-detail-label">Email Us</span>
+            <a href="/cdn-cgi/l/email-protection#5417263b233a272021303d3b27666063143339353d387a373b39" class="ab-cta-detail-val"><span class="__cf_email__" data-cfemail="591a2b362e372a2d2c3d30362a6b6d6e193e34383035773a3634">[email&#160;protected]</span></a>
+          </div>
+        </div>
+        <div class="ab-cta-detail">
+          <i class="bi bi-whatsapp ab-cta-ico" style="color:#25d366"></i>
+          <div>
+            <span class="ab-cta-detail-label">WhatsApp</span>
+            <a href="https://wa.me/2348000000000" target="_blank" class="ab-cta-detail-val">Chat with us directly</a>
+          </div>
+        </div>
+        <div class="ab-cta-detail">
+          <i class="bi bi-clock-fill ab-cta-ico"></i>
+          <div>
+            <span class="ab-cta-detail-label">Support Hours</span>
+            <span class="ab-cta-detail-val">Mon–Fri · 9AM–8PM (WAT)</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" class="btn-gold"><span>Send a Message <i class="bi bi-send-fill"></i></span></a>
+        <a href="training.html" class="btn-outline" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)">Browse Courses</a>
+      </div>
+    </div>
+    <div class="ab-cta-right reveal rd2">
+      <div class="ab-cta-card">
+        <div class="ab-cta-card-icon">🎬</div>
+        <h3>Need a Creative Studio?</h3>
+        <p>Tell us about your project — cinematic edits, 3D animation, product visualizations, or brand content. We'll craft a custom proposal.</p>
+        <a href="services.html" class="ab-cta-card-link">View All Services <i class="bi bi-arrow-right"></i></a>
+      </div>
+      <div class="ab-cta-card">
+        <div class="ab-cta-card-icon">🎓</div>
+        <h3>Want to Learn Animation?</h3>
+        <p>Join the Crown Training Academy. Industry-led courses in 3D Animation, 2D, Video Editing, and AI Filmmaking — from Nigeria to the world.</p>
+        <a href="training.html" class="ab-cta-card-link">Explore Courses <i class="bi bi-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── ABOUT HERO ── */
+.ab-hero {
+  min-height:100svh; display:grid; grid-template-columns:1fr 1fr;
+  padding-top:var(--nav-h); overflow:hidden;
+}
+.ab-hero-left {
+  background:var(--black); padding:80px 60px;
+  display:flex; align-items:flex-end; position:relative; overflow:hidden;
+}
+.ab-hero-noise {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(circle at 20% 80%, rgba(252,179,30,.08) 0%, transparent 50%),
+                   radial-gradient(circle at 80% 20%, rgba(75,168,255,.05) 0%, transparent 50%);
+}
+.ab-hero-left-content { position:relative; z-index:2; }
+.ab-hero-title {
+  font-family:var(--font-d); font-size:clamp(5rem,12vw,10rem);
+  line-height:.85; margin:24px 0;
+}
+.abt-line { display:block; overflow:hidden; }
+.abt-inner { display:block; color:#f8f4ed; transform:translateY(110%); animation:slideUp .9s var(--ease) forwards; }
+.ab-stroke { -webkit-text-stroke:2px var(--gold2); color:transparent !important; }
+.abt-line:nth-child(1) .abt-inner { animation-delay:2.8s; }
+.abt-line:nth-child(2) .abt-inner { animation-delay:2.95s; }
+.abt-line:nth-child(3) .abt-inner { animation-delay:3.1s; }
+.ab-hero-tagline {
+  font-family:var(--font-a); font-style:italic;
+  font-size:1.1rem; color:rgba(248,244,237,.55); line-height:1.6;
+  max-width:340px; margin-bottom:24px;
+  opacity:0; animation:fadeUp .8s ease 3.3s forwards;
+}
+.ab-hero-badges { display:flex; flex-wrap:wrap; gap:10px; opacity:0; animation:fadeUp .8s ease 3.5s forwards; }
+.ab-hbadge {
+  font-family:var(--font-m); font-size:.5rem; letter-spacing:.18em; text-transform:uppercase;
+  padding:6px 14px; border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.5);
+  display:flex; align-items:center; gap:6px;
+}
+.ab-hbadge i { color:var(--gold2); }
+.ab-hero-right { position:relative; overflow:hidden; background:var(--bg3); }
+.ab-hero-img-wrap { position:absolute; inset:0; }
+.ab-hero-img { width:100%; height:100%; object-fit:cover; object-position:top center; filter:grayscale(20%); transition:filter .6s; }
+.ab-hero-img-wrap:hover .ab-hero-img { filter:grayscale(0%); }
+.ab-hero-img-over {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(10,8,5,.3) 0%, transparent 40%),
+             linear-gradient(to top, rgba(10,8,5,.6) 0%, transparent 50%);
+}
+.ab-hero-stat-chip {
+  position:absolute; z-index:3;
+  background:rgba(10,8,5,.75); backdrop-filter:blur(12px);
+  border:1px solid rgba(252,179,30,.2); padding:14px 18px;
+  display:flex; flex-direction:column; gap:2px;
+}
+.ab-hero-stat-chip.top-right { top:24px; right:24px; }
+.ab-hero-stat-chip.bottom-left { bottom:24px; left:24px; }
+.ab-chip-num { font-family:var(--font-d); font-size:2rem; color:var(--gold2); line-height:1; }
+.ab-chip-lbl { font-family:var(--font-m); font-size:.46rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+
+/* ── WHAT WE DO ── */
+.ab-what { padding:100px 48px; background:var(--bg); }
+.ab-what-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.3fr; gap:80px; align-items:start; }
+.ab-big-label { font-family:var(--font-d); font-size:8rem; color:var(--border2); line-height:1; margin-bottom:8px; }
+.ab-big-label.light { color:rgba(255,255,255,.04); }
+.ab-body-text { font-family:var(--font-a); font-size:1.05rem; color:var(--text2); line-height:1.85; margin-bottom:20px; }
+.ab-body-text strong { color:var(--text); font-style:normal; }
+.ab-body-text em { color:var(--gold); font-style:italic; }
+.ab-what-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; }
+
+/* ── APART ── */
+.ab-apart { padding:100px 48px; background:var(--black); position:relative; overflow:hidden; }
+.ab-apart::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 100% 50%, rgba(252,179,30,.05), transparent 60%); }
+.ab-apart-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; z-index:2; }
+.ab-apart-quote { margin-top:32px; padding:20px 24px; border-left:3px solid var(--gold2); background:rgba(252,179,30,.04); }
+.ab-quote-mark { font-family:var(--font-d); font-size:4rem; color:var(--gold2); line-height:.5; display:block; margin-bottom:8px; }
+.ab-apart-quote p { font-family:var(--font-a); font-style:italic; font-size:1.1rem; color:rgba(248,244,237,.7); line-height:1.7; }
+.ab-apart-quote em { color:var(--gold2); }
+.ab-apart-cards { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.ab-acard { padding:32px 28px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); transition:background .3s; }
+.ab-acard:hover { background:rgba(252,179,30,.05); border-color:rgba(252,179,30,.2); }
+.ab-acard-icon { font-size:1.8rem; color:var(--gold2); display:block; margin-bottom:14px; }
+.ab-acard h4 { font-family:var(--font-d); font-size:1.1rem; color:#f8f4ed; margin-bottom:8px; }
+.ab-acard p { font-size:.82rem; color:rgba(248,244,237,.45); line-height:1.7; }
+
+/* ── STATS BAND ── */
+.ab-stats-band { background:var(--gold2); padding:40px 48px; display:flex; justify-content:center; align-items:center; gap:0; flex-wrap:wrap; }
+.ab-stat-item { text-align:center; padding:20px 48px; display:flex; flex-direction:column; gap:4px; }
+.ab-stat-n { font-family:var(--font-d); font-size:3.5rem; color:var(--black); line-height:1; }
+.ab-stat-l { font-family:var(--font-m); font-size:.52rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(0,0,0,.55); }
+.ab-stat-div { width:1px; height:60px; background:rgba(0,0,0,.2); align-self:center; }
+
+/* ── VALUES BENTO ── */
+.ab-values { padding:100px 48px; background:var(--bg2); }
+.ab-values-inner { max-width:1100px; margin:0 auto; }
+.ab-values-header { margin-bottom:56px; }
+.ab-bento { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto auto; gap:2px; }
+.ab-bento-wide { grid-column:1/3; }
+.ab-bento-tall { grid-row:1/3; grid-column:3; }
+.ab-bento-cell {
+  padding:40px 36px; background:var(--surface); border:1px solid var(--border);
+  transition:background .3s, border-color .3s; cursor:default; position:relative; overflow:hidden;
+}
+.ab-bento-cell::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--bc,var(--gold2));
+  transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease);
+}
+.ab-bento-cell:hover::before { transform:scaleX(1); }
+.ab-bento-cell:hover { background:var(--surface2); border-color:var(--bc,var(--gold2)); }
+.ab-bento-icon { font-size:2rem; color:var(--bc,var(--gold2)); display:block; margin-bottom:16px; }
+.ab-bento-title { font-family:var(--font-d); font-size:1.5rem; color:var(--text); margin-bottom:12px; }
+.ab-bento-cell p { font-size:.85rem; color:var(--text3); line-height:1.75; }
+
+/* ── TEAM ── */
+.ab-team { padding:100px 48px; background:var(--bg); }
+.ab-team-inner { max-width:1100px; margin:0 auto; }
+
+/* ── CONTACT CTA ── */
+.ab-contact-cta { padding:100px 48px; background:var(--black); position:relative; overflow:hidden; }
+.ab-cta-noise { position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 0% 100%, rgba(252,179,30,.07), transparent 55%), radial-gradient(ellipse 50% 60% at 100% 0%, rgba(75,168,255,.06), transparent 55%); pointer-events:none; }
+.ab-cta-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; position:relative; z-index:2; }
+.ab-cta-detail { display:flex; align-items:flex-start; gap:14px; padding:16px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+.ab-cta-detail:last-child { border-bottom:none; }
+.ab-cta-ico { font-size:1.1rem; color:var(--gold2); margin-top:2px; flex-shrink:0; }
+.ab-cta-detail-label { display:block; font-family:var(--font-m); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:4px; }
+.ab-cta-detail-val { display:block; font-family:var(--font-b); font-size:.9rem; color:rgba(248,244,237,.75); text-decoration:none; transition:color .3s; }
+.ab-cta-detail-val:hover { color:var(--gold2); }
+.ab-cta-right { display:flex; flex-direction:column; gap:20px; }
+.ab-cta-card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); padding:36px 32px; transition:border-color .3s, background .3s; }
+.ab-cta-card:hover { border-color:rgba(252,179,30,.3); background:rgba(252,179,30,.03); }
+.ab-cta-card-icon { font-size:2.4rem; margin-bottom:14px; display:block; }
+.ab-cta-card h3 { font-family:var(--font-d); font-size:1.4rem; color:#f8f4ed; margin-bottom:10px; }
+.ab-cta-card p { font-size:.85rem; color:rgba(248,244,237,.45); line-height:1.75; margin-bottom:20px; }
+.ab-cta-card-link { font-family:var(--font-m); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold2); text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:gap .3s; }
+.ab-cta-card-link:hover { gap:14px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .ab-hero { grid-template-columns:1fr; min-height:auto; }
+  .ab-hero-right { height:400px; }
+  .ab-what-inner,.ab-apart-inner,.ab-cta-inner { grid-template-columns:1fr; gap:48px; }
+  .ab-bento { grid-template-columns:1fr 1fr; }
+  .ab-bento-wide,.ab-bento-tall { grid-column:auto; grid-row:auto; }
+  .ab-stats-band { gap:0; }
+  .ab-stat-item { padding:20px 32px; }
+}
+@media(max-width:640px){
+  .ab-hero-left { padding:60px 20px; }
+  .ab-what,.ab-values,.ab-team,.ab-contact-cta,.ab-apart { padding-left:20px; padding-right:20px; }
+  .ab-bento { grid-template-columns:1fr; }
+  .ab-apart-cards { grid-template-columns:1fr; }
+  .team-grid { grid-template-columns:1fr 1fr; }
+  .ab-stats-band { flex-direction:column; }
+  .ab-stat-div { width:80px; height:1px; }
+}
+</style>
+<!-- FOOTER -->
+<footer id="cs-footer">
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="index.html" class="nav-brand" style="text-decoration:none">
+        <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="ft-logo-dark" style="height:32px">
+        <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ft-logo-light" style="height:32px">
+      </a>
+      <p>Where technical precision meets cinematic artistry.</p>
+    </div>
+    <div class="ft-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="training.html">Training</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="/cdn-cgi/l/email-protection#c281b0adb5acb1b6b7a6abadb1f0f6f582a5afa3abaeeca1adaf"><span class="__cf_email__" data-cfemail="b7f4c5d8c0d9c4c3c2d3ded8c4858380f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></li><li><a href="#">Mon–Fri · 9am–8pm WAT</a></li></ul></div>
+  </div>
+  <div class="ft-bottom"><p class="ft-copy">© 2025 Crown Studio. All Rights Reserved. | <a href="#">Privacy Policy</a></p><p class="ft-copy">Made with <i class="bi bi-shield-fill-check" style="color:var(--gold)"></i> in Nigeria</p></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+(function(){
+  function killLoader(){var l=document.getElementById('cs-loader');if(!l||l.dataset.dismissed)return;l.dataset.dismissed='true';l.classList.add('ld-out');setTimeout(function(){l.style.display='none';try{l.remove();}catch(e){}},850);}
+  setTimeout(killLoader,1000);setTimeout(killLoader,2000);setTimeout(killLoader,3000);
+  document.addEventListener('DOMContentLoaded',function(){setTimeout(killLoader,500);});
+  window.addEventListener('load',function(){setTimeout(killLoader,200);});
+})();
+</script>
+
+<!-- CHAT SUPPORT WIDGET -->
+<style>
+.cs-chat-bubble{position:fixed;bottom:28px;right:28px;z-index:8000;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.cs-chat-btn{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(37,211,102,0.45);transition:transform .3s,box-shadow .3s;position:relative}
+.cs-chat-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,0.6)}
+.cs-chat-btn i{font-size:1.6rem;color:#fff}
+.cs-chat-btn::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,0.45);animation:chatPulse 2s ease-in-out infinite}
+@keyframes chatPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.18);opacity:0}}
+.cs-chat-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;background:var(--gold2,#fcb31e);border-radius:50%;border:2px solid #fff;font-family:'DM Mono',monospace;font-size:.45rem;color:#000;display:flex;align-items:center;justify-content:center}
+.cs-chat-panel{position:fixed;bottom:100px;right:28px;z-index:8001;width:340px;background:var(--surface,#fff);border:1px solid var(--border2,rgba(0,0,0,.12));border-radius:12px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.18);transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(0.16,1,0.3,1),transform .35s cubic-bezier(0.16,1,0.3,1)}
+.cs-chat-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+.csp-header{background:linear-gradient(135deg,#128c7e,#25d366);padding:20px 20px 16px;display:flex;align-items:center;gap:14px}
+.csp-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0;border:2px solid rgba(255,255,255,.4)}
+.csp-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;color:#fff;line-height:1}
+.csp-status{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px;display:flex;align-items:center;gap:5px}
+.csp-status-dot{width:7px;height:7px;border-radius:50%;background:#adff9e;animation:chatPulse 2s infinite}
+.csp-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:1.1rem;padding:4px;transition:color .2s}
+.csp-close:hover{color:#fff}
+.csp-body{padding:20px;background:var(--bg2,#f8f8f8)}
+.csp-bubble{background:var(--surface,#fff);border:1px solid var(--border,rgba(0,0,0,.07));border-radius:0 12px 12px 12px;padding:12px 14px;margin-bottom:14px;font-family:'Syne',sans-serif;font-size:.82rem;color:var(--text,#0e0b07);line-height:1.6;box-shadow:var(--shadow,0 2px 8px rgba(0,0,0,.05))}
+.csp-bubble strong{color:var(--gold2,#fcb31e)}
+.csp-time{font-family:'DM Mono',monospace;font-size:.45rem;letter-spacing:.15em;color:var(--text3,#8a7a60);margin-bottom:16px;text-align:right}
+.csp-options{display:flex;flex-direction:column;gap:8px}
+.csp-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border2,rgba(0,0,0,.12));background:var(--surface,#fff);text-decoration:none;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text,#0e0b07);transition:border-color .25s,background .25s,color .25s,padding-left .25s;cursor:pointer}
+.csp-opt:hover{border-color:#25d366;color:#128c7e;padding-left:20px;background:rgba(37,211,102,.04)}
+.csp-opt i{color:#25d366;font-size:.9rem;flex-shrink:0}
+.csp-footer{padding:12px 20px;border-top:1px solid var(--border,rgba(0,0,0,.07));font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.15em;color:var(--text3,#8a7a60);text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.csp-footer i{color:#25d366}
+@media(max-width:400px){.cs-chat-panel{width:calc(100vw - 24px);right:12px}}
+</style>
+<div class="cs-chat-bubble">
+  <div class="cs-chat-panel" id="csChatPanel">
+    <div class="csp-header">
+      <div class="csp-avatar"><i class="bi bi-headset"></i></div>
+      <div class="csp-info">
+        <div class="csp-name">Crown Digital Support</div>
+        <div class="csp-status"><span class="csp-status-dot"></span>Typically replies instantly</div>
+      </div>
+      <button class="csp-close" onclick="toggleChat()"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="csp-body">
+      <div class="csp-bubble">👋 Hi there! Welcome to <strong>Crown Digital Solutions</strong>.<br><br>We're here to help — whether you have questions about our services, training programs, or want to get a quote.</div>
+      <div class="csp-time">Crown Support · Just now</div>
+      <div class="csp-options">
+        <a class="csp-opt" href="https://wa.me/2348000000000?text=Hello%20Crown%20Digital%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Chat on WhatsApp</a>
+        <a class="csp-opt" href="/cdn-cgi/l/email-protection#4407362b332a373031202d2b37767073042329252d286a272b29"><i class="bi bi-envelope-fill"></i> Send us an Email</a>
+        <a class="csp-opt" href="training.html#courses"><i class="bi bi-mortarboard-fill"></i> View Training Courses</a>
+        <a class="csp-opt" href="contact.html"><i class="bi bi-telephone-fill"></i> Contact Page</a>
+      </div>
+    </div>
+    <div class="csp-footer"><i class="bi bi-shield-fill-check"></i> Mon–Fri · 9am–8pm WAT · Nigeria</div>
+  </div>
+  <button class="cs-chat-btn" onclick="toggleChat()" aria-label="Open chat support">
+    <i class="bi bi-whatsapp" id="csChatIcon"></i>
+    <span class="cs-chat-dot">1</span>
+  </button>
+</div>
+<script>
+function toggleChat(){
+  const panel=document.getElementById('csChatPanel');
+  const icon=document.getElementById('csChatIcon');
+  const isOpen=panel.classList.toggle('
