@@ -3,7 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Crown Studios — 3D Animation & Visual Storytelling</title>
+<title>Crown Digital Studios — Nigeria's Premier 3D Animation & Visual Storytelling Studio</title>
+
+<!-- ── SEO & OPEN GRAPH ── -->
+<meta name="description" content="Crown Digital Studios is Nigeria's premier 3D animation and visual storytelling studio. We craft cinematic brand films, character animation, motion graphics, and product visualizations — and train the next generation of animators.">
+<meta name="keywords" content="3D animation Nigeria, motion graphics Lagos, Crown Digital Studios, character animation, video editing Nigeria, animation school Nigeria, Maya animation course">
+<meta name="author" content="Crown Digital Studios">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://crowndigitalstudios.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crown Digital Studios — Nigeria's Premier 3D Animation Studio">
+<meta property="og:description" content="Where technical precision meets cinematic artistry. We craft world-class 3D animation, brand films, and motion graphics for leading brands across Nigeria — and train the next generation of animators.">
+<meta property="og:url" content="https://crowndigitalstudios.com/">
+<meta property="og:image" content="https://raw.githubusercontent.com/Limboo05/Crown-Digital-Studio/main/Brand%20Logos/Crown%20Digital%20Logo%20v1%20-%20Black.png">
+<meta property="og:image:alt" content="Crown Digital Studios Logo">
+<meta property="og:site_name" content="Crown Digital Studios">
+<meta property="og:locale" content="en_NG">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crown Digital Studios — Nigeria's Premier 3D Animation Studio">
+<meta name="twitter:description" content="Where technical precision meets cinematic artistry. World-class 3D animation, brand films, and motion graphics from Nigeria.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Limboo05/Crown-Digital-Studio/main/Brand%20Logos/Crown%20Digital%20Logo%20v1%20-%20Black.png">
+
 <link rel="stylesheet" href="shared.css">
 <style>
 body { padding-top: var(--nav-h); }
@@ -320,6 +344,108 @@ body { padding-top: var(--nav-h); }
   .gp-more-grid { grid-template-columns:1fr 1fr; }
   .gp-more-cell { height:180px; }
 }
+
+/* ── REGISTRATION POPUP ── */
+.reg-overlay {
+  position:fixed; inset:0; z-index:9800;
+  background:rgba(7,5,3,0.88); backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity .5s cubic-bezier(0.16,1,0.3,1);
+}
+.reg-overlay.show { opacity:1; pointer-events:all; }
+.reg-modal {
+  position:relative; width:min(520px,92vw);
+  background:var(--surface);
+  border:1px solid var(--border2);
+  overflow:hidden;
+  transform:translateY(40px) scale(.96);
+  transition:transform .5s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:0 32px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(252,179,30,.1);
+}
+.reg-overlay.show .reg-modal { transform:translateY(0) scale(1); }
+.reg-modal::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--gold2),var(--blue),var(--gold2));
+  background-size:200% 100%;
+  animation:bandShimmer 3s linear infinite;
+}
+.reg-top {
+  background:linear-gradient(135deg,#0a0805 0%,#0d1220 100%);
+  padding:36px 40px 28px;
+  position:relative; overflow:hidden;
+}
+.reg-top::after {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 70% 80% at 100% 0%,rgba(252,179,30,.07),transparent 55%),
+             radial-gradient(ellipse 50% 60% at 0% 100%,rgba(75,168,255,.06),transparent 55%);
+}
+.reg-eyebrow {
+  font-family:var(--font-m); font-size:.52rem; letter-spacing:.35em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:14px;
+  display:flex; align-items:center; gap:10px;
+}
+.reg-eyebrow::before { content:''; display:inline-block; width:24px; height:1px; background:var(--gold); }
+.reg-title {
+  font-family:var(--font-d); font-size:clamp(2rem,5vw,2.8rem);
+  line-height:.9; color:#f8f4ed; position:relative; z-index:1;
+}
+.reg-title .reg-title-gold { -webkit-text-stroke:1.5px var(--gold2); color:transparent; }
+.reg-subtitle {
+  font-family:var(--font-a); font-style:italic;
+  font-size:.88rem; color:rgba(248,244,237,.45);
+  line-height:1.6; margin-top:12px; position:relative; z-index:1;
+}
+.reg-close {
+  position:absolute; top:16px; right:16px; z-index:10;
+  width:36px; height:36px; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05); color:rgba(255,255,255,.5);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:.9rem;
+  transition:background .3s, color .3s, border-color .3s;
+}
+.reg-close:hover { background:rgba(252,179,30,.15); color:var(--gold2); border-color:rgba(252,179,30,.4); }
+.reg-body { padding:32px 40px 36px; }
+.reg-field { margin-bottom:18px; }
+.reg-label {
+  display:block; font-family:var(--font-m); font-size:.5rem;
+  letter-spacing:.25em; text-transform:uppercase; color:var(--text3);
+  margin-bottom:7px;
+}
+.reg-input {
+  width:100%; background:var(--bg2); border:1px solid var(--border2);
+  color:var(--text); font-family:var(--font-b); font-size:.9rem;
+  padding:13px 15px; outline:none;
+  transition:border-color .3s, background .3s, box-shadow .3s;
+  box-sizing:border-box;
+}
+.reg-input:focus { border-color:var(--gold); background:var(--bg); box-shadow:0 0 0 3px rgba(200,144,10,.08); }
+.reg-input::placeholder { color:var(--text3); opacity:.6; }
+.reg-submit {
+  width:100%; margin-top:8px;
+  font-family:var(--font-m); font-size:.68rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--black);
+  background:var(--gold); border:none; padding:16px;
+  cursor:pointer; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  transition:box-shadow .3s, transform .2s;
+}
+.reg-submit::before {
+  content:''; position:absolute; inset:0; background:var(--gold2);
+  transform:translateX(-100%) skewX(-12deg);
+  transition:transform .4s var(--ease);
+}
+.reg-submit:hover { box-shadow:0 0 28px var(--gold-glow); transform:translateY(-1px); }
+.reg-submit:hover::before { transform:translateX(0) skewX(0); }
+.reg-submit span, .reg-submit i { position:relative; z-index:1; }
+.reg-skip { text-align:center; margin-top:14px; font-family:var(--font-m); font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text3); }
+.reg-skip button { background:none; border:none; color:var(--text3); font-family:var(--font-m); font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .3s; }
+.reg-skip button:hover { color:var(--gold); }
+.reg-success { display:none; text-align:center; padding:20px 0 8px; }
+.reg-success-icon { font-size:3rem; color:var(--gold); display:block; margin-bottom:16px; }
+.reg-success h3 { font-family:var(--font-d); font-size:1.8rem; color:var(--text); margin-bottom:10px; }
+.reg-success p { font-size:.88rem; color:var(--text2); line-height:1.7; }
+@media(max-width:600px){ .reg-top,.reg-body { padding-left:24px; padding-right:24px; } }
 </style>
 </head>
 <body>
@@ -832,7 +958,7 @@ body { padding-top: var(--nav-h); }
       </div>
     </div>
     <div class="ft-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="training.html">Training</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div class="ft-col"><h4>Contact</h4><ul><li><a href="mailto:info@crowndigitalsolutions.com">info@crowndigitalsolutions.com</a></li><li><a href="#">Crown Digital Solutions</a></li><li><a href="#">Mon–Fri · 9am–8pm WAT</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="/cdn-cgi/l/email-protection#dab3b4bcb59ab9a8b5adb4beb3bdb3aebbb6a9b5b6afaeb3b5b4a9f4b9b5b7"><span class="__cf_email__" data-cfemail="9af3f4fcf5daf9e8f5edf4fef3fdf3eefbf6e9f5f6efeef3f5f4e9b4f9f5f7">[email&#160;protected]</span></a></li><li><a href="#">Crown Digital Solutions</a></li><li><a href="#">Mon–Fri · 9am–8pm WAT</a></li></ul></div>
   </div>
   <div class="ft-bottom">
     <p class="ft-copy">© 2026 Crown Studio. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
@@ -901,7 +1027,7 @@ body { padding-top: var(--nav-h); }
       <div class="csp-time">Crown Support · Just now</div>
       <div class="csp-options">
         <a class="csp-opt" href="https://wa.me/2348000000000?text=Hello%20Crown%20Digital%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Chat on WhatsApp</a>
-        <a class="csp-opt" href="mailto:info@crowndigitalsolutions.com"><i class="bi bi-envelope-fill"></i> Send us an Email</a>
+        <a class="csp-opt" href="/cdn-cgi/l/email-protection#0a63646c654a6978657d646e636d637e6b667965667f7e6365647924696567"><i class="bi bi-envelope-fill"></i> Send us an Email</a>
         <a class="csp-opt" href="training.html#courses"><i class="bi bi-mortarboard-fill"></i> View Training Courses</a>
         <a class="csp-opt" href="contact.html"><i class="bi bi-telephone-fill"></i> Contact Page</a>
       </div>
@@ -914,7 +1040,7 @@ body { padding-top: var(--nav-h); }
   </button>
 </div>
 
-<script src="shared.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
 <script>
 // Curriculum accordion
 document.querySelectorAll('.curr-week-btn').forEach(btn => {
@@ -994,10 +1120,101 @@ const floaterData=[
   {t:'Motion Graphics',x:'82%',y:'15%',r:'3deg',d:'5s',dl:'.8s'},
   {t:'Autodesk Maya',x:'5%',y:'72%',r:'-3deg',d:'4.5s',dl:'1.2s'},
   {t:'Visual Stories',x:'80%',y:'75%',r:'4deg',d:'5.5s',dl:'.4s'},
-  {t:'Crown Studios',x:'45%',y:'88%',r:'-2deg',d:'6s',dl:'1.6s'},
+  {t:'Crown Studios',x:'45%',y:'10%',r:'2deg',d:'3.5s',dl:'1.6s'}
 ];
-const hf=document.getElementById('heroFloaters');
-if(hf){floaterData.forEach(f=>{const d=document.createElement('div');d.className='hf';d.textContent=f.t;d.style.cssText=`left:${f.x};top:${f.y};--r:${f.r};--d:${f.d};--dl:${f.dl}`;hf.appendChild(d);});}
+const floaterCont=document.getElementById('heroFloaters');
+if(floaterCont){
+  floaterData.forEach(f=>{
+    const d=document.createElement('div');
+    d.className='hf';
+    d.textContent=f.t;
+    d.style.cssText=`left:${f.x};top:${f.y};--r:${f.r};--d:${f.d};--dl:${f.dl}`;
+    floaterCont.appendChild(d);
+  });
+}
+</script>
+
+<!-- ── REGISTRATION POPUP ── -->
+<div class="reg-overlay" id="regOverlay">
+  <div class="reg-modal" role="dialog" aria-modal="true" aria-labelledby="regModalTitle">
+    <button class="reg-close" onclick="closeRegModal()" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <div class="reg-top">
+      <div class="reg-eyebrow">Crown Digital Studios</div>
+      <h2 class="reg-title" id="regModalTitle">
+        JOIN THE<br><span class="reg-title-gold">INNER</span><br>CIRCLE
+      </h2>
+      <p class="reg-subtitle">Get early access to courses, exclusive resources & studio updates.</p>
+    </div>
+    <div class="reg-body">
+      <div id="regFormWrap">
+        <div class="reg-field">
+          <label class="reg-label" for="regName">Full Name</label>
+          <input class="reg-input" id="regName" type="text" placeholder="e.g. Emeka Okafor" autocomplete="name">
+        </div>
+        <div class="reg-field">
+          <label class="reg-label" for="regEmail">Email Address</label>
+          <input class="reg-input" id="regEmail" type="email" placeholder="your@email.com" autocomplete="email">
+        </div>
+        <button class="reg-submit" onclick="submitRegForm()">
+          <span>Register Now</span>
+          <i class="bi bi-arrow-right"></i>
+        </button>
+        <div class="reg-skip">
+          <button onclick="closeRegModal()">No thanks, maybe later</button>
+        </div>
+      </div>
+      <div class="reg-success" id="regSuccess">
+        <span class="reg-success-icon"><i class="bi bi-patch-check-fill"></i></span>
+        <h3>You're In!</h3>
+        <p>Welcome to Crown Digital. We'll be in touch with updates and exclusive early-access resources.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Show popup after 10 seconds — only once per session
+  const POPUP_KEY = 'crown_reg_shown';
+  if (!sessionStorage.getItem(POPUP_KEY)) {
+    setTimeout(function(){
+      document.getElementById('regOverlay').classList.add('show');
+      sessionStorage.setItem(POPUP_KEY, '1');
+    }, 10000);
+  }
+})();
+
+function closeRegModal(){
+  const ov = document.getElementById('regOverlay');
+  ov.classList.remove('show');
+  // wait for transition then hide to avoid tab focus issues
+  setTimeout(function(){ ov.style.display='none'; }, 500);
+}
+
+function submitRegForm(){
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  if (!name) { document.getElementById('regName').focus(); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('regEmail').focus(); return;
+  }
+  // Hide form, show success
+  document.getElementById('regFormWrap').style.display = 'none';
+  document.getElementById('regSuccess').style.display = 'block';
+  // Redirect to services page after 2.4s
+  setTimeout(function(){
+    window.location.href = 'services.html';
+  }, 2400);
+}
+
+// Close on backdrop click
+document.getElementById('regOverlay').addEventListener('click', function(e){
+  if (e.target === this) closeRegModal();
+});
+// Close on Escape
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeRegModal();
+});
 </script>
 </body>
 </html>
