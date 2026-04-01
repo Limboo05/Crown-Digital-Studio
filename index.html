@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Crown Digital Studios — Nigeria's Premier 3D Animation & Visual Storytelling Studio</title>
+
+<!-- ── SEO & OPEN GRAPH ── -->
+<meta name="description" content="Crown Digital Studios is Nigeria's premier 3D animation and visual storytelling studio. We craft cinematic brand films, character animation, motion graphics, and product visualizations — and train the next generation of animators.">
+<meta name="keywords" content="3D animation Nigeria, motion graphics Lagos, Crown Digital Studios, character animation, video editing Nigeria, animation school Nigeria, Maya animation course">
+<meta name="author" content="Crown Digital Studios">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://crowndigitalstudios.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crown Digital Studios — Nigeria's Premier 3D Animation Studio">
+<meta property="og:description" content="Where technical precision meets cinematic artistry. We craft world-class 3D animation, brand films, and motion graphics for leading brands across Nigeria — and train the next generation of animators.">
+<meta property="og:url" content="https://crowndigitalstudios.com/">
+<meta property="og:image" content="https://raw.githubusercontent.com/Limboo05/Crown-Digital-Studio/main/Brand%20Logos/Crown%20Digital%20Logo%20v1%20-%20Black.png">
+<meta property="og:image:alt" content="Crown Digital Studios Logo">
+<meta property="og:site_name" content="Crown Digital Studios">
+<meta property="og:locale" content="en_NG">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crown Digital Studios — Nigeria's Premier 3D Animation Studio">
+<meta name="twitter:description" content="Where technical precision meets cinematic artistry. World-class 3D animation, brand films, and motion graphics from Nigeria.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Limboo05/Crown-Digital-Studio/main/Brand%20Logos/Crown%20Digital%20Logo%20v1%20-%20Black.png">
+
+<link rel="stylesheet" href="shared.css">
+<style>
+body { padding-top: var(--nav-h); }
+
+/* ── HERO ── */
+.hero {
+  position:relative; min-height:100svh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  overflow:hidden; padding:80px 48px 60px;
+}
+.hero-video-bg { position:absolute; inset:0; overflow:hidden; z-index:0; }
+.hero-video-bg video {
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+  opacity:.70; z-index:0;
+}
+[data-theme="dark"] .hero-video-bg video { opacity:.35; }
+.hero-video-bg::after {
+  content:''; position:absolute; inset:0; z-index:1;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.88) 100%);
+}
+[data-theme="dark"] .hero-video-bg::after {
+  background: linear-gradient(to bottom, rgba(7,5,3,0.08) 0%, rgba(7,5,3,0.90) 100%);
+}
+.hero-video-bg::before {
+  content:''; position:absolute; inset:0; z-index:0;
+  background: linear-gradient(135deg, #fff5d6 0%, #e8f4ff 50%, #fff 100%);
+}
+[data-theme="dark"] .hero-video-bg::before {
+  background: linear-gradient(135deg, #0a0805 0%, #060c14 50%, #0a0805 100%);
+}
+
+/* ── BLUE/GOLD DIAGONAL ACCENT BEHIND HERO ── */
+.hero-color-band {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  overflow:hidden;
+}
+.hero-color-band::before {
+  content:''; position:absolute;
+  top:-20%; right:-5%; width:55%; height:140%;
+  background: linear-gradient(160deg, rgba(75,168,255,0.08) 0%, rgba(252,179,30,0.06) 60%, transparent 100%);
+  transform: skewX(-6deg);
+}
+.hero-color-band::after {
+  content:''; position:absolute;
+  bottom:0; left:0; right:0; height:4px;
+  background: linear-gradient(90deg, var(--gold2), var(--blue), var(--gold2));
+  background-size: 200% 100%;
+  animation: bandShimmer 4s linear infinite;
+  z-index: 5;
+}
+@keyframes bandShimmer { to { background-position: -200% 0; } }
+
+.hero-grid-overlay {
+  position:absolute; inset:0; pointer-events:none; z-index:2;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black,transparent 75%);
+  animation:gridDrift 20s linear infinite;
+}
+@keyframes gridDrift { to { background-position:64px 64px; } }
+.hero-content { position:relative; z-index:4; text-align:center; max-width:1000px; }
+.hero-eyebrow { font-family:var(--font-m); font-size:.58rem; letter-spacing:.45em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; opacity:0; animation:fadeUp .7s var(--ease) 2.6s forwards; }
+
+/* ── 3D WORD BOUNCE ANIMATION ── */
+.hero-title {
+  font-family:var(--font-d); font-size:clamp(4rem,13vw,11rem);
+  line-height:.88; letter-spacing:-.01em; margin-bottom:28px;
+  display:flex; flex-direction:column; align-items:center;
+}
+.ht-word-row { display:block; overflow:visible; }
+.ht-word {
+  display:inline-block;
+  animation: wordBounce3D 0.9s cubic-bezier(0.34,1.56,0.64,1) both;
+  transform-origin: center bottom;
+  opacity:0;
+}
+/* Each word gets a delay */
+.ht-word:nth-child(1)  { animation-delay: 2.6s; }
+.ht-word:nth-child(2)  { animation-delay: 2.78s; }
+.ht-word:nth-child(3)  { animation-delay: 2.96s; }
+.ht-word:nth-child(4)  { animation-delay: 3.14s; }
+.ht-word:nth-child(5)  { animation-delay: 3.32s; }
+.ht-word.gold-stroke { -webkit-text-stroke:1.5px var(--gold); color:transparent; }
+.ht-word.blue-stroke  { -webkit-text-stroke:1.5px var(--blue); color:transparent; }
+
+@keyframes wordBounce3D {
+  0%   { opacity:0; transform: translateY(80px) rotateX(-60deg) scale(0.6); }
+  60%  { opacity:1; transform: translateY(-18px) rotateX(12deg) scale(1.06); }
+  75%  { transform: translateY(8px) rotateX(-6deg) scale(0.97); }
+  88%  { transform: translateY(-5px) rotateX(3deg) scale(1.02); }
+  100% { opacity:1; transform: translateY(0) rotateX(0deg) scale(1); }
+}
+
+@keyframes fadeUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.hero-sub { font-family:var(--font-a); font-style:italic; font-size:clamp(1rem,2.2vw,1.3rem); color:var(--text2); max-width:540px; margin:0 auto 44px; line-height:1.65; opacity:0; animation:fadeUp .8s var(--ease) 3.6s forwards; }
+.hero-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; opacity:0; animation:fadeUp .8s var(--ease) 3.8s forwards; }
+.hero-scroll { position:absolute; bottom:36px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; animation:fadeUp .7s ease 4.1s forwards; z-index:4; }
+.hero-scroll span { font-family:var(--font-m); font-size:.48rem; letter-spacing:.3em; text-transform:uppercase; color:var(--text3); }
+.scroll-stem { width:1px; height:44px; background:linear-gradient(to bottom,var(--text3),transparent); animation:stemPulse 1.8s ease-in-out infinite; }
+@keyframes stemPulse { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.4;transform:scaleY(.6)} }
+.hero-floaters { position:absolute; inset:0; pointer-events:none; z-index:3; overflow:hidden; }
+.hf { position:absolute; font-family:var(--font-m); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text3); animation:hfDrift var(--d) ease-in-out var(--dl) infinite alternate; }
+@keyframes hfDrift { from{transform:translateY(0) rotate(var(--r))} to{transform:translateY(-14px) rotate(var(--r))} }
+
+/* ── STATS BAR — Blue/Gold split ── */
+.stats-bar {
+  background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  padding:32px 48px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; text-align:center;
+  position:relative; overflow:hidden;
+}
+.stats-bar::before {
+  content:''; position:absolute; top:0; left:50%; width:1px; height:100%;
+  background:linear-gradient(to bottom, transparent, var(--border), transparent);
+}
+.sb-item {
+  padding:16px 24px; position:relative;
+  border-right:1px solid var(--border);
+}
+.sb-item:last-child { border-right:none; }
+.sb-item:nth-child(1) .sb-num { color:var(--gold); }
+.sb-item:nth-child(2) .sb-num { color:var(--blue); }
+.sb-item:nth-child(3) .sb-num { color:var(--gold); }
+.sb-item:nth-child(4) .sb-num { color:var(--blue); }
+.sb-num { font-family:var(--font-d); font-size:2.6rem; line-height:1; }
+.sb-lbl { font-family:var(--font-m); font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text3); margin-top:4px; }
+
+/* ABOUT STRIP */
+.about-strip { padding:100px 48px; background:var(--bg); }
+.about-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.as-visual { position:relative; height:460px; border:1px solid var(--border2); overflow:hidden; transform:perspective(700px) rotateY(-6deg) rotateX(2deg); transition:transform .6s var(--ease); }
+.as-visual:hover { transform:perspective(700px) rotateY(0) rotateX(0); }
+.as-visual-bg { position:absolute; inset:0; background:linear-gradient(135deg,var(--bg3),var(--surface2)); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.as-logo-img { width:100%; height:100%; object-fit:cover; }
+.as-stats-row { position:absolute; bottom:0; left:0; right:0; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(255,255,255,0.15); background:rgba(0,0,0,0.45); backdrop-filter:blur(8px); }
+.as-stat { padding:16px 12px; text-align:center; border-right:1px solid rgba(255,255,255,0.1); }
+.as-stat:last-child { border-right:none; }
+.as-stat-n { font-family:var(--font-d); font-size:1.8rem; color:var(--gold2); }
+.as-stat-l { font-family:var(--font-m); font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:2px; }
+.as-text p { font-family:var(--font-a); font-size:1rem; color:var(--text2); line-height:1.8; margin-bottom:16px; }
+.as-text p strong { color:var(--gold); }
+.as-quote { font-family:var(--font-a); font-style:italic; font-size:1.15rem; color:var(--text); border-left:2px solid var(--gold); padding-left:18px; margin:24px 0; line-height:1.6; }
+
+/* ── BLUE/GOLD DIVIDER ── */
+.color-divider {
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold2) 0%, var(--blue) 50%, var(--gold2) 100%);
+  background-size: 200% 100%;
+  animation: bandShimmer 6s linear infinite;
+}
+
+/* ── SERVICES FLIP CARDS ── */
+.services-preview { padding:100px 48px; background:var(--bg2); position:relative; overflow:hidden; }
+.services-preview::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold2), var(--blue), transparent);
+}
+.sp-header { max-width:1100px; margin:0 auto 56px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; }
+.sp-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+
+.spc-flip { height:300px; perspective: 1000px; cursor: none; }
+.spc-flip-inner { position:relative; width:100%; height:100%; transform-style: preserve-3d; transition: transform .75s var(--ease); }
+.spc-flip:hover .spc-flip-inner { transform: rotateY(180deg); }
+.spc-front, .spc-back { position:absolute; inset:0; backface-visibility: hidden; -webkit-backface-visibility: hidden; padding:36px 28px; border:1px solid var(--border); overflow: hidden; }
+.spc-back { transform: rotateY(180deg); }
+.spc-front { background: var(--surface); display:flex; flex-direction:column; justify-content:space-between; transition: box-shadow .3s; }
+.spc-front::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--gold2), var(--blue)); transform: scaleX(0); transform-origin:left; transition: transform .5s var(--ease); }
+.spc-flip:hover .spc-front::before { transform:scaleX(1); }
+.spc-back { background: linear-gradient(135deg, var(--black) 0%, #0d1520 100%); display:flex; flex-direction:column; justify-content:center; gap:16px; border-color: rgba(75,168,255,0.3); }
+.spc-num { font-family:var(--font-d); font-size:4rem; color:var(--border2); line-height:1; transition:color .3s; }
+.spc-icon { font-size:2.4rem; display:block; margin:12px 0; color:var(--gold2); }
+.spc-title { font-family:var(--font-d); font-size:1.05rem; letter-spacing:.06em; color:var(--text); margin-bottom:6px; }
+.spc-desc { font-size:.75rem; color:var(--text3); line-height:1.7; }
+.spc-back-label { font-family:var(--font-m); font-size:.48rem; letter-spacing:.3em; text-transform:uppercase; color:var(--blue); }
+.spc-back-title { font-family:var(--font-d); font-size:1.5rem; color:#fff; }
+.spc-back-body { font-size:.78rem; color:rgba(255,255,255,.55); line-height:1.8; }
+.spc-back-tools { display:flex; flex-wrap:wrap; gap:6px; }
+.spc-tool-tag { font-family:var(--font-m); font-size:.46rem; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border:1px solid rgba(75,168,255,.3); color:rgba(75,168,255,.7); }
+.spc-back-link { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-m); font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--blue); text-decoration:none; margin-top:4px; transition:gap .3s; }
+.spc-back-link:hover { gap:14px; }
+
+/* ── GALLERY ── */
+.gallery-preview { padding:100px 48px; background:var(--bg); }
+.gp-header { max-width:1100px; margin:0 auto 48px; }
+.gp-mosaic { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:320px 280px; gap:4px; }
+.gp-cell { position:relative; overflow:hidden; cursor:none; background:var(--bg3); }
+.gp-cell:nth-child(1) { grid-row:1/3; }
+.gp-cell:nth-child(4) { grid-column:2/4; }
+.gp-cell-media { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease), filter .5s; filter:brightness(0.85); }
+.gp-cell:hover .gp-cell-media { transform:scale(1.06); filter:brightness(1); }
+.gp-play-btn { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.8); width:60px; height:60px; border-radius:50%; background:rgba(200,144,10,0.9); border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .3s, transform .4s var(--ease); z-index:3; }
+.gp-play-btn i { font-size:1.4rem; color:#fff; margin-left:3px; }
+.gp-cell:hover .gp-play-btn { opacity:1; transform:translate(-50%,-50%) scale(1); }
+.gp-cell-over { position:absolute; inset:0; background:linear-gradient(to top, rgba(7,5,3,.85) 0%, rgba(7,5,3,.2) 50%, transparent 100%); opacity:0; transition:opacity .4s; }
+.gp-cell:hover .gp-cell-over { opacity:1; }
+.gp-cell-info { position:absolute; bottom:0; left:0; right:0; padding:20px 24px; transform:translateY(8px); opacity:0; transition:transform .4s var(--ease), opacity .4s; z-index:4; }
+.gp-cell:hover .gp-cell-info { transform:translateY(0); opacity:1; }
+.gpi-tag { font-family:var(--font-m); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px; }
+.gpi-name { font-family:var(--font-d); font-size:1rem; color:#fff; letter-spacing:.06em; }
+
+/* Gallery more */
+.gp-more-grid { max-width:1100px; margin:8px auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:4px; display:none; }
+.gp-more-grid.visible { display:grid; }
+.gp-more-cell { height:280px; }
+.gp-show-more-wrap { max-width:1100px; margin:32px auto 0; text-align:center; }
+.gp-show-btn { font-family:var(--font-m); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); background:none; border:1px solid var(--border2); padding:14px 36px; cursor:none; display:inline-flex; align-items:center; gap:10px; transition:border-color .3s, color .3s; }
+.gp-show-btn:hover { border-color:var(--gold2); color:var(--gold2); }
+.gp-show-btn i { transition:transform .4s; }
+
+/* ── TRAINING PREVIEW ── */
+.training-preview-sect { padding:100px 48px; background:var(--black); position:relative; overflow:hidden; }
+.training-preview-sect::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(75,168,255,0.05),transparent); pointer-events:none; }
+.training-preview-sect::after { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold2),var(--blue)); }
+.tps-inner { max-width:1100px; margin:0 auto; }
+.tps-header { max-width:680px; margin-bottom:60px; }
+.tps-header .s-label { color:rgba(255,255,255,.5); }
+.tps-header .s-label::before { background:rgba(255,255,255,.3); }
+.tps-header .s-title { color:#f8f4ed; }
+.tps-sub { font-family:var(--font-a); font-size:1rem; color:rgba(248,244,237,.5); line-height:1.7; margin-top:12px; max-width:560px; }
+.tps-body { display:grid; grid-template-columns:1fr 1.4fr; gap:60px; align-items:start; }
+.tps-programs { display:flex; flex-direction:column; gap:16px; }
+.tp-card { padding:24px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.02); cursor:none; transition:border-color .3s, background .3s; position:relative; overflow:hidden; }
+.tp-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(to bottom, var(--gold2), var(--blue)); transform:scaleY(0); transform-origin:top; transition:transform .4s var(--ease); }
+.tp-card:hover,
+.tp-card[data-index="0"] { border-color:rgba(252,179,30,.3); background:rgba(252,179,30,.04); }
+.tp-card[data-index="0"]::before { transform:scaleY(1); }
+.tp-card:hover::before { transform:scaleY(1); }
+.tp-card-top { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+.tp-icon { font-size:1.5rem; color:var(--gold2); --ti-c:var(--gold2); color:var(--ti-c); }
+.tp-label { font-family:var(--font-m); font-size:.46rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text3); }
+.tp-title { font-family:var(--font-d); font-size:1.1rem; color:#f8f4ed; margin-top:2px; }
+.tp-badge { margin-left:auto; font-family:var(--font-m); font-size:.48rem; letter-spacing:.15em; text-transform:uppercase; padding:5px 12px; background:var(--gold); color:var(--black); flex-shrink:0; }
+.tp-desc { font-size:.78rem; color:rgba(255,255,255,.4); line-height:1.7; margin-bottom:14px; }
+.tp-meta { display:flex; flex-wrap:wrap; gap:12px; }
+.tp-meta span { font-family:var(--font-m); font-size:.52rem; letter-spacing:.12em; color:rgba(255,255,255,.3); display:flex; align-items:center; gap:5px; }
+.tp-meta i { color:rgba(255,255,255,.2); }
+
+.tps-curriculum { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.07); padding:32px; }
+.tps-curr-header { margin-bottom:24px; }
+.curr-timeline { display:flex; flex-direction:column; gap:0; }
+.curr-week { border-bottom:1px solid rgba(255,255,255,.06); }
+.curr-week:last-child { border-bottom:none; }
+.curr-week-btn { width:100%; background:none; border:none; color:#f8f4ed; cursor:none; display:flex; align-items:center; gap:14px; padding:16px 0; text-align:left; transition:color .3s; }
+.curr-week-btn:hover { color:var(--gold2); }
+.curr-wk-num { font-family:var(--font-d); font-size:1rem; color:var(--gold2); flex-shrink:0; width:32px; }
+.curr-wk-info { flex:1; }
+.curr-wk-title { font-family:var(--font-d); font-size:.9rem; letter-spacing:.04em; display:block; }
+.curr-wk-sub { font-family:var(--font-m); font-size:.48rem; letter-spacing:.14em; color:rgba(255,255,255,.3); margin-top:2px; display:block; }
+.curr-wk-arrow { color:rgba(255,255,255,.3); font-size:.8rem; transition:transform .3s var(--ease); margin-left:auto; }
+.curr-week.open .curr-wk-arrow { transform:rotate(180deg); color:var(--gold2); }
+.curr-week-body { max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }
+.curr-week.open .curr-week-body { max-height:200px; }
+.curr-week-body p { font-family:var(--font-a); font-size:.88rem; color:rgba(248,244,237,.5); line-height:1.7; padding:0 0 16px 46px; }
+.curr-tags { display:flex; flex-wrap:wrap; gap:6px; padding:0 0 16px 46px; }
+.curr-tags span { font-family:var(--font-m); font-size:.46rem; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border:1px solid rgba(252,179,30,.2); color:rgba(252,179,30,.5); }
+
+/* ── CONSULTATION CTA ── */
+.consult-cta-sect { padding:100px 48px; background:var(--bg2); position:relative; overflow:hidden; }
+.consult-cta-sect::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(252,179,30,0.04) 0%, rgba(75,168,255,0.04) 100%);
+}
+.consult-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:center; position:relative; z-index:1; }
+.consult-visual { position:relative; }
+.consult-img-wrap { position:relative; height:460px; border:1px solid var(--border2); overflow:hidden; }
+.consult-img { width:100%; height:100%; object-fit:cover; object-position:top; }
+.consult-badge { position:absolute; bottom:-16px; right:-16px; background:var(--gold2); padding:14px 20px; font-family:var(--font-m); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--black); display:flex; align-items:center; gap:8px; }
+.consult-text {}
+.consult-title { font-family:var(--font-d); font-size:clamp(2.5rem,5vw,4.5rem); line-height:.92; margin-bottom:20px; }
+.consult-title span { color:var(--gold2); }
+.consult-text p { font-family:var(--font-a); font-size:1rem; color:var(--text2); line-height:1.8; margin-bottom:32px; }
+.consult-btns { display:flex; gap:12px; flex-wrap:wrap; }
+.btn-outline-light { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-m); font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text); border:1px solid var(--border2); padding:13px 28px; text-decoration:none; cursor:none; clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%); transition:border-color .3s,color .3s,box-shadow .3s; }
+.btn-outline-light:hover { border-color:var(--blue); color:var(--blue); box-shadow:0 0 20px var(--blue-glow); }
+
+/* ── CTA BAND ── */
+.cta-band { padding:100px 48px; background:linear-gradient(135deg,#040302 0%,#08111e 100%); text-align:center; position:relative; overflow:hidden; }
+.cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 50% 60% at 50% 0%,rgba(252,179,30,.08),transparent 70%); }
+.cta-band::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--gold2),var(--blue)); background-size:200% 100%; animation:bandShimmer 4s linear infinite; }
+.cta-bg-word { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-d); font-size:clamp(6rem,20vw,16rem); color:rgba(255,255,255,.02); pointer-events:none; white-space:nowrap; }
+
+/* ── LIGHTBOX ── */
+.lightbox-overlay { position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:9500; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .4s; }
+.lightbox-overlay.open { opacity:1; pointer-events:all; }
+.lb-inner { position:relative; max-width:90vw; max-height:90vh; display:flex; flex-direction:column; align-items:center; }
+.lb-close,.lb-prev,.lb-next { position:fixed; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); color:#fff; cursor:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-size:1rem; transition:background .3s; z-index:10; }
+.lb-close { top:24px; right:24px; }
+.lb-close:hover,.lb-prev:hover,.lb-next:hover { background:rgba(252,179,30,.3); }
+.lb-prev { left:24px; top:50%; transform:translateY(-50%); }
+.lb-next { right:24px; top:50%; transform:translateY(-50%); }
+.lb-media { max-width:85vw; max-height:80vh; object-fit:contain; display:block; }
+.lb-video-wrap video { max-width:85vw; max-height:80vh; }
+.lb-info { margin-top:14px; display:flex; align-items:center; gap:12px; }
+.lb-tag { font-family:var(--font-m); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold2); }
+.lb-title { font-family:var(--font-d); font-size:1.1rem; color:#fff; letter-spacing:.06em; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero { padding:80px 20px 60px; }
+  .about-inner,.sp-grid,.tps-body,.consult-inner { grid-template-columns:1fr; gap:40px; }
+  .gp-mosaic { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+  .gp-cell:nth-child(1) { grid-row:auto; grid-column:1/3; height:240px; }
+  .gp-cell:nth-child(4) { grid-column:auto; }
+  .about-strip,.services-preview,.gallery-preview,.training-preview-sect,.consult-cta-sect,.cta-band { padding-left:20px; padding-right:20px; }
+  .stats-bar { padding:20px; grid-template-columns:repeat(2,1fr); }
+  .consult-img-wrap { height:280px; }
+}
+@media(max-width:600px){
+  .hero-title { font-size:clamp(3rem,16vw,5rem); }
+  .sp-grid { grid-template-columns:1fr; }
+  .gp-mosaic { grid-template-columns:1fr; }
+  .gp-cell:nth-child(1) { grid-column:1; height:200px; }
+  .gp-more-grid { grid-template-columns:1fr 1fr; }
+  .gp-more-cell { height:180px; }
+}
+
+/* ── REGISTRATION POPUP ── */
+.reg-overlay {
+  position:fixed; inset:0; z-index:9800;
+  background:rgba(7,5,3,0.88); backdrop-filter:blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition:opacity .5s cubic-bezier(0.16,1,0.3,1);
+}
+.reg-overlay.show { opacity:1; pointer-events:all; }
+.reg-modal {
+  position:relative; width:min(520px,92vw);
+  background:var(--surface);
+  border:1px solid var(--border2);
+  overflow:hidden;
+  transform:translateY(40px) scale(.96);
+  transition:transform .5s cubic-bezier(0.16,1,0.3,1);
+  box-shadow:0 32px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(252,179,30,.1);
+}
+.reg-overlay.show .reg-modal { transform:translateY(0) scale(1); }
+.reg-modal::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--gold2),var(--blue),var(--gold2));
+  background-size:200% 100%;
+  animation:bandShimmer 3s linear infinite;
+}
+.reg-top {
+  background:linear-gradient(135deg,#0a0805 0%,#0d1220 100%);
+  padding:36px 40px 28px;
+  position:relative; overflow:hidden;
+}
+.reg-top::after {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 70% 80% at 100% 0%,rgba(252,179,30,.07),transparent 55%),
+             radial-gradient(ellipse 50% 60% at 0% 100%,rgba(75,168,255,.06),transparent 55%);
+}
+.reg-eyebrow {
+  font-family:var(--font-m); font-size:.52rem; letter-spacing:.35em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:14px;
+  display:flex; align-items:center; gap:10px;
+}
+.reg-eyebrow::before { content:''; display:inline-block; width:24px; height:1px; background:var(--gold); }
+.reg-title {
+  font-family:var(--font-d); font-size:clamp(2rem,5vw,2.8rem);
+  line-height:.9; color:#f8f4ed; position:relative; z-index:1;
+}
+.reg-title .reg-title-gold { -webkit-text-stroke:1.5px var(--gold2); color:transparent; }
+.reg-subtitle {
+  font-family:var(--font-a); font-style:italic;
+  font-size:.88rem; color:rgba(248,244,237,.45);
+  line-height:1.6; margin-top:12px; position:relative; z-index:1;
+}
+.reg-close {
+  position:absolute; top:16px; right:16px; z-index:10;
+  width:36px; height:36px; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05); color:rgba(255,255,255,.5);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:.9rem;
+  transition:background .3s, color .3s, border-color .3s;
+}
+.reg-close:hover { background:rgba(252,179,30,.15); color:var(--gold2); border-color:rgba(252,179,30,.4); }
+.reg-body { padding:32px 40px 36px; }
+.reg-field { margin-bottom:18px; }
+.reg-label {
+  display:block; font-family:var(--font-m); font-size:.5rem;
+  letter-spacing:.25em; text-transform:uppercase; color:var(--text3);
+  margin-bottom:7px;
+}
+.reg-input {
+  width:100%; background:var(--bg2); border:1px solid var(--border2);
+  color:var(--text); font-family:var(--font-b); font-size:.9rem;
+  padding:13px 15px; outline:none;
+  transition:border-color .3s, background .3s, box-shadow .3s;
+  box-sizing:border-box;
+}
+.reg-input:focus { border-color:var(--gold); background:var(--bg); box-shadow:0 0 0 3px rgba(200,144,10,.08); }
+.reg-input::placeholder { color:var(--text3); opacity:.6; }
+.reg-submit {
+  width:100%; margin-top:8px;
+  font-family:var(--font-m); font-size:.68rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--black);
+  background:var(--gold); border:none; padding:16px;
+  cursor:pointer; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  transition:box-shadow .3s, transform .2s;
+}
+.reg-submit::before {
+  content:''; position:absolute; inset:0; background:var(--gold2);
+  transform:translateX(-100%) skewX(-12deg);
+  transition:transform .4s var(--ease);
+}
+.reg-submit:hover { box-shadow:0 0 28px var(--gold-glow); transform:translateY(-1px); }
+.reg-submit:hover::before { transform:translateX(0) skewX(0); }
+.reg-submit span, .reg-submit i { position:relative; z-index:1; }
+.reg-skip { text-align:center; margin-top:14px; font-family:var(--font-m); font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text3); }
+.reg-skip button { background:none; border:none; color:var(--text3); font-family:var(--font-m); font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; cursor:pointer; text-decoration:underline; text-underline-offset:3px; transition:color .3s; }
+.reg-skip button:hover { color:var(--gold); }
+.reg-success { display:none; text-align:center; padding:20px 0 8px; }
+.reg-success-icon { font-size:3rem; color:var(--gold); display:block; margin-bottom:16px; }
+.reg-success h3 { font-family:var(--font-d); font-size:1.8rem; color:var(--text); margin-bottom:10px; }
+.reg-success p { font-size:.88rem; color:var(--text2); line-height:1.7; }
+@media(max-width:600px){ .reg-top,.reg-body { padding-left:24px; padding-right:24px; } }
+</style>
+</head>
+<body>
+<div id="cs-cursor"></div><div id="cs-ring"></div>
+
+<!-- MOBILE DRAWER -->
+<div class="mob-nav" id="cs-mob-nav">
+  <a href="index.html"><i class="mn-icon bi bi-house-fill"></i>Home</a>
+
+  <!-- Services dropdown -->
+  <button class="mob-dd-toggle">
+    <i class="mn-icon bi bi-camera-video-fill"></i>Services
+    <i class="bi bi-chevron-right mob-dd-arrow"></i>
+  </button>
+  <div class="mob-dd-items">
+    <a href="services.html#video-editing"><i class="bi bi-scissors"></i>Video Editing</a>
+    <a href="services.html#3d-animation"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+    <a href="services.html#2d-animation"><i class="bi bi-stars"></i>2D Animation</a>
+    <a href="services.html#video-production"><i class="bi bi-camera-video-fill"></i>Video Production</a>
+    <a href="services.html#motion-graphics"><i class="bi bi-play-circle-fill"></i>Motion Graphics</a>
+    <a href="services.html#web-design"><i class="bi bi-code-slash"></i>Web Design & Dev</a>
+    <a href="services.html#3d-design"><i class="bi bi-buildings-fill"></i>3D Design & Viz</a>
+    <a href="services.html#graphic-design"><i class="bi bi-vector-pen"></i>Graphic Design</a>
+    <a href="services.html#brand-design"><i class="bi bi-palette-fill"></i>Brand Designs</a>
+  </div>
+
+  <!-- Training dropdown -->
+  <button class="mob-dd-toggle">
+    <i class="mn-icon bi bi-mortarboard-fill"></i>Training
+    <i class="bi bi-chevron-right mob-dd-arrow"></i>
+  </button>
+  <div class="mob-dd-items">
+    <a href="training.html#courses"><i class="bi bi-box-seam-fill"></i>3D Animation — Maya</a>
+    <a href="training.html#courses"><i class="bi bi-scissors"></i>2D Animation</a>
+    <a href="training.html#courses"><i class="bi bi-camera-video-fill"></i>Video Editing</a>
+    <a href="training.html#courses"><i class="bi bi-robot"></i>AI Filmmaking</a>
+    <a href="training.html#courses"><i class="bi bi-stars"></i>AI Animation</a>
+    <a href="training.html#courses"><i class="bi bi-palette-fill"></i>Graphic Design</a>
+    <a href="training.html"><i class="bi bi-mortarboard-fill"></i>All Courses</a>
+  </div>
+
+  <a href="about.html"><i class="mn-icon bi bi-shield-fill-check"></i>About</a>
+  <a href="contact.html"><i class="mn-icon bi bi-telephone-fill"></i>Contact</a>
+  <div class="mob-nav-footer">
+    <a href="training.html" class="mob-cta">Enroll Now</a>
+  </div>
+</div>
+
+<nav id="cs-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="logo-dark" style="height:32px">
+    <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="logo-light" style="height:32px">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="has-wide-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down dd-arrow"></i></a>
+      <div class="nav-dropdown">
+        <span class="dd-label">Creative Services</span>
+        <a href="services.html#video-editing"><i class="bi bi-scissors"></i>Video Editing</a>
+        <a href="services.html#3d-animation"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+        <a href="services.html#2d-animation"><i class="bi bi-stars"></i>2D Animation</a>
+        <a href="services.html#video-production"><i class="bi bi-camera-video-fill"></i>Video Production</a>
+        <a href="services.html#motion-graphics"><i class="bi bi-play-circle-fill"></i>Motion Graphics</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">Design & Development</span>
+        <a href="services.html#web-design"><i class="bi bi-code-slash"></i>Web Design & Dev</a>
+        <a href="services.html#3d-design"><i class="bi bi-buildings-fill"></i>3D Design & Viz</a>
+        <a href="services.html#graphic-design"><i class="bi bi-vector-pen"></i>Graphic Design</a>
+        <a href="services.html#brand-design"><i class="bi bi-palette-fill"></i>Brand Designs</a>
+      </div>
+    </li>
+    <li>
+      <a href="training.html">Training <i class="bi bi-chevron-down dd-arrow"></i></a>
+      <div class="nav-dropdown">
+        <span class="dd-label">Animation Courses</span>
+        <a href="training.html#courses"><i class="bi bi-box-seam-fill"></i>3D Animation — Maya</a>
+        <a href="training.html#courses"><i class="bi bi-scissors"></i>2D Animation</a>
+        <a href="training.html#courses"><i class="bi bi-camera-video-fill"></i>Video Editing</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">AI Programs</span>
+        <a href="training.html#courses"><i class="bi bi-robot"></i>AI Filmmaking</a>
+        <a href="training.html#courses"><i class="bi bi-stars"></i>AI Animation</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">Design</span>
+        <a href="training.html#courses"><i class="bi bi-palette-fill"></i>Graphic Design</a>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" aria-label="Toggle theme"></button>
+    <a href="training.html" class="nav-cta">Enroll Now</a>
+    <button class="hamburger" id="cs-ham"><div class="ham-dots"><div class="ham-dot"></div><div class="ham-dot"></div><div class="ham-dot"></div><div class="ham-dot"></div></div></button>
+  </div>
+</nav>
+
+<!-- LOADER -->
+<div id="cs-loader">
+  <div class="ld-logo-wrap">
+    <div class="ld-ring"></div><div class="ld-ring2"></div><div class="ld-ring3"></div><div class="ld-ring4"></div>
+    <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ld-logo-img" alt="Crown Digital">
+  </div>
+  <div class="ld-word">CROWN DIGITAL</div>
+  <div class="ld-sub">Nigeria's Premier 3D Studio</div>
+  <div class="ld-bar-track"><div class="ld-bar-fill"></div></div>
+  <div class="ld-pct-wrap"><span id="ld-pct" style="font-family:var(--font-m);font-size:.5rem;color:rgba(255,255,255,.2)">0%</span></div>
+  <div class="ld-glitch"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video-bg">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.70;z-index:0">
+      <source src="Brand Videos/Website Header V1.webm" type="video/webm">
+    </video>
+  </div>
+  <div class="hero-color-band"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-floaters" id="heroFloaters"></div>
+  <div class="hero-content" style="perspective:800px">
+    <p class="hero-eyebrow">Nigeria's Premier 3D Animation Studio</p>
+    <h1 class="hero-title" aria-label="We Craft Worlds In Motion">
+      <span class="ht-word-row">
+        <span class="ht-word" style="animation-delay:2.6s">WE&nbsp;</span><span class="ht-word" style="animation-delay:2.78s">CRAFT</span>
+      </span>
+      <span class="ht-word-row">
+        <span class="ht-word gold-stroke" style="animation-delay:2.96s">WORLDS</span>
+      </span>
+      <span class="ht-word-row">
+        <span class="ht-word" style="animation-delay:3.14s">IN&nbsp;</span><span class="ht-word blue-stroke" style="animation-delay:3.32s">MOTION</span>
+      </span>
+    </h1>
+    <p class="hero-sub">Where technical precision meets cinematic artistry — transforming brands into breathtaking animated experiences.</p>
+    <div class="hero-actions">
+      <a href="training.html" class="btn-gold"><span>Explore Courses</span></a>
+      <a href="services.html" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-stem"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="cs-marquee"><div class="cs-marquee-inner"></div></div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="sb-item reveal"><div class="sb-num"><span class="counter" data-target="50" data-suf="+">0</span></div><div class="sb-lbl">Projects Delivered</div></div>
+  <div class="sb-item reveal rd1"><div class="sb-num"><span class="counter" data-target="3" data-suf="">0</span></div><div class="sb-lbl">Courses Available</div></div>
+  <div class="sb-item reveal rd2"><div class="sb-num"><span class="counter" data-target="100" data-suf="+">0</span></div><div class="sb-lbl">Students Trained</div></div>
+  <div class="sb-item reveal rd3"><div class="sb-num"><span class="counter" data-target="5" data-suf="">0</span></div><div class="sb-lbl">Years Experience</div></div>
+</div>
+
+<!-- BLUE/GOLD DIVIDER -->
+<div class="color-divider"></div>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <div class="about-inner">
+    <div class="as-visual reveal" data-tilt>
+      <div class="as-visual-bg">
+        <img src="Brand Images/Jumpsuit_Long_Final.png" class="as-logo-img">
+      </div>
+      <div class="as-stats-row">
+        <div class="as-stat"><div class="as-stat-n counter" data-target="50" data-suf="+">0</div><div class="as-stat-l">Projects</div></div>
+        <div class="as-stat"><div class="as-stat-n counter" data-target="3" data-suf="">0</div><div class="as-stat-l">Courses</div></div>
+        <div class="as-stat"><div class="as-stat-n counter" data-target="100" data-suf="+">0</div><div class="as-stat-l">Students</div></div>
+      </div>
+    </div>
+    <div class="as-text">
+      <div class="s-label reveal">Who We Are</div>
+      <h2 class="s-title reveal rd1">THE ART OF<br><span class="outline">VISUAL IMPACT</span></h2>
+      <blockquote class="as-quote reveal rd2">"We transform abstract concepts into clear, compelling, visually dynamic narratives."</blockquote>
+      <p class="reveal rd3">We are a top-tier <strong>3D Animation and Video Editing studio</strong> helping brands, agencies, and companies craft visual stories that don't just engage — they drive impact.</p>
+      <p class="reveal rd4">From character animation to product showcase, we help banks, corporate brands, and startups stand out. Our work blends <strong>artistry with marketing strategy</strong>.</p>
+      <br>
+      <a href="about.html" class="btn-outline reveal rd5">Learn More About Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIO CAPABILITIES — 3D FLIP CARDS -->
+<section class="services-preview">
+  <div class="sp-header">
+    <div>
+      <div class="s-label reveal">What We Do</div>
+      <h2 class="s-title reveal rd1">STUDIO<br><span class="outline">CAPABILITIES</span></h2>
+    </div>
+    <a href="services.html" class="btn-outline reveal rd2">All Services</a>
+  </div>
+  <div class="sp-grid">
+
+    <div class="spc-flip reveal">
+      <div class="spc-flip-inner">
+        <div class="spc-front">
+          <div><div class="spc-num">01</div><i class="spc-icon bi bi-person-bounding-box"></i></div>
+          <div><h3 class="spc-title">3D CHARACTER ANIMATION</h3><p class="spc-desc">Lifelike characters with weight, soul, and believable performance.</p></div>
+        </div>
+        <div class="spc-back">
+          <div class="spc-back-label">Capability 01</div>
+          <div class="spc-back-title">CHARACTER ANIMATION</div>
+          <div class="spc-back-body">Full pipeline from concept to final render — rigging, skinning, keyframe animation, and motion capture integration for characters that feel truly alive.</div>
+          <div class="spc-back-tools"><span class="spc-tool-tag">Maya</span><span class="spc-tool-tag">Blender</span><span class="spc-tool-tag">After Effects</span></div>
+          <a href="services.html#3d-animation" class="spc-back-link">Explore <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spc-flip reveal rd1">
+      <div class="spc-flip-inner">
+        <div class="spc-front">
+          <div><div class="spc-num">02</div><i class="spc-icon bi bi-scissors"></i></div>
+          <div><h3 class="spc-title">CINEMATIC EDITING</h3><p class="spc-desc">Color grading, sound design, and seamless cuts that tell stories.</p></div>
+        </div>
+        <div class="spc-back">
+          <div class="spc-back-label">Capability 02</div>
+          <div class="spc-back-title">CINEMATIC EDITING</div>
+          <div class="spc-back-body">Professional post-production: pacing, color science, multi-track audio, and visual effects compositing to turn raw footage into cinematic gold.</div>
+          <div class="spc-back-tools"><span class="spc-tool-tag">Premiere Pro</span><span class="spc-tool-tag">DaVinci</span><span class="spc-tool-tag">Audition</span></div>
+          <a href="services.html#video-editing" class="spc-back-link">Explore <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spc-flip reveal rd2">
+      <div class="spc-flip-inner">
+        <div class="spc-front">
+          <div><div class="spc-num">03</div><i class="spc-icon bi bi-stars"></i></div>
+          <div><h3 class="spc-title">MOTION GRAPHICS</h3><p class="spc-desc">Brand reveals, title sequences, and dynamic data visualization.</p></div>
+        </div>
+        <div class="spc-back">
+          <div class="spc-back-label">Capability 03</div>
+          <div class="spc-back-title">MOTION GRAPHICS</div>
+          <div class="spc-back-body">Kinetic typography, logo animations, explainer graphics, and data-driven visual storytelling that makes complex ideas instantly clear.</div>
+          <div class="spc-back-tools"><span class="spc-tool-tag">After Effects</span><span class="spc-tool-tag">Cinema 4D</span><span class="spc-tool-tag">Illustrator</span></div>
+          <a href="services.html#motion-graphics" class="spc-back-link">Explore <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spc-flip reveal rd3">
+      <div class="spc-flip-inner">
+        <div class="spc-front">
+          <div><div class="spc-num">04</div><i class="spc-icon bi bi-box-seam-fill"></i></div>
+          <div><h3 class="spc-title">PRODUCT VISUALIZATION</h3><p class="spc-desc">Photorealistic 3D renders before a prototype is built.</p></div>
+        </div>
+        <div class="spc-back">
+          <div class="spc-back-label">Capability 04</div>
+          <div class="spc-back-title">PRODUCT VISUALIZATION</div>
+          <div class="spc-back-body">Stunning product renders, 360° turntables, and lifestyle animations for e-commerce, pitch decks, and marketing campaigns before manufacturing.</div>
+          <div class="spc-back-tools"><span class="spc-tool-tag">Maya</span><span class="spc-tool-tag">KeyShot</span><span class="spc-tool-tag">Arnold</span></div>
+          <a href="services.html#3d-design" class="spc-back-link">Explore <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spc-flip reveal rd4">
+      <div class="spc-flip-inner">
+        <div class="spc-front">
+          <div><div class="spc-num">05</div><i class="spc-icon bi bi-building-fill"></i></div>
+          <div><h3 class="spc-title">CORPORATE BRAND FILMS</h3><p class="spc-desc">Animation campaigns for banks, startups, and enterprises.</p></div>
+        </div>
+        <div class="spc-back">
+          <div class="spc-back-label">Capability 05</div>
+          <div class="spc-back-title">BRAND FILMS</div>
+          <div class="spc-back-body">Full-length brand documentaries, corporate explainers, investor pitch videos, and product launch animations that position your brand as industry leader.</div>
+          <div class="spc-back-tools"><span class="spc-tool-tag">Full Pipeline</span><span class="spc-tool-tag">Live Action</span><span class="spc-tool-tag">VFX</span></div>
+          <a href="services.html#video-production" class="spc-back-link">Explore <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="spc-flip reveal rd5">
+      <div class="spc-flip-inner">
+        <div class="spc-front">
+          <div><div class="spc-num">06</div><i class="spc-icon bi bi-mortarboard-fill"></i></div>
+          <div><h3 class="spc-title">ANIMATION EDUCATION</h3><p class="spc-desc">Mentorship-driven Maya programs from beginner to advanced.</p></div>
+        </div>
+        <div class="spc-back">
+          <div class="spc-back-label">Capability 06</div>
+          <div class="spc-back-title">EDUCATION</div>
+          <div class="spc-back-body">Structured, mentor-led programs covering 3D animation, video editing, AI-assisted filmmaking, and creative entrepreneurship — taught by working professionals.</div>
+          <div class="spc-back-tools"><span class="spc-tool-tag">3D Animation</span><span class="spc-tool-tag">AI Tools</span><span class="spc-tool-tag">Mentorship</span></div>
+          <a href="training.html" class="spc-back-link">Enroll Now <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECENT WORK GALLERY -->
+<section class="gallery-preview">
+  <div class="gp-header">
+    <div class="s-label reveal">Portfolio</div>
+    <h2 class="s-title reveal rd1">OUR RECENT <span class="outline">WORK</span></h2>
+    <p class="reveal rd2" style="font-family:var(--font-a);font-size:1rem;color:var(--text2);margin-top:4px">Click any piece to view it in cinematic fullscreen.</p>
+  </div>
+
+  <div class="gp-mosaic">
+    <div class="gp-cell reveal" data-lb-type="video" data-lb-src="Brand Videos/Wisdom Reveal.mp4" data-lb-tag="Brand Identity" data-lb-name="Wisdom Reveal">
+      <video class="gp-cell-media" src="Brand Videos/Wisdom Reveal.mp4" muted autoplay loop playsinline></video>
+      <div class="gp-play-btn"><i class="bi bi-play-fill"></i></div>
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Brand Identity</p><p class="gpi-name">Wisdom Reveal</p></div>
+    </div>
+    <div class="gp-cell reveal rd1" data-lb-type="image" data-lb-src="Brand Images/Crown_Jnr1.png" data-lb-tag="Character Animation" data-lb-name="Crown Jnr Series">
+      <img class="gp-cell-media" src="Brand Images/Crown_Jnr1.png" alt="Crown Jnr Character">
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Character Animation</p><p class="gpi-name">Crown Jnr Series</p></div>
+    </div>
+    <div class="gp-cell reveal rd2" data-lb-type="image" data-lb-src="Brand Images/Crown_Jnr2.png" data-lb-tag="Character Design" data-lb-name="Crown Jnr — Pose Study">
+      <img class="gp-cell-media" src="Brand Images/Crown_Jnr2.png" alt="Crown Jnr Character 2">
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Character Design</p><p class="gpi-name">Crown Jnr — Pose Study</p></div>
+    </div>
+    <div class="gp-cell reveal rd3" data-lb-type="video" data-lb-src="Brand Videos/Student Project.mp4" data-lb-tag="Education" data-lb-name="Student Project Showcase">
+      <video class="gp-cell-media" src="Brand Videos/Student Project.mp4" muted autoplay loop playsinline></video>
+      <div class="gp-play-btn"><i class="bi bi-play-fill"></i></div>
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Education</p><p class="gpi-name">Student Project Showcase</p></div>
+    </div>
+    <div class="gp-cell reveal rd4" data-lb-type="image" data-lb-src="Brand Images/Wisdom01.png" data-lb-tag="Character Animation" data-lb-name="Wisdom — Character Design">
+      <img class="gp-cell-media" src="Brand Images/Wisdom01.png" alt="Wisdom Character">
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Character Animation</p><p class="gpi-name">Wisdom — Character Design</p></div>
+    </div>
+  </div>
+
+  <div class="gp-more-grid" id="gpMoreGrid">
+    <div class="gp-more-cell gp-cell" data-lb-type="image" data-lb-src="Brand Images/Jumpsuit_Long_Final.png" data-lb-tag="3D Character" data-lb-name="Jumpsuit Hero — Full Body Render">
+      <img class="gp-cell-media" src="Brand Images/Jumpsuit_Long_Final.png" alt="Jumpsuit Character">
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">3D Character</p><p class="gpi-name">Jumpsuit Hero</p></div>
+    </div>
+    <div class="gp-more-cell gp-cell" data-lb-type="video" data-lb-src="Brand Videos/Wisdom Reveal.mp4" data-lb-tag="Motion Graphics" data-lb-name="Logo Animation Study">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0805,#1a1208);display:flex;align-items:center;justify-content:center;">
+        <i class="bi bi-play-circle" style="font-size:4rem;color:rgba(252,179,30,0.4);"></i>
+      </div>
+      <div class="gp-play-btn"><i class="bi bi-play-fill"></i></div>
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Motion Graphics</p><p class="gpi-name">Logo Animation Study</p></div>
+    </div>
+    <div class="gp-more-cell gp-cell" data-lb-type="image" data-lb-src="Brand Images/Crown_Jnr1.png" data-lb-tag="Character Design" data-lb-name="Crown Jnr — Expression Sheet">
+      <img class="gp-cell-media" src="Brand Images/Crown_Jnr1.png" alt="Crown Jnr Expression">
+      <div class="gp-cell-over"></div>
+      <div class="gp-cell-info"><p class="gpi-tag">Character Design</p><p class="gpi-name">Crown Jnr — Expression Sheet</p></div>
+    </div>
+  </div>
+
+  <div class="gp-show-more-wrap">
+    <button class="gp-show-btn" id="gpShowBtn">
+      <span id="gpShowBtnTxt">Show More Work</span>
+      <i class="bi bi-chevron-down" id="gpShowBtnIcon"></i>
+    </button>
+  </div>
+</section>
+
+<!-- TRAINING SCHOOL PREVIEW -->
+<section class="training-preview-sect">
+  <div class="tps-inner">
+    <div class="tps-header">
+      <div class="s-label reveal">Crown Training School</div>
+      <h2 class="s-title reveal rd1">OUR <span class="outline-blue">TRAINING</span><br>PROGRAMS</h2>
+      <p class="reveal rd2 tps-sub">Gain skills for an exciting career in Nigeria's dynamic and growing digital content industry. We help you grow with purpose and get closer to the career you've been dreaming of.</p>
+    </div>
+
+    <div class="tps-body">
+      <div class="tps-programs">
+        <div class="tp-card reveal" data-index="0">
+          <div class="tp-card-top">
+            <i class="bi bi-box-seam-fill tp-icon"></i>
+            <div>
+              <div class="tp-label">Most Popular</div>
+              <h3 class="tp-title">3D Animation</h3>
+            </div>
+            <span class="tp-badge">Maya</span>
+          </div>
+          <p class="tp-desc">Master character animation from first keyframe to portfolio-ready shots using Autodesk Maya — taught by working professionals.</p>
+          <div class="tp-meta">
+            <span><i class="bi bi-calendar3"></i> 6 Weeks</span>
+            <span><i class="bi bi-camera-video"></i> Online · Live</span>
+            <span><i class="bi bi-mortarboard"></i> Certificate</span>
+          </div>
+        </div>
+
+        <div class="tp-card reveal rd1" data-index="1">
+          <div class="tp-card-top">
+            <i class="bi bi-scissors tp-icon" style="--ti-c:var(--blue)"></i>
+            <div>
+              <div class="tp-label">In Demand</div>
+              <h3 class="tp-title">Video Editing</h3>
+            </div>
+            <span class="tp-badge" style="background:var(--blue);color:#fff">Premiere</span>
+          </div>
+          <p class="tp-desc">Professional video editing, color grading, and motion graphics for content creators, filmmakers, and digital marketers.</p>
+          <div class="tp-meta">
+            <span><i class="bi bi-calendar3"></i> 4 Weeks</span>
+            <span><i class="bi bi-camera-video"></i> Online · Live</span>
+            <span><i class="bi bi-mortarboard"></i> Certificate</span>
+          </div>
+        </div>
+
+        <div class="tp-card reveal rd2" data-index="2">
+          <div class="tp-card-top">
+            <i class="bi bi-robot tp-icon" style="--ti-c:var(--teal)"></i>
+            <div>
+              <div class="tp-label">New · 2025</div>
+              <h3 class="tp-title">AI Filmmaking</h3>
+            </div>
+            <span class="tp-badge" style="background:var(--teal);color:#fff">AI</span>
+          </div>
+          <p class="tp-desc">Learn to harness AI tools for animation, storyboarding, and cinematic production — the future of creative content creation.</p>
+          <div class="tp-meta">
+            <span><i class="bi bi-calendar3"></i> 4 Weeks</span>
+            <span><i class="bi bi-camera-video"></i> Online · Live</span>
+            <span><i class="bi bi-mortarboard"></i> Certificate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tps-curriculum reveal rd1">
+        <div class="tps-curr-header">
+          <span class="s-label" style="margin-bottom:8px">Maya Animation · 6-Week Curriculum</span>
+          <p style="font-family:var(--font-a);font-size:.9rem;color:var(--text3);line-height:1.6">Click a week to expand the details</p>
+        </div>
+        <div class="curr-timeline">
+          <div class="curr-week open" data-week="1">
+            <button class="curr-week-btn"><span class="curr-wk-num">W1</span><div class="curr-wk-info"><span class="curr-wk-title">Maya Overview</span><span class="curr-wk-sub">Interface · Navigation · Basic Objects</span></div><i class="bi bi-chevron-down curr-wk-arrow"></i></button>
+            <div class="curr-week-body"><p>Cover all the basics of Maya, getting comfortable with the main aspects of the interface, navigating in 3D space, and working with basic objects.</p><div class="curr-tags"><span>Interface</span><span>Viewport Nav</span><span>Primitives</span><span>Transform Tools</span></div></div>
+          </div>
+          <div class="curr-week" data-week="2">
+            <button class="curr-week-btn"><span class="curr-wk-num">W2</span><div class="curr-wk-info"><span class="curr-wk-title">Introduction to Animation</span><span class="curr-wk-sub">Keyframes · Timeline · Graph Editor</span></div><i class="bi bi-chevron-down curr-wk-arrow"></i></button>
+            <div class="curr-week-body"><p>Dive into Maya's animation toolset. By the end you will have a solid understanding of keyframing and the animation workflow within Maya.</p><div class="curr-tags"><span>Keyframing</span><span>Timeline</span><span>Graph Editor</span><span>Dope Sheet</span></div></div>
+          </div>
+          <div class="curr-week" data-week="3">
+            <button class="curr-week-btn"><span class="curr-wk-num">W3</span><div class="curr-wk-info"><span class="curr-wk-title">Fundamental Concepts</span><span class="curr-wk-sub">12 Principles · Squirrel Rig Jump</span></div><i class="bi bi-chevron-down curr-wk-arrow"></i></button>
+            <div class="curr-week-body"><p>Using concepts from the previous sessions you'll animate the Squirrel rig performing a bouncy jump — applying the 12 principles of animation.</p><div class="curr-tags"><span>12 Principles</span><span>Squash & Stretch</span><span>Timing</span><span>Arcs</span></div></div>
+          </div>
+          <div class="curr-week" data-week="4">
+            <button class="curr-week-btn"><span class="curr-wk-num">W4</span><div class="curr-wk-info"><span class="curr-wk-title">Character Animation I</span><span class="curr-wk-sub">Stewart Rig · Head Turn · Posing</span></div><i class="bi bi-chevron-down curr-wk-arrow"></i></button>
+            <div class="curr-week-body"><p>More Maya tools and animation concepts: full character posing with Stewart, our biped rig, and animating an appealing head turn.</p><div class="curr-tags"><span>Biped Rig</span><span>Head Turn</span><span>Posing</span><span>Weight</span></div></div>
+          </div>
+          <div class="curr-week" data-week="5">
+            <button class="curr-week-btn"><span class="curr-wk-num">W5</span><div class="curr-wk-info"><span class="curr-wk-title">Character Animation II</span><span class="curr-wk-sub">Robot Arm · Intermediate Mechanics</span></div><i class="bi bi-chevron-down curr-wk-arrow"></i></button>
+            <div class="curr-week-body"><p>Intermediate character animation topics: create an advanced animation shot using a mechanical robot arm to prepare for complex animations.</p><div class="curr-tags"><span>Mechanical Rig</span><span>IK/FK</span><span>Advanced Graph</span><span>Overlapping</span></div></div>
+          </div>
+          <div class="curr-week" data-week="6">
+            <button class="curr-week-btn"><span class="curr-wk-num">W6</span><div class="curr-wk-info"><span class="curr-wk-title">Character Animation III</span><span class="curr-wk-sub">Advanced Topics · Portfolio Shot</span></div><i class="bi bi-chevron-down curr-wk-arrow"></i></button>
+            <div class="curr-week-body"><p>Review key topics and tackle advanced character animation. Final portfolio-quality shot that demonstrates everything learned across the course.</p><div class="curr-tags"><span>Portfolio Shot</span><span>Polish</span><span>Final Render</span><span>Certificate</span></div></div>
+          </div>
+        </div>
+        <a href="training.html" class="btn-gold" style="margin-top:28px;display:inline-flex"><span>Apply Now <i class="bi bi-arrow-right"></i></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE CONSULTATION CTA -->
+<section class="consult-cta-sect">
+  <div class="consult-inner">
+    <div class="consult-visual reveal">
+      <div class="consult-img-wrap">
+        <img src="Brand Images/Jumpsuit_Long_Final.png" alt="Crown Digital Characters" class="consult-img">
+      </div>
+      <div class="consult-badge"><i class="bi bi-patch-check-fill"></i> Nigeria's #1 Animation Studio</div>
+    </div>
+    <div class="consult-text">
+      <div class="s-label reveal">Free Consultation</div>
+      <h2 class="consult-title reveal rd1">Need help choosing<br>a <span>course</span> or<br>service?</h2>
+      <p class="reveal rd2">Whether you're a beginner deciding where to start, or a brand looking for the right visual partner — reach out and we'll guide you to the best fit, for free.</p>
+      <div class="consult-btns reveal rd3">
+        <a href="https://wa.me/2348000000000?text=Hello%20Crown%20Digital%2C%20I%27d%20like%20a%20free%20consultation." target="_blank" class="btn-gold"><span><i class="bi bi-whatsapp"></i> Book a Free Consultation</span></a>
+        <a href="contact.html" class="btn-outline-light">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-bg-word">DRIVEN</div>
+  <div style="position:relative;z-index:2">
+    <div class="s-label reveal" style="justify-content:center;color:rgba(255,255,255,.5)">The Crown Mentorship</div>
+    <h2 class="s-title reveal rd1" style="color:#f8f4ed;text-align:center">FOR THE <span style="-webkit-text-stroke:1.5px #fcb31e;color:transparent">DRIVEN</span></h2>
+    <p class="reveal rd2" style="font-family:var(--font-a);font-size:1rem;color:rgba(248,244,237,.5);text-align:center;max-width:440px;margin:0 auto 32px;line-height:1.7">Mentorship for animators ready to level up — passionate, curious, and committed to the craft.</p>
+    <div style="text-align:center"><a href="training.html" class="btn-gold reveal rd3"><span>Apply Now</span></a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="cs-footer">
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="index.html" class="nav-brand">
+        <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="ft-logo-dark" style="height:32px">
+        <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ft-logo-light" style="height:32px">
+      </a>
+      <p>Where technical precision meets cinematic artistry.</p>
+      <div class="ft-socials">
+        <a href="#" class="ft-soc-link"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="ft-soc-link"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="ft-soc-link"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="ft-soc-link"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="ft-soc-link"><i class="bi bi-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="training.html">Training</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="/cdn-cgi/l/email-protection#dab3b4bcb59ab9a8b5adb4beb3bdb3aebbb6a9b5b6afaeb3b5b4a9f4b9b5b7"><span class="__cf_email__" data-cfemail="9af3f4fcf5daf9e8f5edf4fef3fdf3eefbf6e9f5f6efeef3f5f4e9b4f9f5f7">[email&#160;protected]</span></a></li><li><a href="#">Crown Digital Solutions</a></li><li><a href="#">Mon–Fri · 9am–8pm WAT</a></li></ul></div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">© 2026 Crown Studio. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    <p class="ft-copy">Made with <i class="bi bi-shield-fill-check" style="color:var(--gold)"></i> in Nigeria</p>
+  </div>
+</footer>
+
+<!-- CINEMATIC LIGHTBOX -->
+<div class="lightbox-overlay" id="lbOverlay" onclick="lbBGClose(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLightbox()"><i class="bi bi-x-lg"></i></button>
+    <button class="lb-prev" onclick="lbNav(-1)"><i class="bi bi-chevron-left"></i></button>
+    <button class="lb-next" onclick="lbNav(1)"><i class="bi bi-chevron-right"></i></button>
+    <img id="lbImg" class="lb-media" src="" alt="" style="display:none">
+    <div id="lbVideoWrap" class="lb-video-wrap">
+      <video id="lbVideo" controls playsinline></video>
+    </div>
+    <div class="lb-info">
+      <span id="lbTag" class="lb-tag"></span>
+      <span id="lbTitle" class="lb-title"></span>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP WIDGET -->
+<style>
+.cs-chat-bubble{position:fixed;bottom:28px;right:28px;z-index:8000;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
+.cs-chat-btn{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(37,211,102,0.45);transition:transform .3s,box-shadow .3s;position:relative;}
+.cs-chat-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,0.6);}
+.cs-chat-btn i{font-size:1.6rem;color:#fff;}
+.cs-chat-btn::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,0.45);animation:chatPulse 2s ease-in-out infinite;}
+@keyframes chatPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.18);opacity:0}}
+.cs-chat-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;background:#fcb31e;border-radius:50%;border:2px solid #fff;font-family:'DM Mono',monospace;font-size:.45rem;color:#000;display:flex;align-items:center;justify-content:center;}
+.cs-chat-panel{position:fixed;bottom:100px;right:28px;z-index:8001;width:340px;background:var(--surface,#fff);border:1px solid var(--border2,rgba(0,0,0,.12));border-radius:12px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.18);transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(0.16,1,0.3,1),transform .35s cubic-bezier(0.16,1,0.3,1);}
+.cs-chat-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1);}
+.csp-header{background:linear-gradient(135deg,#128c7e,#25d366);padding:20px 20px 16px;display:flex;align-items:center;gap:14px;}
+.csp-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0;border:2px solid rgba(255,255,255,.4);}
+.csp-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;color:#fff;line-height:1;}
+.csp-status{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px;display:flex;align-items:center;gap:5px;}
+.csp-status-dot{width:7px;height:7px;border-radius:50%;background:#adff9e;animation:chatPulse 2s infinite;}
+.csp-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:1.1rem;padding:4px;transition:color .2s;}
+.csp-close:hover{color:#fff;}
+.csp-body{padding:20px;background:var(--bg2,#f8f8f8);}
+.csp-bubble{background:var(--surface,#fff);border:1px solid var(--border,rgba(0,0,0,.07));border-radius:0 12px 12px 12px;padding:12px 14px;margin-bottom:14px;font-family:'Syne',sans-serif;font-size:.82rem;color:var(--text,#0e0b07);line-height:1.6;}
+.csp-bubble strong{color:#fcb31e;}
+.csp-time{font-family:'DM Mono',monospace;font-size:.45rem;letter-spacing:.15em;color:var(--text3,#8a7a60);margin-bottom:16px;text-align:right;}
+.csp-options{display:flex;flex-direction:column;gap:8px;}
+.csp-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border2,rgba(0,0,0,.12));background:var(--surface,#fff);text-decoration:none;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text,#0e0b07);transition:border-color .25s,background .25s,color .25s,padding-left .25s;cursor:pointer;}
+.csp-opt:hover{border-color:#25d366;color:#128c7e;padding-left:20px;background:rgba(37,211,102,.04);}
+.csp-opt i{color:#25d366;font-size:.9rem;flex-shrink:0;}
+.csp-footer{padding:12px 20px;border-top:1px solid var(--border,rgba(0,0,0,.07));font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.15em;color:var(--text3,#8a7a60);text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;}
+.csp-footer i{color:#25d366;}
+</style>
+<div class="cs-chat-bubble">
+  <div class="cs-chat-panel" id="csChatPanel">
+    <div class="csp-header">
+      <div class="csp-avatar"><i class="bi bi-headset"></i></div>
+      <div class="csp-info">
+        <div class="csp-name">Crown Digital Support</div>
+        <div class="csp-status"><span class="csp-status-dot"></span>Typically replies instantly</div>
+      </div>
+      <button class="csp-close" onclick="toggleChat()"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="csp-body">
+      <div class="csp-bubble">👋 Hi there! Welcome to <strong>Crown Digital Solutions</strong>.<br><br>We're here to help — whether you have questions about our services, training programs, or want to get a quote.</div>
+      <div class="csp-time">Crown Support · Just now</div>
+      <div class="csp-options">
+        <a class="csp-opt" href="https://wa.me/2348000000000?text=Hello%20Crown%20Digital%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Chat on WhatsApp</a>
+        <a class="csp-opt" href="/cdn-cgi/l/email-protection#0a63646c654a6978657d646e636d637e6b667965667f7e6365647924696567"><i class="bi bi-envelope-fill"></i> Send us an Email</a>
+        <a class="csp-opt" href="training.html#courses"><i class="bi bi-mortarboard-fill"></i> View Training Courses</a>
+        <a class="csp-opt" href="contact.html"><i class="bi bi-telephone-fill"></i> Contact Page</a>
+      </div>
+    </div>
+    <div class="csp-footer"><i class="bi bi-shield-fill-check"></i> Mon–Fri · 9am–8pm WAT · Nigeria</div>
+  </div>
+  <button class="cs-chat-btn" onclick="toggleChat()" aria-label="Open chat support">
+    <i class="bi bi-whatsapp" id="csChatIcon"></i>
+    <span class="cs-chat-dot">1</span>
+  </button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="shared.js"></script>
+<script>
+// Curriculum accordion
+document.querySelectorAll('.curr-week-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const week = btn.parentElement;
+    const isOpen = week.classList.contains('open');
+    document.querySelectorAll('.curr-week').forEach(w => w.classList.remove('open'));
+    if (!isOpen) week.classList.add('open');
+  });
+});
+
+// Gallery show more
+const gpMore = document.getElementById('gpMoreGrid');
+const gpBtn  = document.getElementById('gpShowBtn');
+const gpTxt  = document.getElementById('gpShowBtnTxt');
+const gpIcon = document.getElementById('gpShowBtnIcon');
+let gpOpen = false;
+gpBtn.addEventListener('click', () => {
+  gpOpen = !gpOpen;
+  gpMore.classList.toggle('visible', gpOpen);
+  gpTxt.textContent = gpOpen ? 'Show Less' : 'Show More Work';
+  gpIcon.className = gpOpen ? 'bi bi-chevron-up' : 'bi bi-chevron-down';
+});
+
+// Lightbox
+let lbItems=[], lbIdx=0;
+document.querySelectorAll('[data-lb-src]').forEach((el,i) => {
+  el.addEventListener('click', () => {
+    lbItems = [...document.querySelectorAll('[data-lb-src]')];
+    lbIdx = lbItems.indexOf(el);
+    openLightbox(el);
+  });
+});
+function openLightbox(el){
+  const type=el.dataset.lbType, src=el.dataset.lbSrc;
+  const img=document.getElementById('lbImg'), vid=document.getElementById('lbVideo'), wrap=document.getElementById('lbVideoWrap');
+  document.getElementById('lbTag').textContent=el.dataset.lbTag||'';
+  document.getElementById('lbTitle').textContent=el.dataset.lbName||'';
+  if(type==='video'){img.style.display='none';wrap.style.display='block';vid.src=src;vid.play();}
+  else{wrap.style.display='none';img.style.display='block';img.src=src;vid.pause();vid.src='';}
+  document.getElementById('lbOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lbOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  const vid=document.getElementById('lbVideo'); vid.pause(); vid.src='';
+}
+function lbBGClose(e){ if(e.target===document.getElementById('lbOverlay')) closeLightbox(); }
+function lbNav(d){
+  lbIdx=(lbIdx+d+lbItems.length)%lbItems.length;
+  openLightbox(lbItems[lbIdx]);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);});
+
+// WhatsApp toggle
+function toggleChat(){
+  const panel=document.getElementById('csChatPanel');
+  const icon=document.getElementById('csChatIcon');
+  const isOpen=panel.classList.toggle('open');
+  icon.className=isOpen?'bi bi-x-lg':'bi bi-whatsapp';
+  const dot=document.querySelector('.cs-chat-dot');
+  if(dot&&isOpen) dot.style.display='none';
+}
+document.addEventListener('click',function(e){
+  const panel=document.getElementById('csChatPanel');
+  const btn=document.querySelector('.cs-chat-btn');
+  if(panel&&panel.classList.contains('open')&&!panel.contains(e.target)&&e.target!==btn&&!btn.contains(e.target)){
+    panel.classList.remove('open');
+    document.getElementById('csChatIcon').className='bi bi-whatsapp';
+  }
+});
+
+// Hero floaters
+const floaterData=[
+  {t:'3D Animation',x:'8%',y:'20%',r:'-4deg',d:'4s',dl:'0s'},
+  {t:'Motion Graphics',x:'82%',y:'15%',r:'3deg',d:'5s',dl:'.8s'},
+  {t:'Autodesk Maya',x:'5%',y:'72%',r:'-3deg',d:'4.5s',dl:'1.2s'},
+  {t:'Visual Stories',x:'80%',y:'75%',r:'4deg',d:'5.5s',dl:'.4s'},
+  {t:'Crown Studios',x:'45%',y:'10%',r:'2deg',d:'3.5s',dl:'1.6s'}
+];
+const floaterCont=document.getElementById('heroFloaters');
+if(floaterCont){
+  floaterData.forEach(f=>{
+    const d=document.createElement('div');
+    d.className='hf';
+    d.textContent=f.t;
+    d.style.cssText=`left:${f.x};top:${f.y};--r:${f.r};--d:${f.d};--dl:${f.dl}`;
+    floaterCont.appendChild(d);
+  });
+}
+</script>
+
+<!-- ── REGISTRATION POPUP ── -->
+<div class="reg-overlay" id="regOverlay">
+  <div class="reg-modal" role="dialog" aria-modal="true" aria-labelledby="regModalTitle">
+    <button class="reg-close" onclick="closeRegModal()" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    <div class="reg-top">
+      <div class="reg-eyebrow">Crown Digital Studios</div>
+      <h2 class="reg-title" id="regModalTitle">
+        JOIN THE<br><span class="reg-title-gold">INNER</span><br>CIRCLE
+      </h2>
+      <p class="reg-subtitle">Get early access to courses, exclusive resources & studio updates.</p>
+    </div>
+    <div class="reg-body">
+      <div id="regFormWrap">
+        <div class="reg-field">
+          <label class="reg-label" for="regName">Full Name</label>
+          <input class="reg-input" id="regName" type="text" placeholder="e.g. Emeka Okafor" autocomplete="name">
+        </div>
+        <div class="reg-field">
+          <label class="reg-label" for="regEmail">Email Address</label>
+          <input class="reg-input" id="regEmail" type="email" placeholder="your@email.com" autocomplete="email">
+        </div>
+        <button class="reg-submit" onclick="submitRegForm()">
+          <span>Register Now</span>
+          <i class="bi bi-arrow-right"></i>
+        </button>
+        <div class="reg-skip">
+          <button onclick="closeRegModal()">No thanks, maybe later</button>
+        </div>
+      </div>
+      <div class="reg-success" id="regSuccess">
+        <span class="reg-success-icon"><i class="bi bi-patch-check-fill"></i></span>
+        <h3>You're In!</h3>
+        <p>Welcome to Crown Digital. We'll be in touch with updates and exclusive early-access resources.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Show popup after 10 seconds — only once per session
+  const POPUP_KEY = 'crown_reg_shown';
+  if (!sessionStorage.getItem(POPUP_KEY)) {
+    setTimeout(function(){
+      document.getElementById('regOverlay').classList.add('show');
+      sessionStorage.setItem(POPUP_KEY, '1');
+    }, 10000);
+  }
+})();
+
+function closeRegModal(){
+  const ov = document.getElementById('regOverlay');
+  ov.classList.remove('show');
+  // wait for transition then hide to avoid tab focus issues
+  setTimeout(function(){ ov.style.display='none'; }, 500);
+}
+
+function submitRegForm(){
+  const name = document.getElementById('regName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  if (!name) { document.getElementById('regName').focus(); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    document.getElementById('regEmail').focus(); return;
+  }
+  // Hide form, show success
+  document.getElementById('regFormWrap').style.display = 'none';
+  document.getElementById('regSuccess').style.display = 'block';
+  // Redirect to services page after 2.4s
+  setTimeout(function(){
+    window.location.href = 'services.html';
+  }, 2400);
+}
+
+// Close on backdrop click
+document.getElementById('regOverlay').addEventListener('click', function(e){
+  if (e.target === this) closeRegModal();
+});
+// Close on Escape
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeRegModal();
+});
+</script>
+</body>
+</html>
