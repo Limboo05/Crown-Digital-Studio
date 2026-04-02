@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Training — Crown Studios</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+body { padding-top: var(--nav-h); }
+
+/* PAGE HERO */
+.pg-hero { padding:100px 48px 80px; background:var(--bg2); position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+
+/* Training page hero bg */
+.pg-hero { min-height: 480px; }
+.pg-hero-bg-img {
+  background-image: linear-gradient(135deg,
+    rgba(252,179,30,0.12) 0%,
+    transparent 60%),
+  url("Brand Images/Wisdom01.png");
+  background-size: cover; background-position: right top;
+}
+.pg-hero-bg-img::after {
+  background: linear-gradient(120deg,
+    rgba(248,244,237,0.95) 0%,
+    rgba(248,244,237,0.82) 45%,
+    rgba(248,244,237,0.45) 100%);
+}
+[data-theme="dark"] .pg-hero-bg-img::after {
+  background: linear-gradient(120deg,
+    rgba(7,5,3,0.97) 0%,
+    rgba(7,5,3,0.85) 45%,
+    rgba(7,5,3,0.5) 100%);
+}
+
+.pg-hero-grid { position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:48px 48px; mask-image:radial-gradient(ellipse 70% 80% at 70% 50%,black,transparent 70%); animation:gD 18s linear infinite; }
+@keyframes gD { to { background-position:48px 48px; } }
+.pg-hero-inner { max-width:1100px; margin:0 auto; position:relative; z-index:2; }
+.pg-hero-title { font-family:var(--font-d); font-size:clamp(3.5rem,10vw,9rem); line-height:.88; }
+.pg-hero-sub { font-family:var(--font-a); font-size:1.1rem; color:var(--text2); max-width:500px; line-height:1.7; margin-top:20px; }
+
+/* MENTORSHIP HERO */
+.mentor-hero { padding:80px 48px; background:var(--black); text-align:center; position:relative; overflow:hidden; }
+.mentor-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(245,200,66,.06),transparent); }
+.mentor-bg-text { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-d); font-size:clamp(5rem,18vw,14rem); color:rgba(255,255,255,.02); pointer-events:none; white-space:nowrap; }
+.mentor-hero .s-title { color:#f8f4ed; position:relative; z-index:2; }
+.mentor-hero p { font-family:var(--font-a); font-size:1.05rem; color:rgba(248,244,237,.55); max-width:540px; margin:0 auto 28px; line-height:1.7; position:relative; z-index:2; }
+.mentor-hero .s-label { justify-content:center; position:relative; z-index:2; }
+.mentor-hero .pill-row { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:24px auto 32px; max-width:620px; position:relative; z-index:2; }
+.pill { font-family:var(--font-m); font-size:.56rem; letter-spacing:.15em; text-transform:uppercase; padding:7px 16px; border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.5); transition:border-color .3s,color .3s; }
+.pill:hover { border-color:#f5c842; color:#f5c842; }
+
+/* COURSES GRID */
+.courses-sect { padding:80px 48px; background:var(--bg); }
+.cs-header { max-width:1100px; margin:0 auto 56px; display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; }
+.cs-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+.course-card { position:relative; border:1px solid var(--border); background:var(--surface); overflow:hidden; cursor:none; display:flex; flex-direction:column; transition:transform .5s var(--ease), box-shadow .5s; }
+.course-card:hover { transform:translateY(-12px); box-shadow:var(--shadow-lg); }
+.course-card:nth-child(1) { --cc:var(--gold); --cc-glow:rgba(200,144,10,.15); }
+.course-card:nth-child(2) { --cc:var(--red); --cc-glow:rgba(212,40,64,.15); }
+.course-card:nth-child(3) { --cc:var(--teal); --cc-glow:rgba(0,137,123,.15); }
+.course-card:hover { box-shadow:0 40px 80px rgba(0,0,0,.12), 0 0 40px var(--cc-glow); }
+.cc-badge { position:absolute; top:16px; right:16px; font-family:var(--font-m); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; padding:5px 12px; background:var(--cc); color:var(--black); }
+.cc-vis { height:200px; background:var(--bg2); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+.cc-vis::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,var(--cc),transparent 60%); opacity:.07; transition:opacity .4s; }
+.course-card:hover .cc-vis::after { opacity:.14; }
+.cc-vis img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+.cc-vis-icon { font-size:3.5rem; filter:drop-shadow(0 0 20px var(--cc)); animation:ldFloat 3s ease-in-out infinite alternate; }
+@keyframes ldFloat { to { transform:translateY(-8px) scale(1.06); } }
+.cc-body { padding:24px; flex:1; display:flex; flex-direction:column; }
+.cc-week { font-family:var(--font-m); font-size:.52rem; letter-spacing:.22em; color:var(--cc); text-transform:uppercase; margin-bottom:8px; }
+.cc-title { font-family:var(--font-d); font-size:1.3rem; margin-bottom:10px; color:var(--text); }
+.cc-desc { font-size:.78rem; color:var(--text3); line-height:1.7; flex:1; margin-bottom:20px; }
+.cc-price { font-family:var(--font-d); font-size:1.9rem; color:var(--cc); margin-bottom:14px; }
+.cc-price sub { font-size:.8rem; opacity:.65; }
+.cc-enroll { display:block; text-align:center; font-family:var(--font-m); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--black); background:var(--cc); padding:13px; border:none; cursor:none; width:100%; transition:opacity .3s, transform .2s; }
+.cc-enroll:hover { opacity:.88; transform:translateY(-1px); }
+
+/* ── MODAL ── */
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.7); backdrop-filter:blur(8px); z-index:9000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .3s; padding:16px; }
+.modal-overlay.open { opacity:1; pointer-events:all; }
+.modal-box { background:var(--surface); width:100%; max-width:600px; max-height:90svh; overflow-y:auto; position:relative; transform:translateY(32px) scale(.97); transition:transform .4s var(--ease); border:1px solid var(--border2); }
+.modal-overlay.open .modal-box { transform:translateY(0) scale(1); }
+.modal-close { position:absolute; top:16px; right:16px; font-size:1.1rem; cursor:none; background:none; border:none; color:var(--text3); transition:color .3s; z-index:10; }
+.modal-close:hover { color:var(--red); }
+.modal-progress { display:flex; gap:0; border-bottom:1px solid var(--border); }
+.mp-step { flex:1; padding:12px 0; text-align:center; font-family:var(--font-m); font-size:.5rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text3); border-bottom:2px solid transparent; transition:color .3s,border-color .3s; }
+.mp-step.active { color:var(--gold); border-bottom-color:var(--gold); }
+.mp-step.done { color:var(--teal); border-bottom-color:var(--teal); }
+.checkout-step { display:none; padding:36px; }
+.checkout-step.active { display:block; }
+.step-title { font-family:var(--font-d); font-size:1.8rem; color:var(--text); margin-bottom:6px; }
+.step-sub { font-family:var(--font-a); font-size:.95rem; color:var(--text2); margin-bottom:28px; line-height:1.6; }
+.course-detail-card { background:var(--bg2); border:1px solid var(--border); padding:20px; margin-bottom:28px; display:flex; gap:16px; align-items:center; }
+.cdc-icon { font-size:2rem; color:var(--gold); }
+.cdc-info h3 { font-family:var(--font-d); font-size:1.2rem; color:var(--text); }
+.cdc-info p { font-family:var(--font-m); font-size:.6rem; color:var(--text3); margin-top:2px; }
+.cdc-price { margin-left:auto; font-family:var(--font-d); font-size:1.6rem; color:var(--gold); white-space:nowrap; }
+.f-group { margin-bottom:18px; }
+.f-group label { display:block; font-family:var(--font-m); font-size:.52rem; letter-spacing:.22em; text-transform:uppercase; color:var(--text3); margin-bottom:6px; }
+.f-group input,.f-group select,.f-group textarea { width:100%; background:var(--bg2); border:1px solid var(--border2); color:var(--text); font-family:var(--font-b); font-size:.88rem; padding:12px 14px; outline:none; transition:border-color .3s,background .3s; appearance:none; }
+.f-group input:focus,.f-group select:focus { border-color:var(--gold); background:transparent; }
+.f-group select option { background:var(--surface); }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+
+/* ── PAYMENT METHODS ── */
+.pay-methods { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+.pay-method { border:2px solid var(--border2); padding:20px 16px; text-align:center; cursor:none; transition:border-color .3s,background .3s; background:var(--bg2); }
+.pay-method.selected { border-color:var(--gold); background:rgba(200,144,10,.06); }
+.pay-method-icon { font-size:1.6rem; margin-bottom:8px; color:var(--text3); }
+.pay-method.selected .pay-method-icon { color:var(--gold); }
+.pay-method h4 { font-family:var(--font-d); font-size:1rem; color:var(--text); }
+.pay-method p { font-family:var(--font-m); font-size:.5rem; color:var(--text3); margin-top:4px; }
+
+/* ── BANK SELECTION ── */
+.bank-select-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+.bank-btn {
+  border:2px solid var(--border2); padding:14px 12px;
+  cursor:none; background:var(--bg2); transition:all .3s;
+  display:flex; align-items:center; gap:12px;
+}
+.bank-btn.selected { border-color:var(--gold); background:rgba(200,144,10,.06); }
+.bank-btn-logo { width:40px; height:32px; object-fit:contain; flex-shrink:0; }
+.bank-btn-logo-placeholder { width:40px; height:32px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; font-weight:900; font-family:var(--font-d); letter-spacing:.05em; }
+.bank-btn-info { text-align:left; }
+.bank-btn-name { font-family:var(--font-d); font-size:.9rem; color:var(--text); display:block; }
+.bank-btn-type { font-family:var(--font-m); font-size:.46rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text3); }
+
+/* Bank detail card */
+.bank-detail-card { background:var(--bg2); border:1px solid var(--border2); padding:0; margin-bottom:24px; overflow:hidden; display:none; }
+.bank-detail-card.show { display:block; }
+.bdc-header { padding:16px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; }
+.bdc-header-logo { width:44px; height:36px; object-fit:contain; }
+.bdc-header-logo-placeholder { width:44px; height:36px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; font-family:var(--font-d); }
+.bdc-header-name { font-family:var(--font-d); font-size:1.1rem; color:var(--text); }
+.bdc-header-sub { font-family:var(--font-m); font-size:.5rem; color:var(--text3); letter-spacing:.12em; }
+.bdc-rows { padding:4px 0; }
+.bd-row { display:flex; justify-content:space-between; align-items:center; padding:10px 20px; border-bottom:1px solid var(--border); }
+.bd-row:last-child { border-bottom:none; }
+.bd-label { font-family:var(--font-m); font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--text3); }
+.bd-val { font-family:var(--font-d); font-size:1rem; color:var(--text); }
+.bd-copy { font-size:.65rem; cursor:none; background:none; border:1px solid var(--border2); color:var(--text3); padding:4px 10px; font-family:var(--font-m); transition:border-color .3s,color .3s; }
+.bd-copy:hover { border-color:var(--gold); color:var(--gold); }
+
+/* Paypal box */
+.paypal-box { background:var(--bg2); border:1px solid var(--border2); padding:28px; text-align:center; margin-bottom:20px; }
+.paypal-logo { display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px; }
+.paypal-logo i { font-size:2rem; color:#003087; }
+[data-theme="dark"] .paypal-logo i { color:#009cde; }
+.paypal-logo span { font-family:var(--font-d); font-size:1.8rem; color:#003087; letter-spacing:.05em; }
+[data-theme="dark"] .paypal-logo span { color:#009cde; }
+
+/* Timer, upload, status */
+.ref-badge { background:var(--gold); color:var(--black); font-family:var(--font-m); font-size:.7rem; letter-spacing:.1em; padding:6px 14px; display:inline-block; margin-bottom:16px; }
+.timer-box { background:rgba(212,40,64,.07); border:1px solid rgba(212,40,64,.2); padding:16px 20px; display:flex; align-items:center; gap:14px; margin-bottom:20px; }
+.timer-icon { font-size:1.4rem; color:var(--red); }
+.timer-text { flex:1; }
+.timer-text p { font-family:var(--font-m); font-size:.55rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text3); }
+.timer-display { font-family:var(--font-d); font-size:1.8rem; color:var(--red); }
+.timer-expired { color:var(--red); font-family:var(--font-m); font-size:.7rem; display:none; }
+.upload-area { border:2px dashed var(--border2); padding:40px; text-align:center; cursor:none; transition:border-color .3s,background .3s; margin-bottom:18px; position:relative; }
+.upload-area:hover { border-color:var(--gold); background:rgba(200,144,10,.03); }
+.upload-area input[type=file] { position:absolute; inset:0; opacity:0; cursor:none; }
+.upload-icon { font-size:2rem; color:var(--text3); margin-bottom:10px; }
+.upload-text { font-family:var(--font-b); font-size:.85rem; color:var(--text2); }
+.upload-sub { font-family:var(--font-m); font-size:.55rem; color:var(--text3); margin-top:4px; }
+.upload-preview { font-family:var(--font-m); font-size:.62rem; color:var(--teal); margin-top:8px; display:none; }
+.status-screen { text-align:center; padding:20px 0; }
+.status-icon { font-size:3.5rem; color:var(--teal); animation:ldFloat 2s ease-in-out infinite alternate; margin-bottom:16px; display:block; }
+.status-screen h3 { font-family:var(--font-d); font-size:2rem; color:var(--text); margin-bottom:8px; }
+.status-screen p { font-family:var(--font-a); font-size:1rem; color:var(--text2); line-height:1.7; }
+.ref-display { background:var(--bg2); border:1px solid var(--border2); padding:16px; margin:20px 0; text-align:center; }
+.ref-display span { font-family:var(--font-m); font-size:.55rem; letter-spacing:.2em; color:var(--text3); display:block; text-transform:uppercase; margin-bottom:4px; }
+.ref-display strong { font-family:var(--font-d); font-size:1.5rem; color:var(--gold); }
+.est-time { display:flex; align-items:center; gap:12px; background:rgba(0,137,123,.07); border:1px solid rgba(0,137,123,.2); padding:14px 16px; margin:16px 0; }
+.est-time p { font-size:.82rem; color:var(--text2); }
+.wa-btn { display:flex; align-items:center; justify-content:center; gap:10px; font-family:var(--font-m); font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; background:#25D366; color:#fff; padding:14px 24px; text-decoration:none; width:100%; margin-top:12px; transition:opacity .3s,transform .2s; }
+.wa-btn:hover { opacity:.9; transform:translateY(-1px); }
+.step-nav { display:flex; gap:12px; margin-top:24px; }
+.step-nav .btn-gold { flex:1; justify-content:center; font-size:.65rem; }
+.step-nav .btn-outline { flex:0 0 auto; font-size:.65rem; }
+
+/* FAQ */
+.faq-sect { padding:80px 48px; background:var(--bg2); }
+.faq-inner { max-width:760px; margin:0 auto; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-q { width:100%; background:none; border:none; padding:20px 0; display:flex; justify-content:space-between; align-items:center; font-family:var(--font-b); font-size:.95rem; color:var(--text); cursor:none; text-align:left; }
+.faq-q .faq-icon { font-size:1.1rem; transition:transform .3s; flex-shrink:0; margin-left:16px; color:var(--gold); }
+.faq-item.open .faq-q .faq-icon { transform:rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }
+.faq-a-inner { padding:0 0 20px; font-size:.85rem; line-height:1.8; color:var(--text2); }
+
+@media(max-width:900px){
+  .cs-grid { grid-template-columns:repeat(2,1fr); }
+  .f-row { grid-template-columns:1fr; }
+  .bank-select-grid { grid-template-columns:1fr; }
+}
+@media(max-width:600px){
+  .pg-hero,.courses-sect,.faq-sect { padding-left:20px; padding-right:20px; }
+  .cs-grid { grid-template-columns:1fr; }
+  .pay-methods { grid-template-columns:1fr; }
+  .modal-box { border-radius:0; max-height:100svh; }
+  .checkout-step { padding:24px; }
+  .cs-header { flex-direction:column; align-items:flex-start; }
+}
+
+/* ── STUDENT PORTFOLIO SECTION ── */
+.student-portfolio-sect { padding:90px 48px; background:var(--bg2); }
+.sp-sect-inner { max-width:1100px; margin:0 auto; }
+.sp-video-grid {
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;
+}
+.spv-card {
+  border:1px solid var(--border); background:var(--surface);
+  overflow:hidden; cursor:none;
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.spv-card:hover { transform:translateY(-8px); box-shadow:0 32px 64px rgba(0,0,0,.14), 0 0 32px var(--blue-glow); }
+.spv-thumb { position:relative; height:240px; overflow:hidden; background:var(--bg3); }
+.spv-vid { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s var(--ease); filter:brightness(.85); }
+.spv-card:hover .spv-vid { transform:scale(1.04); filter:brightness(1); }
+.spv-play {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(.8);
+  width:56px; height:56px; border-radius:50%;
+  background:rgba(75,168,255,0.88); border:2px solid rgba(255,255,255,.35);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:opacity .3s, transform .3s var(--ease); z-index:3;
+}
+.spv-play i { font-size:1.2rem; color:#fff; margin-left:3px; }
+.spv-card:hover .spv-play { opacity:1; transform:translate(-50%,-50%) scale(1); }
+.spv-over {
+  position:absolute; inset:0; z-index:2;
+  background:linear-gradient(to top, rgba(7,5,3,.8) 0%, transparent 60%);
+  opacity:0; transition:opacity .4s;
+}
+.spv-card:hover .spv-over { opacity:1; }
+.spv-info { padding:18px 20px; border-top:1px solid var(--border); }
+.spv-tag { font-family:var(--font-m); font-size:.48rem; letter-spacing:.22em; text-transform:uppercase; color:var(--blue); margin-bottom:4px; display:block; }
+.spv-title { font-family:var(--font-d); font-size:1.2rem; color:var(--text); transition:color .3s; }
+.spv-card:hover .spv-title { color:var(--blue); }
+@media(max-width:700px){ .sp-video-grid { grid-template-columns:1fr; } }
+@media(max-width:640px){ .student-portfolio-sect { padding:60px 20px; } }
+
+</style>
+</head>
+<body>
+<div id="cs-cursor"></div><div id="cs-ring"></div>
+<!-- MOBILE DRAWER -->
+<div class="mob-nav" id="cs-mob-nav">
+  <a href="index.html"><i class="mn-icon bi bi-house-fill"></i>Home</a>
+
+  <!-- Services accordion -->
+  <button class="mob-dd-toggle">
+    <i class="mn-icon bi bi-camera-video-fill"></i>Services
+    <i class="bi bi-chevron-right mob-dd-arrow"></i>
+  </button>
+  <div class="mob-dd-items">
+    <a href="services.html#video-editing"><i class="bi bi-scissors"></i>Video Editing</a>
+    <a href="services.html#3d-animation"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+    <a href="services.html#2d-animation"><i class="bi bi-stars"></i>2D Animation</a>
+    <a href="services.html#motion-graphics"><i class="bi bi-play-circle-fill"></i>Motion Graphics</a>
+    <a href="services.html#video-production"><i class="bi bi-camera-video-fill"></i>Video Production</a>
+    <a href="services.html#web-design"><i class="bi bi-code-slash"></i>Web Design & Dev</a>
+    <a href="services.html#3d-design"><i class="bi bi-buildings-fill"></i>3D Design & Viz</a>
+    <a href="services.html#graphic-design"><i class="bi bi-vector-pen"></i>Graphic Design</a>
+    <a href="services.html#brand-design"><i class="bi bi-palette-fill"></i>Brand Design</a>
+  </div>
+
+  <!-- Training accordion -->
+  <button class="mob-dd-toggle">
+    <i class="mn-icon bi bi-mortarboard-fill"></i>Training
+    <i class="bi bi-chevron-right mob-dd-arrow"></i>
+  </button>
+  <div class="mob-dd-items">
+    <a href="training.html#courses"><i class="bi bi-box-seam-fill"></i>3D Animation — Maya</a>
+    <a href="training.html#courses"><i class="bi bi-scissors"></i>2D Animation</a>
+    <a href="training.html#courses"><i class="bi bi-camera-video-fill"></i>Video Editing</a>
+    <a href="training.html#courses"><i class="bi bi-robot"></i>AI Filmmaking</a>
+    <a href="training.html#courses"><i class="bi bi-stars"></i>AI Animation</a>
+    <a href="training.html#courses"><i class="bi bi-palette-fill"></i>Graphic Design</a>
+    <a href="training.html"><i class="bi bi-mortarboard-fill"></i>All Courses</a>
+  </div>
+
+  <a href="about.html"><i class="mn-icon bi bi-shield-fill-check"></i>About</a>
+  <a href="contact.html"><i class="mn-icon bi bi-telephone-fill"></i>Contact</a>
+  <a href="training.html" class="mob-cta">Enroll Now</a>
+</div>
+
+<nav id="cs-nav">
+  <a href="index.html" class="nav-brand">
+    <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="logo-dark" style="height:32px">
+    <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="logo-light" style="height:32px">
+     
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+
+    <!-- SERVICES DROPDOWN -->
+    <li class="has-wide-dd">
+      <a href="services.html">Services <i class="bi bi-chevron-down dd-arrow"></i></a>
+      <div class="nav-dropdown">
+        <span class="dd-label">Creative Services</span>
+        <a href="services.html#video-editing"><i class="bi bi-scissors"></i>Video Editing</a>
+        <a href="services.html#3d-animation"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+        <a href="services.html#2d-animation"><i class="bi bi-stars"></i>2D Animation</a>
+        <a href="services.html#motion-graphics"><i class="bi bi-play-circle-fill"></i>Motion Graphics</a>
+        <a href="services.html#video-production"><i class="bi bi-camera-video-fill"></i>Video Production</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">Design & Development</span>
+        <a href="services.html#web-design"><i class="bi bi-code-slash"></i>Web Design & Dev</a>
+        <a href="services.html#3d-design"><i class="bi bi-buildings-fill"></i>3D Design & Viz</a>
+        <a href="services.html#graphic-design"><i class="bi bi-vector-pen"></i>Graphic Design</a>
+        <a href="services.html#brand-design"><i class="bi bi-palette-fill"></i>Brand Design</a>
+      </div>
+    </li>
+
+    <!-- TRAINING DROPDOWN -->
+    <li>
+      <a href="training.html">Training <i class="bi bi-chevron-down dd-arrow"></i></a>
+      <div class="nav-dropdown">
+        <span class="dd-label">Courses</span>
+        <a href="training.html#courses"><i class="bi bi-box-seam-fill"></i>3D Animation</a>
+        <a href="training.html#courses"><i class="bi bi-scissors"></i>2D Animation</a>
+        <a href="training.html#courses"><i class="bi bi-camera-video-fill"></i>Video Editing</a>
+        <div class="dd-divider"></div>
+        <span class="dd-label">AI Programs</span>
+        <a href="training.html#courses"><i class="bi bi-robot"></i>AI Filmmaking</a>
+        <a href="training.html#courses"><i class="bi bi-stars"></i>AI Animation</a>
+      </div>
+    </li>
+
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" aria-label="Toggle theme"></button>
+    <a href="training.html" class="nav-cta">Enroll Now</a>
+    <button class="hamburger" id="cs-ham"><div class="ham-dots"><div class="ham-dot"></div><div class="ham-dot"></div><div class="ham-dot"></div><div class="ham-dot"></div></div></button>
+  </div>
+</nav>
+
+<div id="cs-loader">
+  <div class="ld-logo-wrap">
+    <div class="ld-ring"></div><div class="ld-ring2"></div><div class="ld-ring3"></div>
+    <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ld-logo-img" alt="Crown Digital">
+  </div>
+  <div class="ld-word">CROWN DIGITAL</div>
+  <div class="ld-sub">Nigeria's Premier 3D Studio</div>
+  <div class="ld-bar-track"><div class="ld-bar-fill"></div></div>
+  <div style="margin-top:8px;font-family:var(--font-m);font-size:.5rem;color:rgba(255,255,255,.2)" id="ld-pct">0%</div>
+</div>
+
+
+
+
+<!-- PAGE HERO -->
+<section class="pg-hero">
+  <div class="pg-hero-bg-img"></div>
+  <div class="pg-hero-grid"></div>
+  <div class="pg-hero-inner">
+    <div class="s-label reveal">Learn 3D Animation Online</div>
+    <h1 class="pg-hero-title reveal rd1">CROWN<br><span style="-webkit-text-stroke:1.5px var(--gold);color:transparent">TRAINING</span></h1>
+    <p class="pg-hero-sub reveal rd2">Industry-led Autodesk Maya courses taught by working professionals. Build a career in animation — from first keyframe to industry-ready portfolio.</p>
+  </div>
+</section>
+
+<!-- MENTORSHIP HERO -->
+<section class="mentor-hero">
+  <div class="mentor-bg-text">DRIVEN</div>
+  <div class="s-label reveal" style="justify-content:center">The Crown Mentorship</div>
+  <h2 class="s-title reveal rd1">FOR THE <span style="-webkit-text-stroke:1.5px #f5c842;color:transparent">DRIVEN</span></h2>
+  <p class="reveal rd2">Mentorship for animators who love the craft and are ready to level up. Passionate, curious, and committed to the work.</p>
+  <div class="pill-row reveal rd3">
+    <span class="pill">Personalized Feedback</span><span class="pill">Industry Mentors</span>
+    <span class="pill">Portfolio Building</span><span class="pill">Career Guidance</span>
+    <span class="pill">Live Sessions</span><span class="pill">Community Access</span>
+    <span class="pill">Autodesk Maya</span><span class="pill">Real Projects</span>
+  </div>
+</section>
+
+<div class="cs-marquee"><div class="cs-marquee-inner"></div></div>
+
+<!-- COURSES -->
+<section class="courses-sect" id="courses">
+  <div class="cs-header">
+    <div>
+      <div class="s-label reveal">Programs</div>
+      <h2 class="s-title reveal rd1">ALL <span class="outline">COURSES</span></h2>
+    </div>
+    <p class="reveal rd2" style="font-family:var(--font-a);font-size:.95rem;color:var(--text2);max-width:300px;line-height:1.6">Click any course to explore the full curriculum — then enroll when you're ready.</p>
+  </div>
+  <div class="cs-grid">
+
+    <!-- 1: 3D Modeling Beginner -->
+    <div class="course-card reveal" data-course="modeling" onclick="openCourseDetail('modeling')">
+      <span class="cc-badge">Beginner</span>
+      <div class="cc-vis">
+        <img src="Brand Images/Crown_Jnr1.png" alt="3D Modeling" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i class="cc-vis-icon bi bi-box-seam-fill" style="display:none"></i>
+      </div>
+      <div class="cc-body">
+        <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;8 Weeks · Online · Maya</p>
+        <h3 class="cc-title">3D MODELING — BEGINNER</h3>
+        <p class="cc-desc">Master the foundation of 3D art. Maya interface, object modeling, materials, textures, lighting, cameras, and rendering — from scratch.</p>
+        <div class="cc-price">₦<span>150,000</span> <sub>NGN</sub></div>
+        <button class="cc-enroll"><i class="bi bi-eye"></i> &nbsp;View Details & Enroll</button>
+      </div>
+    </div>
+
+    <!-- 2: 3D Animation Beginner -->
+    <div class="course-card reveal rd1" data-course="animation" onclick="openCourseDetail('animation')">
+      <span class="cc-badge">Beginner</span>
+      <div class="cc-vis">
+        <img src="Brand Images/Jumpsuit_Long_Final.png" alt="Animation Course" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i class="cc-vis-icon bi bi-person-bounding-box" style="display:none"></i>
+      </div>
+      <div class="cc-body">
+        <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;6 Weeks · Online · Maya</p>
+        <h3 class="cc-title">3D ANIMATION — BEGINNER</h3>
+        <p class="cc-desc">Start your animation journey. Timing, arcs, squash & stretch, weight, overlap, and bipedal locomotion basics — industry principles from day one.</p>
+        <div class="cc-price">₦<span>200,000</span> <sub>NGN</sub></div>
+        <button class="cc-enroll"><i class="bi bi-eye"></i> &nbsp;View Details & Enroll</button>
+      </div>
+    </div>
+
+    <!-- 3: 3D Animation Intermediate -->
+    <div class="course-card reveal rd2" data-course="intermediate" onclick="openCourseDetail('intermediate')">
+      <span class="cc-badge" style="background:var(--blue);color:#fff">Intermediate</span>
+      <div class="cc-vis">
+        <img src="Brand Images/Wisdom01.png" alt="Intermediate Animation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i class="cc-vis-icon bi bi-trophy-fill" style="display:none"></i>
+      </div>
+      <div class="cc-body">
+        <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;8 Weeks · Online · Maya</p>
+        <h3 class="cc-title">3D ANIMATION — INTERMEDIATE</h3>
+        <p class="cc-desc">Level up with complex character animation, weight, advanced graph editor, industry workflows, and portfolio-ready cinematic shots.</p>
+        <div class="cc-price">₦<span>250,000</span> <sub>NGN</sub></div>
+        <button class="cc-enroll"><i class="bi bi-eye"></i> &nbsp;View Details & Enroll</button>
+      </div>
+    </div>
+
+    <!-- 4: 2D Animation -->
+    <div class="course-card reveal rd3" style="--cc:var(--teal);--cc-glow:rgba(0,137,123,.15)" onclick="openCourseDetail('2d')">
+      <span class="cc-badge" style="background:var(--teal);color:#fff">Beginner</span>
+      <div class="cc-vis" style="background:var(--bg2)">
+        <i class="cc-vis-icon bi bi-stars" style="display:flex"></i>
+      </div>
+      <div class="cc-body">
+        <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;6 Weeks · Online · After Effects</p>
+        <h3 class="cc-title">2D ANIMATION</h3>
+        <p class="cc-desc">Create stunning 2D animations with After Effects. Motion graphics, character rigs, cel animation, dynamic typography, and brand storytelling.</p>
+        <div class="cc-price" style="color:var(--teal)">₦<span>120,000</span> <sub>NGN</sub></div>
+        <button class="cc-enroll" style="background:var(--teal)"><i class="bi bi-eye"></i> &nbsp;View Details & Enroll</button>
+      </div>
+    </div>
+
+    <!-- 5: Video Editing -->
+    <div class="course-card reveal rd4" style="--cc:var(--blue);--cc-glow:rgba(75,168,255,.15)" onclick="openCourseDetail('video')">
+      <span class="cc-badge" style="background:var(--blue);color:#fff">All Levels</span>
+      <div class="cc-vis" style="background:var(--bg2)">
+        <i class="cc-vis-icon bi bi-scissors" style="display:flex"></i>
+      </div>
+      <div class="cc-body">
+        <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;4 Weeks · Online · Premiere Pro</p>
+        <h3 class="cc-title">VIDEO EDITING</h3>
+        <p class="cc-desc">Professional editing, colour grading, sound design, transitions, and cinematic storytelling. Go from raw footage to broadcast-ready content.</p>
+        <div class="cc-price" style="color:var(--blue)">₦<span>80,000</span> <sub>NGN</sub></div>
+        <button class="cc-enroll" style="background:var(--blue);color:#fff"><i class="bi bi-eye"></i> &nbsp;View Details & Enroll</button>
+      </div>
+    </div>
+
+    <!-- 6: AI Filmmaking -->
+    <div class="course-card reveal rd5" style="--cc:#a855f7;--cc-glow:rgba(168,85,247,.15)" onclick="openCourseDetail('ai')">
+      <span class="cc-badge" style="background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff">New</span>
+      <div class="cc-vis" style="background:var(--bg2)">
+        <i class="cc-vis-icon bi bi-robot" style="display:flex;color:#a855f7"></i>
+      </div>
+      <div class="cc-body">
+        <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;4 Weeks · Online · Multi-tool</p>
+        <h3 class="cc-title">AI FILMMAKING & ANIMATION</h3>
+        <p class="cc-desc">Master AI-powered tools to generate, animate, and edit cinematic content. Runway, Kling, Sora, CapCut AI, and more — the future of content creation.</p>
+        <div class="cc-price" style="color:#a855f7">₦<span>100,000</span> <sub>NGN</sub></div>
+        <button class="cc-enroll" style="background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff"><i class="bi bi-eye"></i> &nbsp;View Details & Enroll</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COURSE DETAIL OVERLAY -->
+<div class="cd-overlay" id="cdOverlay" onclick="closeCourseDetail(event)">
+  <div class="cd-panel" id="cdPanel">
+    <button class="cd-close" onclick="closeCourseDetailBtn()"><i class="bi bi-x-lg"></i></button>
+    <div class="cd-scroll">
+      <!-- Header -->
+      <div class="cd-header" id="cdHeader">
+        <div class="cd-header-meta">
+          <span class="cd-badge-tag" id="cdBadgeTag">Beginner</span>
+          <span class="cd-header-duration" id="cdDuration">8 Weeks · Online</span>
+        </div>
+        <div class="cd-header-icon" id="cdHeaderIcon">🎬</div>
+        <h2 class="cd-title" id="cdTitle">Course Title</h2>
+        <p class="cd-tagline" id="cdTagline">Tagline goes here</p>
+        <div class="cd-header-pills" id="cdPills"></div>
+      </div>
+      <!-- Body -->
+      <div class="cd-body">
+        <div class="cd-left">
+          <!-- What you'll learn -->
+          <div class="cd-section">
+            <div class="cd-section-label"><i class="bi bi-check2-circle"></i> What You'll Learn</div>
+            <ul class="cd-learn-list" id="cdLearnList"></ul>
+          </div>
+          <!-- Curriculum -->
+          <div class="cd-section">
+            <div class="cd-section-label"><i class="bi bi-calendar3"></i> Week-by-Week Curriculum</div>
+            <div class="cd-curriculum" id="cdCurriculum"></div>
+          </div>
+          <!-- Requirements -->
+          <div class="cd-section">
+            <div class="cd-section-label"><i class="bi bi-laptop"></i> Requirements</div>
+            <ul class="cd-req-list" id="cdReqList"></ul>
+          </div>
+        </div>
+        <div class="cd-right">
+          <!-- Price Card -->
+          <div class="cd-price-card" id="cdPriceCard">
+            <div class="cd-price-main" id="cdPriceMain">₦0</div>
+            <p class="cd-price-note">One-time payment · Lifetime access to materials</p>
+            <button class="cd-enroll-btn" id="cdEnrollBtn">
+              <i class="bi bi-mortarboard-fill"></i> Enroll Now — Secure Your Spot
+            </button>
+            <div class="cd-or">— or —</div>
+            <a class="cd-wa-btn" href="https://wa.me/2348000000000?text=Hi%20Crown%20Digital%2C%20I%27d%20like%20to%20know%20more%20about%20your%20courses." target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i> Ask on WhatsApp
+            </a>
+            <!-- Inclusions -->
+            <div class="cd-includes">
+              <div class="cd-inc-title">This course includes</div>
+              <ul class="cd-inc-list" id="cdIncList"></ul>
+            </div>
+            <!-- Instructor -->
+            <div class="cd-instructor">
+              <div class="cd-inst-avatar"><i class="bi bi-person-circle"></i></div>
+              <div>
+                <div class="cd-inst-label">Your Instructor</div>
+                <div class="cd-inst-name" id="cdInstName">Crown Studios Team</div>
+                <div class="cd-inst-role" id="cdInstRole">Industry Professional</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+/* ── COURSE DETAIL OVERLAY ── */
+.cd-overlay {
+  position:fixed; inset:0; z-index:9100;
+  background:rgba(0,0,0,.75); backdrop-filter:blur(10px);
+  opacity:0; pointer-events:none;
+  transition:opacity .35s var(--ease);
+  display:flex; align-items:flex-start; justify-content:flex-end;
+  overflow:hidden;
+}
+.cd-overlay.open { opacity:1; pointer-events:all; }
+.cd-panel {
+  width:min(880px,95vw); height:100vh;
+  background:var(--bg); overflow:hidden;
+  transform:translateX(100%);
+  transition:transform .45s var(--ease);
+  display:flex; flex-direction:column;
+  box-shadow:-40px 0 80px rgba(0,0,0,.3);
+  position:relative;
+}
+.cd-overlay.open .cd-panel { transform:translateX(0); }
+.cd-close {
+  position:absolute; top:20px; right:20px; z-index:10;
+  width:40px; height:40px; border-radius:50%;
+  background:var(--surface); border:1px solid var(--border2);
+  color:var(--text); font-size:1rem; cursor:none;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .3s, color .3s; box-shadow:var(--shadow);
+}
+.cd-close:hover { background:var(--red); color:#fff; border-color:var(--red); }
+.cd-scroll { overflow-y:auto; flex:1; }
+.cd-header {
+  padding:48px 40px 36px;
+  background:var(--black);
+  position:relative; overflow:hidden;
+}
+.cd-header::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(252,179,30,.08),transparent);
+}
+.cd-header-meta { display:flex; align-items:center; gap:12px; margin-bottom:20px; position:relative; z-index:2; }
+.cd-badge-tag {
+  font-family:var(--font-m); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase;
+  padding:5px 12px; background:var(--gold2); color:var(--black);
+}
+.cd-header-duration {
+  font-family:var(--font-m); font-size:.5rem; letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+}
+.cd-header-icon { font-size:3.5rem; margin-bottom:12px; position:relative; z-index:2; display:block; }
+.cd-title {
+  font-family:var(--font-d); font-size:clamp(2rem,5vw,3.5rem);
+  color:#f8f4ed; line-height:.92; margin-bottom:12px; position:relative; z-index:2;
+}
+.cd-tagline {
+  font-family:var(--font-a); font-style:italic; font-size:1.05rem;
+  color:rgba(248,244,237,.55); line-height:1.6; max-width:480px;
+  position:relative; z-index:2; margin-bottom:20px;
+}
+.cd-header-pills { display:flex; flex-wrap:wrap; gap:8px; position:relative; z-index:2; }
+.cd-pill {
+  font-family:var(--font-m); font-size:.48rem; letter-spacing:.15em; text-transform:uppercase;
+  padding:5px 12px; border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.5);
+}
+.cd-body {
+  padding:36px 40px;
+  display:grid; grid-template-columns:1fr 300px; gap:36px; align-items:start;
+}
+.cd-section { margin-bottom:32px; }
+.cd-section-label {
+  font-family:var(--font-m); font-size:.55rem; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:14px; display:flex; align-items:center; gap:8px;
+}
+.cd-section-label i { font-size:.8rem; }
+.cd-learn-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.cd-learn-list li {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:.85rem; color:var(--text2); line-height:1.6;
+}
+.cd-learn-list li::before {
+  content:'✦'; color:var(--gold2); font-size:.65rem; margin-top:3px; flex-shrink:0;
+}
+.cd-curriculum { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); }
+.cd-week {
+  border-bottom:1px solid var(--border); overflow:hidden;
+}
+.cd-week:last-child { border-bottom:none; }
+.cd-week-btn {
+  width:100%; display:flex; align-items:center; gap:12px;
+  padding:12px 16px; background:none; border:none; cursor:none; text-align:left;
+  transition:background .2s;
+}
+.cd-week-btn:hover { background:var(--bg2); }
+.cd-week.cw-open .cd-week-btn { background:var(--bg2); }
+.cd-wk-num {
+  font-family:var(--font-d); font-size:1.1rem; color:var(--border2);
+  width:36px; flex-shrink:0; transition:color .3s;
+}
+.cd-week.cw-open .cd-wk-num { color:var(--gold2); }
+.cd-wk-info { flex:1; }
+.cd-wk-title { font-family:var(--font-d); font-size:.92rem; color:var(--text); }
+.cd-wk-sub { font-family:var(--font-m); font-size:.46rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text3); margin-top:2px; }
+.cd-wk-arrow { font-size:.75rem; color:var(--text3); transition:transform .3s var(--ease); flex-shrink:0; }
+.cd-week.cw-open .cd-wk-arrow { transform:rotate(180deg); color:var(--gold2); }
+.cd-week-body { max-height:0; overflow:hidden; transition:max-height .4s var(--ease); padding:0 16px; }
+.cd-week.cw-open .cd-week-body { max-height:220px; padding:0 16px 14px; }
+.cd-week-body p { font-size:.8rem; color:var(--text2); line-height:1.7; margin-bottom:8px; }
+.cd-week-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.cd-week-tags span { font-family:var(--font-m); font-size:.44rem; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border:1px solid var(--border2); color:var(--text3); }
+.cd-req-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.cd-req-list li { font-size:.85rem; color:var(--text2); display:flex; gap:8px; }
+.cd-req-list li::before { content:'→'; color:var(--blue); flex-shrink:0; }
+/* Price card */
+.cd-price-card {
+  background:var(--surface); border:1px solid var(--border2);
+  padding:28px 24px; position:sticky; top:20px;
+}
+.cd-price-main { font-family:var(--font-d); font-size:2.6rem; color:var(--gold); margin-bottom:4px; }
+.cd-price-note { font-family:var(--font-m); font-size:.5rem; letter-spacing:.12em; color:var(--text3); margin-bottom:20px; }
+.cd-enroll-btn {
+  width:100%; font-family:var(--font-m); font-size:.62rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--black); background:var(--gold2);
+  border:none; padding:15px; cursor:none;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:background .3s, transform .2s, box-shadow .3s;
+  margin-bottom:12px;
+}
+.cd-enroll-btn:hover { background:var(--gold); box-shadow:0 0 24px var(--gold-glow); transform:translateY(-1px); }
+.cd-or { text-align:center; font-family:var(--font-m); font-size:.48rem; color:var(--text3); margin-bottom:12px; }
+.cd-wa-btn {
+  width:100%; display:flex; align-items:center; justify-content:center; gap:8px;
+  background:#25d366; color:#fff; text-decoration:none;
+  font-family:var(--font-m); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase;
+  padding:12px; margin-bottom:24px; transition:opacity .3s;
+}
+.cd-wa-btn:hover { opacity:.9; }
+.cd-includes { margin-top:4px; }
+.cd-inc-title { font-family:var(--font-m); font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--text3); margin-bottom:12px; }
+.cd-inc-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.cd-inc-list li { font-size:.8rem; color:var(--text2); display:flex; align-items:center; gap:8px; }
+.cd-inc-list i { color:var(--teal); font-size:.85rem; flex-shrink:0; }
+.cd-instructor { display:flex; align-items:center; gap:12px; margin-top:24px; padding-top:20px; border-top:1px solid var(--border); }
+.cd-inst-avatar { font-size:2.4rem; color:var(--border2); }
+.cd-inst-label { font-family:var(--font-m); font-size:.46rem; letter-spacing:.18em; text-transform:uppercase; color:var(--text3); margin-bottom:2px; }
+.cd-inst-name { font-family:var(--font-d); font-size:1rem; color:var(--text); }
+.cd-inst-role { font-family:var(--font-m); font-size:.5rem; color:var(--gold); }
+@media(max-width:700px){
+  .cd-body { grid-template-columns:1fr; }
+  .cd-header { padding:40px 20px 28px; }
+  .cd-body { padding:24px 20px; }
+  .cd-price-card { position:static; }
+}
+</style>
+
+<!-- FAQ -->
+<section class="faq-sect">
+  <div class="faq-inner">
+    <div class="s-label reveal">Questions</div>
+    <h2 class="s-title reveal rd1">FREQUENTLY ASKED <span class="outline">QUESTIONS</span></h2>
+    <div style="margin-top:40px">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need prior 3D experience?<i class="faq-icon bi bi-plus-lg"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">No prior experience is needed for our Beginner courses. We start from absolute zero — if you can use a computer, you can start. The Intermediate course requires completion of the Beginner program or equivalent experience.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What software do I need?<i class="faq-icon bi bi-plus-lg"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">All courses use Autodesk Maya. A student version is available free from Autodesk's website. We'll guide you through the installation process at the start of the course.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are classes live or pre-recorded?<i class="faq-icon bi bi-plus-lg"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">We offer a blended approach — structured video lessons you can watch at your own pace, combined with live mentorship sessions for feedback, Q&A, and critique. This gives you flexibility without sacrificing personal guidance.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I pay in installments?<i class="faq-icon bi bi-plus-lg"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes, installment plans are available for all courses. Contact us on WhatsApp or email after enrollment and we'll arrange a payment schedule that works for you.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What happens after I pay?<i class="faq-icon bi bi-plus-lg"></i></button>
+        <div class="faq-a"><div class="faq-a-inner">Once your payment is confirmed (typically within 30 minutes during business hours), you'll receive your course access details via WhatsApp or email. A Crown Studios team member will onboard you personally.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STUDENT PORTFOLIO -->
+<section class="student-portfolio-sect" id="student-work">
+  <div class="sp-sect-inner">
+    <div class="s-label reveal">Real Results</div>
+    <h2 class="s-title reveal rd1">STUDENT <span class="outline">PORTFOLIO</span></h2>
+    <p class="reveal rd2" style="font-family:var(--font-a);font-size:1rem;color:var(--text2);max-width:540px;margin-bottom:48px;line-height:1.7">
+      These are real projects completed by Crown Studios students during their training program.
+    </p>
+    <div class="sp-video-grid">
+      <!-- Video 1: Dialogue Animation -->
+      <div class="spv-card reveal" data-lb-type="video" data-lb-src="Student Portfolio/Dialogue Animation.mp4" data-lb-tag="Character Animation" data-lb-name="Dialogue Animation">
+        <div class="spv-thumb">
+          <video src="Student Portfolio/Dialogue Animation.mp4" muted autoplay loop playsinline class="spv-vid"></video>
+          <div class="spv-play"><i class="bi bi-play-fill"></i></div>
+          <div class="spv-over"></div>
+        </div>
+        <div class="spv-info">
+          <span class="spv-tag">Character Animation</span>
+          <h3 class="spv-title">Dialogue Animation</h3>
+        </div>
+      </div>
+      <!-- Video 2: Mukuru Sing -->
+      <div class="spv-card reveal rd1" data-lb-type="video" data-lb-src="Student Portfolio/Mukuru Sing.mp4" data-lb-tag="Character Performance" data-lb-name="Mukuru Sing">
+        <div class="spv-thumb">
+          <video src="Student Portfolio/Mukuru Sing.mp4" muted autoplay loop playsinline class="spv-vid"></video>
+          <div class="spv-play"><i class="bi bi-play-fill"></i></div>
+          <div class="spv-over"></div>
+        </div>
+        <div class="spv-info">
+          <span class="spv-tag">Character Performance</span>
+          <h3 class="spv-title">Mukuru Sing</h3>
+        </div>
+      </div>
+      <!-- Video 3:  -->
+      <div class="spv-card reveal rd2" data-lb-type="video" data-lb-src="Student Portfolio/Student Project II.mov" data-lb-tag="3D Environment" data-lb-name="Student Project II">
+        <div class="spv-thumb">
+          <video src="Student Portfolio/Student Project Ii.webm" muted autoplay loop playsinline class="spv-vid"></video>
+          <div class="spv-play"><i class="bi bi-play-fill"></i></div>
+          <div class="spv-over"></div>
+        </div>
+        <div class="spv-info">
+          <span class="spv-tag">3D Environment</span>
+          <h3 class="spv-title">Student Project II</h3>
+        </div>
+      </div>
+      <!-- Video 4: Student Project -->
+      <div class="spv-card reveal rd3" data-lb-type="video" data-lb-src="Student Portfolio/Student Project.mp4" data-lb-tag="Architectural Viz" data-lb-name="Student Project">
+        <div class="spv-thumb">
+          <video src="Student Portfolio/Student Project.mp4" muted autoplay loop playsinline class="spv-vid"></video>
+          <div class="spv-play"><i class="bi bi-play-fill"></i></div>
+          <div class="spv-over"></div>
+        </div>
+        <div class="spv-info">
+          <span class="spv-tag">Architectural Viz</span>
+          <h3 class="spv-title">Student Project</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="cs-footer">
+  <div class="ft-top">
+    <div class="ft-brand">
+      <a href="index.html" class="nav-brand" style="text-decoration:none">
+        <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="ft-logo-dark" style="height:32px">
+        <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ft-logo-light" style="height:32px">
+         
+      </a>
+      <p>Where technical precision meets cinematic artistry.</p>
+    </div>
+    <div class="ft-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="training.html">Training</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="/cdn-cgi/l/email-protection#0d4e7f627a637e79786964627e3f393a4d6a606c6461236e6260"><span class="__cf_email__" data-cfemail="b6f5c4d9c1d8c5c2c3d2dfd9c5848281f6d1dbd7dfda98d5d9db">[email&#160;protected]</span></a></li><li><a href="#">Mon–Fri · 9am–8pm WAT</a></li></ul></div>
+  </div>
+  <div class="ft-bottom"><p class="ft-copy">© 2025 Crown Studio. All Rights Reserved.</p><p class="ft-copy">Made with <i class="bi bi-shield-fill-check" style="color:var(--gold)"></i> in Nigeria</p></div>
+</footer>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal" onclick="modalBGClose(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()"><i class="bi bi-x-lg"></i></button>
+    <div class="modal-progress">
+      <div class="mp-step active" id="mp1">Course</div>
+      <div class="mp-step" id="mp2">Details</div>
+      <div class="mp-step" id="mp3">Payment</div>
+      <div class="mp-step" id="mp4">Upload</div>
+      <div class="mp-step" id="mp5">Done</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="checkout-step active" id="step1">
+      <h2 class="step-title">Course Summary</h2>
+      <p class="step-sub">Review your selected course before proceeding.</p>
+      <div class="course-detail-card">
+        <i class="cdc-icon bi" id="cdc-icon"></i>
+        <div class="cdc-info">
+          <h3 id="cdc-title">Course Name</h3>
+          <p id="cdc-dur">Duration · Online · Maya</p>
+        </div>
+        <div class="cdc-price" id="cdc-price">₦0</div>
+      </div>
+      <ul id="cdc-points" style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px"></ul>
+      <div class="step-nav">
+        <button class="btn-gold" onclick="goStep(2)"><span>Continue <i class="bi bi-arrow-right"></i></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="checkout-step" id="step2">
+      <h2 class="step-title">Your Details</h2>
+      <p class="step-sub">Even if you don't complete payment now, we'll follow up to help you get started.</p>
+      <div class="f-row">
+        <div class="f-group"><label>Full Name *</label><input type="text" id="f-name" placeholder="Your full name"></div>
+        <div class="f-group"><label>Email Address *</label><input type="email" id="f-email" placeholder="you@email.com"></div>
+      </div>
+      <div class="f-row">
+        <div class="f-group"><label>Phone / WhatsApp *</label><input type="tel" id="f-phone" placeholder="+234 800 000 0000"></div>
+        <div class="f-group"><label>Course</label><input type="text" id="f-course-display" readonly style="cursor:not-allowed;opacity:.7"></div>
+      </div>
+      <div class="f-group"><label>How did you hear about us?</label>
+        <select id="f-source">
+          <option value="">Select one</option>
+          <option>Instagram</option><option>Facebook</option><option>WhatsApp</option>
+          <option>Referral</option><option>Google</option><option>YouTube</option><option>Other</option>
+        </select>
+      </div>
+      <div class="step-nav">
+        <button class="btn-outline" onclick="goStep(1)"><i class="bi bi-arrow-left"></i> Back</button>
+        <button class="btn-gold" onclick="validateStep2()"><span>Proceed to Payment <i class="bi bi-arrow-right"></i></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 3: PAYMENT -->
+    <div class="checkout-step" id="step3">
+      <h2 class="step-title">Payment</h2>
+      <p class="step-sub">Choose your preferred payment method.</p>
+
+      <div class="pay-methods">
+        <div class="pay-method" id="pm-paypal" onclick="selectPayMethod('paypal')">
+          <div class="pay-method-icon"><i class="bi bi-paypal"></i></div>
+          <h4>PayPal</h4>
+          <p>International · Secure</p>
+        </div>
+        <div class="pay-method" id="pm-bank" onclick="selectPayMethod('bank')">
+          <div class="pay-method-icon"><i class="bi bi-bank2"></i></div>
+          <h4>Bank Transfer</h4>
+          <p>Naira · Direct · Nigeria</p>
+        </div>
+      </div>
+
+      <!-- PAYPAL BOX -->
+      <div id="paypal-box" style="display:none">
+        <div class="paypal-box">
+          <div class="paypal-logo">
+            <i class="bi bi-paypal"></i>
+            <span>PayPal</span>
+          </div>
+          <p style="font-family:var(--font-m);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:12px">Send payment to:</p>
+          <div style="background:var(--surface);border:1px solid var(--border2);padding:12px 20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:var(--font-d);font-size:1rem;color:var(--text)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1f2c3dec6dfc2c5c4d5d8dec2838586f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></span>
+            <button class="bd-copy" onclick="copyText('Crownstudios247@gmail.com',this)">Copy</button>
+          </div>
+          <p style="font-size:.78rem;color:var(--text3);line-height:1.7">Send the exact course amount. Use your <strong style="color:var(--text)">full name + course name</strong> as payment note so we can identify your payment.</p>
+        </div>
+      </div>
+
+      <!-- BANK TRANSFER BOX -->
+      <div id="bank-details-box" style="display:none">
+        <div class="ref-badge" id="ref-display">Reference: CS-ANIM-XXXXX</div>
+        <div class="timer-box">
+          <i class="timer-icon bi bi-alarm-fill"></i>
+          <div class="timer-text">
+            <p>Session expires in</p>
+            <div class="timer-display" id="timer-count">20:00</div>
+            <span class="timer-expired" id="timer-expired">Session expired. Please restart.</span>
+          </div>
+        </div>
+
+        <!-- Amount display -->
+        <div style="background:rgba(200,144,10,.07);border:1px solid rgba(200,144,10,.3);padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-family:var(--font-m);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3)">Amount to Pay</span>
+          <span id="amt-display" style="font-family:var(--font-d);font-size:1.4rem;color:var(--gold)">₦250,000</span>
+        </div>
+
+        <!-- Select a Bank -->
+        <p style="font-family:var(--font-m);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:12px">Select Your Bank:</p>
+        <div class="bank-select-grid">
+          <div class="bank-btn" onclick="selectBank('gtb')">
+            <div class="bank-btn-logo-placeholder" style="background:#e8f0e8;color:#0a7a0a">GT</div>
+            <div class="bank-btn-info"><span class="bank-btn-name">GTBank</span><span class="bank-btn-type">Guaranty Trust Bank</span></div>
+          </div>
+          <div class="bank-btn" onclick="selectBank('access')">
+            <div class="bank-btn-logo-placeholder" style="background:#ffe0e0;color:#cc0000">AC</div>
+            <div class="bank-btn-info"><span class="bank-btn-name">Access Bank</span><span class="bank-btn-type">Access Diamond</span></div>
+          </div>
+          <div class="bank-btn" onclick="selectBank('uba')">
+            <div class="bank-btn-logo-placeholder" style="background:#e8e8f8;color:#0000aa">UB</div>
+            <div class="bank-btn-info"><span class="bank-btn-name">UBA</span><span class="bank-btn-type">United Bank for Africa</span></div>
+          </div>
+          <div class="bank-btn" onclick="selectBank('zenith')">
+            <div class="bank-btn-logo-placeholder" style="background:#fff0e0;color:#c07000">ZB</div>
+            <div class="bank-btn-info"><span class="bank-btn-name">Zenith Bank</span><span class="bank-btn-type">Zenith International</span></div>
+          </div>
+        </div>
+
+        <!-- Bank detail cards — one per bank, shown on selection -->
+        <div class="bank-detail-card" id="bdc-gtb">
+          <div class="bdc-header">
+            <div class="bdc-header-logo-placeholder" style="background:#e8f0e8;color:#0a7a0a">GT</div>
+            <div><div class="bdc-header-name">GTBank</div><div class="bdc-header-sub">Guaranty Trust Bank PLC</div></div>
+          </div>
+          <div class="bdc-rows">
+            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">0123456789</span><button class="bd-copy" onclick="copyText('0123456789',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">GTBank</span></div>
+            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-gtb">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
+          </div>
+        </div>
+
+        <div class="bank-detail-card" id="bdc-access">
+          <div class="bdc-header">
+            <div class="bdc-header-logo-placeholder" style="background:#ffe0e0;color:#cc0000">AC</div>
+            <div><div class="bdc-header-name">Access Bank</div><div class="bdc-header-sub">Access Bank PLC (Diamond)</div></div>
+          </div>
+          <div class="bdc-rows">
+            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">0987654321</span><button class="bd-copy" onclick="copyText('0987654321',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">Access Bank</span></div>
+            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-access">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
+          </div>
+        </div>
+
+        <div class="bank-detail-card" id="bdc-uba">
+          <div class="bdc-header">
+            <div class="bdc-header-logo-placeholder" style="background:#e8e8f8;color:#0000aa">UB</div>
+            <div><div class="bdc-header-name">UBA</div><div class="bdc-header-sub">United Bank for Africa PLC</div></div>
+          </div>
+          <div class="bdc-rows">
+            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">1122334455</span><button class="bd-copy" onclick="copyText('1122334455',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">UBA</span></div>
+            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-uba">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
+          </div>
+        </div>
+
+        <div class="bank-detail-card" id="bdc-zenith">
+          <div class="bdc-header">
+            <div class="bdc-header-logo-placeholder" style="background:#fff0e0;color:#c07000">ZB</div>
+            <div><div class="bdc-header-name">Zenith Bank</div><div class="bdc-header-sub">Zenith Bank International PLC</div></div>
+          </div>
+          <div class="bdc-rows">
+            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">2233445566</span><button class="bd-copy" onclick="copyText('2233445566',this)">Copy</button></div>
+            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">Zenith Bank</span></div>
+            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-zenith">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
+          </div>
+        </div>
+
+        <p style="font-family:var(--font-m);font-size:.55rem;color:var(--text3);line-height:1.7;margin-bottom:16px;margin-top:8px"><i class="bi bi-exclamation-triangle-fill" style="color:var(--gold)"></i> &nbsp;Use the reference code above as your payment narration to help us identify your payment instantly.</p>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-outline" onclick="goStep(2)"><i class="bi bi-arrow-left"></i> Back</button>
+        <button class="btn-gold" id="pay-next-btn" onclick="goPayNext()" disabled><span>I Have Paid <i class="bi bi-arrow-right"></i></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Upload Proof -->
+    <div class="checkout-step" id="step4">
+      <h2 class="step-title">Upload Proof</h2>
+      <p class="step-sub">Upload your payment screenshot or receipt. This speeds up verification.</p>
+      <div class="course-detail-card" style="margin-bottom:20px">
+        <i class="cdc-icon bi bi-clipboard-check-fill" style="color:var(--teal)"></i>
+        <div class="cdc-info">
+          <h3 id="proof-ref" style="font-size:.9rem">Reference: CS-XXXX</h3>
+          <p>Keep this for your records</p>
+        </div>
+      </div>
+      <div class="upload-area" id="uploadArea" onclick="document.getElementById('file-input').click()">
+        <input type="file" id="file-input" accept="image/*,.pdf" onchange="handleUpload(this)">
+        <div class="upload-icon"><i class="bi bi-cloud-upload-fill"></i></div>
+        <p class="upload-text">Click or drag your receipt here</p>
+        <p class="upload-sub">PNG, JPG, PDF · Max 5MB</p>
+        <p class="upload-preview" id="upload-preview"></p>
+      </div>
+      <div class="f-row">
+        <div class="f-group"><label>Transaction Reference (optional)</label><input type="text" id="txn-ref" placeholder="e.g. TXN2024XXXXX"></div>
+        <div class="f-group"><label>Bank Used (optional)</label><input type="text" id="bank-used" placeholder="e.g. GTBank, Access"></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-outline" onclick="goStep(3)"><i class="bi bi-arrow-left"></i> Back</button>
+        <button class="btn-gold" onclick="submitProof()"><span>Submit for Verification <i class="bi bi-arrow-right"></i></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Confirmation -->
+    <div class="checkout-step" id="step5">
+      <div class="status-screen">
+        <i class="status-icon bi bi-check-circle-fill"></i>
+        <h3>Payment Under Review</h3>
+        <p>Your proof has been received. Our team will verify and confirm your enrollment.</p>
+        <div class="ref-display">
+          <span>Your Reference ID</span>
+          <strong id="confirm-ref">CS-ANIM-XXXXX</strong>
+        </div>
+        <div class="est-time">
+          <i class="bi bi-clock-fill" style="font-size:1.2rem;color:var(--teal)"></i>
+          <p>Estimated confirmation: <strong>5–30 minutes</strong> during business hours (Mon–Fri, 9am–8pm WAT)</p>
+        </div>
+        <p style="font-size:.8rem;color:var(--text3);margin-bottom:8px">Send us a WhatsApp message with your reference for faster verification:</p>
+        <a class="wa-btn" id="wa-link" href="#" target="_blank">
+          <i class="bi bi-whatsapp" style="font-size:1.2rem"></i> Send via WhatsApp
+        </a>
+        <div style="margin-top:20px">
+          <button class="btn-outline" style="width:100%" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+/* ── LOADER FAILSAFE: fires regardless of external scripts ── */
+(function(){
+  function killLoader(){
+    var loader=document.getElementById('cs-loader');
+    if(!loader||loader.dataset.dismissed) return;
+    loader.dataset.dismissed='true';
+    loader.classList.add('ld-out');
+    setTimeout(function(){
+      loader.style.display='none';
+      try{loader.remove();}catch(e){}
+    },850);
+  }
+  /* Try immediately, then at 1s, 2s and 3s as hard fallbacks */
+  setTimeout(killLoader,1000);
+  setTimeout(killLoader,2000);
+  setTimeout(killLoader,3000);
+  document.addEventListener('DOMContentLoaded',function(){ setTimeout(killLoader,500); });
+  window.addEventListener('load',function(){ setTimeout(killLoader,200); });
+})();
+</script>
+<script>
+let currentStep=1, selectedMethod=null, selectedBank=null;
+let timerInterval=null, timerSeconds=1200;
+let currentRef='', currentCourse='', currentName='';
+
+const courseData = {
+  '3D Modeling – Beginner Course':    { points:['Maya interface & workspace','Object modeling fundamentals','Materials & textures','Lights, cameras & rendering','8-week structured program','Certificate of completion'], dur:'8 Weeks · Online · Maya' },
+  '3D Animation – Beginner Course':   { points:['Timing & arcs','Squash & stretch','Ease in & ease out','Weight & gravity','Overlap & follow-through','Bipedal locomotion basics'], dur:'Flexible · Online · Maya' },
+  '3D Animation – Intermediate Course':{ points:['Character animation with weight','Action & physical scenarios','Advanced graph editor','Complex action sequences','Industry-standard workflows','Portfolio-ready shots'], dur:'Advanced · Online · Maya' },
+};
+
+function generateRef(course){
+  const code = course.includes('Modeling')?'MDL':course.includes('Intermediate')?'INT':'ANM';
+  return `CS-${code}-${Math.floor(10000+Math.random()*90000)}`;
+}
+
+function openCheckout(course, price, iconClass, dur){
+  currentCourse=course; currentRef=generateRef(course);
+  const iconEl=document.getElementById('cdc-icon');
+  iconEl.className='cdc-icon bi '+iconClass;
+  document.getElementById('cdc-title').textContent=course;
+  document.getElementById('cdc-dur').textContent=(courseData[course]||{}).dur||dur+' · Online · Maya';
+  document.getElementById('cdc-price').textContent='₦'+Number(price).toLocaleString();
+  document.getElementById('f-course-display').value=course;
+  document.getElementById('amt-display').textContent='₦'+Number(price).toLocaleString();
+  const pts=document.getElementById('cdc-points'); pts.innerHTML='';
+  ((courseData[course]||{}).points||[]).forEach(p=>{
+    const li=document.createElement('li');
+    li.style.cssText='display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--text2)';
+    li.innerHTML=`<i class="bi bi-check-circle-fill" style="color:var(--teal)"></i>${p}`;
+    pts.appendChild(li);
+  });
+  // Set ref in all bank cards
+  ['gtb','access','uba','zenith'].forEach(b=>{
+    const el=document.getElementById('ref-val-'+b);
+    if(el) el.textContent=currentRef;
+  });
+  document.getElementById('ref-display').textContent='Reference: '+currentRef;
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  selectedMethod=null; selectedBank=null;
+  goStep(1);
+}
+
+/* ── COURSE DETAIL PANEL ── */
+const COURSE_DATA = {
+  modeling: {
+    title: '3D MODELING — BEGINNER',
+    badge: 'Beginner', duration: '8 Weeks · Online · Autodesk Maya',
+    icon: '🧊', price: '₦150,000',
+    priceRaw: '150000', priceIcon: 'bi-box-seam-fill',
+    tagline: 'Build the foundation every 3D artist needs. From zero to rendering professional-quality scenes.',
+    pills: ['Autodesk Maya','8 Weeks','Live Mentorship','Portfolio Project','Certificate'],
+    learn: [
+      'Navigate the Autodesk Maya interface with confidence',
+      'Model hard-surface and organic objects from scratch',
+      'Apply materials, textures, and UV unwrapping',
+      'Set up professional lighting rigs and cameras',
+      'Render production-quality scenes with Arnold',
+      'Complete a portfolio-ready final project',
+    ],
+    curriculum: [
+      { week:'01', title:'Maya Overview', sub:'Interface & Navigation', desc:'Get comfortable with Maya — the main interface, navigation in 3D space, and working with basic primitives. You\'ll understand the viewport, shelf, and channel box.', tags:['Interface','Viewport','Primitives','Hotkeys'] },
+      { week:'02', title:'Modeling Fundamentals', sub:'Polygons & Edge Loops', desc:'Learn polygon modeling techniques. Box modeling, edge loops, subdivisions, and how to maintain clean topology for animation-ready assets.', tags:['Poly Modeling','Topology','Edge Loops','Smoothing'] },
+      { week:'03', title:'UV Unwrapping', sub:'Texturing Prep', desc:'Understand UV mapping — how to unfold a 3D mesh so textures apply correctly. Use UV editor, seams, and packing.', tags:['UV Editor','Seams','Packing','UDIM'] },
+      { week:'04', title:'Materials & Texturing', sub:'Arnold Shaders', desc:'Create realistic and stylised materials with Arnold\'s aiStandardSurface shader. Work with PBR texture maps — albedo, roughness, metalness, normal maps.', tags:['aiStandardSurface','PBR','Normal Maps','Texture Sets'] },
+      { week:'05', title:'Lighting & Cameras', sub:'Studio Lighting Rigs', desc:'Set up three-point lighting, HDRI dome lights, and area lights. Learn camera framing, depth of field, and focal length.', tags:['HDRI','Area Lights','DOF','Composition'] },
+      { week:'06', title:'Rendering', sub:'Arnold & Render Settings', desc:'Configure Arnold render settings for quality outputs. AOV passes, denoising, batch rendering, and post-processing in Photoshop.', tags:['Arnold','AOVs','Denoising','Batch Render'] },
+      { week:'07', title:'Scene Assembly', sub:'Building a Full Scene', desc:'Combine all skills — model a complete scene with multiple assets, proper lighting, materials, and camera work.', tags:['Scene Setup','Asset Library','Composition'] },
+      { week:'08', title:'Final Project', sub:'Portfolio-Ready Render', desc:'Complete and present your final portfolio piece. Receive mentor critique and feedback for industry readiness.', tags:['Portfolio','Critique','Final Render'] },
+    ],
+    requirements: ['A computer with at least 8GB RAM (16GB recommended)','Autodesk Maya (free student version available)','No prior 3D experience needed — we start from scratch','Commitment to 6–8 hours per week'],
+    includes: ['8 weeks of structured lessons','Weekly live mentorship sessions','Access to Crown Studios asset library','PDF course notes & reference sheets','Final portfolio critique','Course completion certificate'],
+    instructor: 'Crown Studios', role: 'Industry 3D Artist & Educator',
+  },
+  animation: {
+    title: '3D ANIMATION — BEGINNER',
+    badge: 'Beginner', duration: '6 Weeks · Online · Autodesk Maya',
+    icon: '🎬', price: '₦200,000',
+    priceRaw: '200000', priceIcon: 'bi-person-bounding-box',
+    tagline: 'Master the 12 principles. Bring characters to life with personality, weight, and emotion.',
+    pills: ['Autodesk Maya','6 Weeks','Live Critique','Squirrel Rig','Stewart Biped'],
+    learn: [
+      'Apply all 12 principles of animation in Maya',
+      'Work with pre-built character rigs (Stewart & Squirrel)',
+      'Animate bounces, walks, and full character performances',
+      'Read and edit the Graph Editor for precise timing',
+      'Create an animated film-quality bouncing ball sequence',
+      'Build a beginner animation reel for your portfolio',
+    ],
+    curriculum: [
+      { week:'01', title:'Maya Animation Overview', sub:'Timeline & Graph Editor', desc:'Introduction to Maya\'s animation toolset. Keyframes, timeline, playback controls, and navigating the Graph Editor basics.', tags:['Keyframes','Timeline','Graph Editor','Playback'] },
+      { week:'02', title:'Intro to Animation', sub:'Bouncing Ball & Arcs', desc:'Start with the classic bouncing ball. Learn timing, spacing, arcs, squash & stretch, and anticipation — the building blocks of everything.', tags:['Bouncing Ball','Arcs','Squash & Stretch','Timing'] },
+      { week:'03', title:'12 Principles Deep Dive', sub:'Weight & Overlap', desc:'Apply weight, gravity, overlap & follow-through using the Squirrel rig performing a jump sequence.', tags:['Weight','Overlap','Follow-Through','Squirrel Rig'] },
+      { week:'04', title:'Character Posing I', sub:'Stewart Biped Head Turn', desc:'Introduction to full character animation with the Stewart rig. Learn appealing silhouettes, posing, and animating a dynamic head turn.', tags:['Stewart Rig','Posing','Silhouette','Head Turn'] },
+      { week:'05', title:'Character Animation II', sub:'Walk Cycles', desc:'Animate a complete walk cycle — contact, down, passing, and up positions. Understand weight shift and hip movement.', tags:['Walk Cycle','Contact Pose','Weight Shift','Polish'] },
+      { week:'06', title:'Final Performance Shot', sub:'Portfolio Reel', desc:'Animate a short character performance shot of your choice. Receive mentor critique and compile your beginner demo reel.', tags:['Performance Shot','Demo Reel','Critique','Polish'] },
+    ],
+    requirements: ['Autodesk Maya installed (free student version)','Basic Maya familiarity recommended (or take 3D Modeling first)','8GB RAM minimum, dedicated GPU preferred','5–8 hours per week commitment'],
+    includes: ['6 weeks of structured animation lessons','Live weekly critique sessions','Pre-built character rigs (Stewart & Squirrel)','Graph Editor workflow guides','Demo reel compilation support','Certificate of completion'],
+    instructor: 'Crown Studios', role: 'Lead Character Animator',
+  },
+  intermediate: {
+    title: '3D ANIMATION — INTERMEDIATE',
+    badge: 'Intermediate', duration: '8 Weeks · Online · Autodesk Maya',
+    icon: '🏆', price: '₦250,000',
+    priceRaw: '250000', priceIcon: 'bi-trophy-fill',
+    tagline: 'Complex character performances, cinematic shots, and advanced Maya workflows for industry-ready animators.',
+    pills: ['Autodesk Maya','8 Weeks','Advanced Rigs','Dialogue Animation','Industry Pipeline'],
+    learn: [
+      'Animate complex full-body character performances',
+      'Lip sync and facial animation for dialogue shots',
+      'Use advanced Graph Editor curves and breakdowns',
+      'Create action sequences with impact and secondary motion',
+      'Understand industry pipeline and production workflow',
+      'Build a professional intermediate animation reel',
+    ],
+    curriculum: [
+      { week:'01', title:'Advanced Maya Tools', sub:'Dope Sheet & Trax Editor', desc:'Master advanced Maya animation tools — Dope Sheet editing, Trax Editor for non-linear animation, and constraint systems.', tags:['Dope Sheet','Trax Editor','Constraints','NLA'] },
+      { week:'02', title:'Advanced Body Mechanics', sub:'Weight & Impact', desc:'Animate a robot arm with heavy mechanical weight. Understand force, drag, and momentum in complex character rigs.', tags:['Mechanical Rig','Force','Momentum','Drag'] },
+      { week:'03', title:'Facial Animation', sub:'Blend Shapes & Controls', desc:'Introduction to facial animation using blend shapes and face controls. Achieve nuanced expressions and emotional reads.', tags:['Blend Shapes','Face Controls','Expressions','Eyes'] },
+      { week:'04', title:'Dialogue Animation I', sub:'Audio & Lip Sync', desc:'Animate a character delivering dialogue. Work with audio in Maya, time the mouth shapes, and add body language that supports the words.', tags:['Audio Sync','Lip Sync','Visemes','Body Language'] },
+      { week:'05', title:'Dialogue Animation II', sub:'Subtext & Polish', desc:'Polish the dialogue shot — add subtext, overlapping action, and subtle eye darts. Transform it from functional to cinematic.', tags:['Subtext','Polish','Eye Darts','Overlap'] },
+      { week:'06', title:'Action Sequences', sub:'Fight & Reaction', desc:'Choreograph an action sequence — a punch, reaction, and follow-through. Learn how to maintain weight in fast movements.', tags:['Action Blocking','Fast Motion','Impact','Anticipation'] },
+      { week:'07', title:'Industry Workflow', sub:'Pipeline & Handoff', desc:'Understand the studio production pipeline. Blocking pass, spline pass, polish pass, and how to receive and implement director feedback.', tags:['Blocking Pass','Spline Pass','Polish','Feedback'] },
+      { week:'08', title:'Intermediate Demo Reel', sub:'Portfolio Presentation', desc:'Assemble, edit, and present your intermediate demo reel. One-on-one mentor feedback for industry submission readiness.', tags:['Demo Reel','Editing','Presentation','Industry Ready'] },
+    ],
+    requirements: ['Completion of 3D Animation Beginner, or equivalent experience','Autodesk Maya with a character rig library','16GB RAM recommended for complex scenes','Strong commitment — 8–12 hours per week'],
+    includes: ['8 weeks advanced animation training','Advanced pre-built character rigs','Weekly one-on-one mentor sessions','Industry pipeline workflow docs','Demo reel editing guidance','Intermediate certificate of completion'],
+    instructor: 'Crown Studios', role: 'Senior Character Animator',
+  },
+  '2d': {
+    title: '2D ANIMATION',
+    badge: 'Beginner', duration: '6 Weeks · Online · After Effects',
+    icon: '✨', price: '₦120,000',
+    priceRaw: '120000', priceIcon: 'bi-stars',
+    tagline: 'Create dynamic 2D animations, motion graphics, and character rigs using After Effects — the industry standard.',
+    pills: ['After Effects','6 Weeks','Motion Graphics','Character Rigs','Brand Content'],
+    learn: [
+      'Navigate After Effects for animation workflows',
+      'Rig and animate 2D characters with puppet tools',
+      'Create professional motion graphics and title sequences',
+      'Animate logos, infographics, and brand content',
+      'Apply easing and timing for fluid, natural motion',
+      'Export broadcast-quality content for social & TV',
+    ],
+    curriculum: [
+      { week:'01', title:'After Effects Fundamentals', sub:'Interface & Keyframes', desc:'Get up to speed with the After Effects workspace, composition settings, layers, and the timeline. Basic keyframing and transforms.', tags:['Interface','Compositions','Layers','Transforms'] },
+      { week:'02', title:'Motion Graphics Basics', sub:'Text & Shape Animation', desc:'Animate text, shapes, and simple graphics. Work with path animations, morphing shapes, and dynamic typography.', tags:['Text Animation','Shapes','Path','Typography'] },
+      { week:'03', title:'Character Rigging', sub:'Puppet Tools & Joystick', desc:'Rig a 2D character for animation using puppet pins and the Joystick & Sliders plugin. Create a reusable character rig.', tags:['Puppet Pin','Joystick & Sliders','Rigging','Character Design'] },
+      { week:'04', title:'Character Animation', sub:'Walk, Talk & Emote', desc:'Animate your rigged character — walks, lip sync, and emotional performances using the rig built in Week 3.', tags:['Walk Cycle','Lip Sync','Performance','Timing'] },
+      { week:'05', title:'Brand Animation', sub:'Logo Reveals & Idents', desc:'Create professional logo reveal animations and brand idents. The kind of content produced for TV commercials and corporate clients.', tags:['Logo Reveal','Brand Ident','Corporate','Broadcast'] },
+      { week:'06', title:'Final Project', sub:'Demo Reel', desc:'Produce a complete branded animation piece and compile a 2D animation demo reel with mentor critique.', tags:['Final Project','Demo Reel','Critique','Delivery'] },
+    ],
+    requirements: ['Adobe After Effects installed (CC subscription)','A computer with 8GB RAM minimum','Basic Photoshop knowledge helpful but not required','4–6 hours per week'],
+    includes: ['6 weeks of After Effects animation training','Pre-built 2D character rig templates','Motion graphics starter kit','Weekly live feedback sessions','Completion certificate'],
+    instructor: 'Crown Studios', role: '2D Animator & Motion Designer',
+  },
+  video: {
+    title: 'VIDEO EDITING',
+    badge: 'All Levels', duration: '4 Weeks · Online · Premiere Pro',
+    icon: '🎞', price: '₦80,000',
+    priceRaw: '80000', priceIcon: 'bi-scissors',
+    tagline: 'Edit like a professional. Master Premiere Pro, colour grading, sound design, and storytelling through the cut.',
+    pills: ['Premiere Pro','4 Weeks','Colour Grading','Sound Design','Cinematic Edits'],
+    learn: [
+      'Navigate Premiere Pro\'s full editing workflow',
+      'Cut and structure compelling narrative edits',
+      'Apply professional colour grades with Lumetri',
+      'Mix and design sound for cinematic impact',
+      'Create smooth transitions and dynamic montages',
+      'Export for YouTube, Instagram, broadcast, and client delivery',
+    ],
+    curriculum: [
+      { week:'01', title:'Premiere Pro Foundations', sub:'Workflow & Organisation', desc:'Import, organise, and manage media. Understand sequences, bins, and a professional editing workflow from ingest to export.', tags:['Import','Sequences','Bins','Workflow'] },
+      { week:'02', title:'The Edit', sub:'Cutting & Storytelling', desc:'Cut a full short film from raw footage. Learn J-cuts, L-cuts, match cuts, and how rhythm and timing carry emotional weight.', tags:['J-Cut','L-Cut','Match Cut','Rhythm'] },
+      { week:'03', title:'Colour & Sound', sub:'Lumetri & Audio Mix', desc:'Grade your footage using Lumetri Colour — from correction to creative grade. Mix dialogue, music, and effects in the audio timeline.', tags:['Lumetri','Colour Grading','Audio Mix','EQ'] },
+      { week:'04', title:'Finishing & Delivery', sub:'Motion & Export', desc:'Add motion graphics, lower thirds, and titles using Essential Graphics. Export correctly for every platform and client format.', tags:['Motion Graphics','Lower Thirds','Export','Delivery'] },
+    ],
+    requirements: ['Adobe Premiere Pro installed (CC)','A computer capable of video playback (8GB+ RAM)','Sample footage provided by Crown Studios','No prior editing experience required'],
+    includes: ['4 weeks of Premiere Pro training','Sample footage library for practice','Colour grading LUT pack','Sound effects & music library','Completion certificate'],
+    instructor: 'Crown Studios', role: 'Professional Video Editor',
+  },
+  ai: {
+    title: 'AI FILMMAKING & ANIMATION',
+    badge: 'New Course', duration: '4 Weeks · Online · Multi-Tool',
+    icon: '🤖', price: '₦100,000',
+    priceRaw: '100000', priceIcon: 'bi-robot',
+    tagline: 'The future of content creation is AI-powered. Generate, animate, and edit cinematic films without a camera.',
+    pills: ['Runway ML','Kling AI','Sora','CapCut AI','4 Weeks','Prompt Engineering'],
+    learn: [
+      'Use Runway Gen-2, Kling, and Sora to generate video from text',
+      'Write powerful prompts for cinematic AI film generation',
+      'Animate AI-generated characters and scenes',
+      'Edit and combine AI footage with real footage seamlessly',
+      'Create full short films using AI-only production pipelines',
+      'Understand the ethical and commercial use of AI content',
+    ],
+    curriculum: [
+      { week:'01', title:'AI Tools Landscape', sub:'Runway, Kling & Sora', desc:'Overview of the leading AI video generation platforms. Account setup, understanding capabilities, limitations, and how to choose the right tool for each task.', tags:['Runway','Kling','Sora','Pika'] },
+      { week:'02', title:'Prompt Engineering', sub:'Cinematic Language for AI', desc:'Learn how to write detailed, cinematic prompts that produce professional results. Camera angles, lighting, mood, and subject prompting strategies.', tags:['Prompting','Camera Language','Mood','Iteration'] },
+      { week:'03', title:'AI Animation', sub:'Consistent Characters & Scenes', desc:'Maintain character consistency across scenes. Use ControlNet, image-to-video, and seed locking to animate characters with repeatable results.', tags:['ControlNet','Img2Video','Seed Lock','Consistency'] },
+      { week:'04', title:'Full AI Short Film', sub:'Production & Delivery', desc:'Produce a complete 60–90 second AI-generated short film from script to final export. Edit with CapCut or Premiere Pro and add AI voice-over.', tags:['Short Film','AI Voiceover','Editing','Delivery'] },
+    ],
+    requirements: ['A computer or laptop with modern browser','Runway ML & Kling AI accounts (free tiers available)','Basic video understanding helpful','Creative mindset and willingness to experiment'],
+    includes: ['4 weeks of AI filmmaking training','Prompt engineering templates library','Access to Crown Studios AI tools guide','Weekly live sessions & project feedback','AI Filmmaking certificate'],
+    instructor: 'Crown Studios', role: 'AI Creative Director',
+  },
+};
+
+function openCourseDetail(courseKey) {
+  const d = COURSE_DATA[courseKey];
+  if(!d) return;
+  // Populate header
+  document.getElementById('cdTitle').textContent = d.title;
+  document.getElementById('cdBadgeTag').textContent = d.badge;
+  document.getElementById('cdDuration').textContent = d.duration;
+  document.getElementById('cdHeaderIcon').textContent = d.icon;
+  document.getElementById('cdTagline').textContent = d.tagline;
+  // Pills
+  const pillsEl = document.getElementById('cdPills');
+  pillsEl.innerHTML = d.pills.map(p=>`<span class="cd-pill">${p}</span>`).join('');
+  // Learn list
+  const learnEl = document.getElementById('cdLearnList');
+  learnEl.innerHTML = d.learn.map(l=>`<li>${l}</li>`).join('');
+  // Curriculum
+  const currEl = document.getElementById('cdCurriculum');
+  currEl.innerHTML = d.curriculum.map((w,i)=>`
+    <div class="cd-week" id="cdw-${courseKey}-${i}">
+      <button class="cd-week-btn" onclick="toggleCDWeek('cdw-${courseKey}-${i}')">
+        <span class="cd-wk-num">W${w.week}</span>
+        <div class="cd-wk-info">
+          <div class="cd-wk-title">${w.title}</div>
+          <div class="cd-wk-sub">${w.sub}</div>
+        </div>
+        <i class="bi bi-chevron-down cd-wk-arrow"></i>
+      </button>
+      <div class="cd-week-body">
+        <p>${w.desc}</p>
+        <div class="cd-week-tags">${w.tags.map(t=>`<span>${t}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+  // Requirements
+  const reqEl = document.getElementById('cdReqList');
+  reqEl.innerHTML = d.requirements.map(r=>`<li>${r}</li>`).join('');
+  // Price
+  document.getElementById('cdPriceMain').textContent = d.price;
+  // Includes
+  const incEl = document.getElementById('cdIncList');
+  incEl.innerHTML = d.includes.map(inc=>`<li><i class="bi bi-check-circle-fill"></i>${inc}</li>`).join('');
+  // Instructor
+  document.getElementById('cdInstName').textContent = d.instructor;
+  document.getElementById('cdInstRole').textContent = d.role;
+  // Enroll button
+  document.getElementById('cdEnrollBtn').onclick = () => {
+    closeCourseDetailBtn();
+    setTimeout(()=>openCheckout(d.title, d.priceRaw, d.priceIcon, d.duration.split('·')[0].trim()), 400);
+  };
+  // Open overlay
+  document.getElementById('cdOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('cdPanel').scrollTop = 0;
+}
+
+function toggleCDWeek(id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('cw-open');
+  document.querySelectorAll('.cd-week').forEach(w=>w.classList.remove('cw-open'));
+  if(!isOpen) el.classList.add('cw-open');
+}
+
+function closeCourseDetail(e) {
+  if(e.target === document.getElementById('cdOverlay')) closeCourseDetailBtn();
+}
+function closeCourseDetailBtn() {
+  document.getElementById('cdOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModal(){
+  document.getElementById('checkoutModal').classList.remove('open');
+  document.body.style.overflow='';
+  if(timerInterval) clearInterval(timerInterval);
+  selectedMethod=null; selectedBank=null;
+  timerSeconds=1200; currentStep=1;
+  // hide all bank cards
+  document.querySelectorAll('.bank-detail-card').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('.bank-btn').forEach(b=>b.classList.remove('selected'));
+  document.getElementById('bank-details-box').style.display='none';
+  document.getElementById('paypal-box').style.display='none';
+  document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('selected'));
+  document.getElementById('pay-next-btn').disabled=true;
+}
+
+function modalBGClose(e){ if(e.target===document.getElementById('checkoutModal')) closeModal(); }
+
+function goStep(n){
+  document.querySelectorAll('.checkout-step').forEach((s,i)=>s.classList.toggle('active',i===n-1));
+  for(let i=1;i<=5;i++){
+    const el=document.getElementById('mp'+i);
+    el.classList.remove('active','done');
+    if(i===n) el.classList.add('active');
+    else if(i<n) el.classList.add('done');
+  }
+  currentStep=n;
+  document.querySelector('.modal-box').scrollTop=0;
+}
+
+function validateStep2(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  if(!name||!email||!phone){ alert('Please fill in all required fields.'); return; }
+  currentName=name;
+  goStep(3); startTimer();
+}
+
+function selectPayMethod(m){
+  selectedMethod=m;
+  document.getElementById('pm-paypal').classList.toggle('selected',m==='paypal');
+  document.getElementById('pm-bank').classList.toggle('selected',m==='bank');
+  document.getElementById('bank-details-box').style.display=m==='bank'?'block':'none';
+  document.getElementById('paypal-box').style.display=m==='paypal'?'block':'none';
+  // For PayPal enable immediately; for bank wait for bank selection
+  if(m==='paypal') document.getElementById('pay-next-btn').disabled=false;
+  else { document.getElementById('pay-next-btn').disabled=!selectedBank; }
+}
+
+function selectBank(bankId){
+  selectedBank=bankId;
+  // hide all
+  document.querySelectorAll('.bank-detail-card').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('.bank-btn').forEach(b=>b.classList.remove('selected'));
+  // show selected
+  const card=document.getElementById('bdc-'+bankId);
+  const btn=document.querySelector(`.bank-btn[onclick="selectBank('${bankId}')"]`);
+  if(card) card.classList.add('show');
+  if(btn) btn.classList.add('selected');
+  document.getElementById('pay-next-btn').disabled=false;
+}
+
+function goPayNext(){
+  if(!selectedMethod){ alert('Please select a payment method.'); return; }
+  if(selectedMethod==='bank' && !selectedBank){ alert('Please select a bank.'); return; }
+  goStep(4);
+  document.getElementById('proof-ref').textContent='Reference: '+currentRef;
+  document.getElementById('confirm-ref').textContent=currentRef;
+  buildWaLink();
+}
+
+function startTimer(){
+  if(timerInterval) clearInterval(timerInterval);
+  timerSeconds=1200;
+  timerInterval=setInterval(()=>{
+    timerSeconds--;
+    const m=Math.floor(timerSeconds/60), s=timerSeconds%60;
+    document.getElementById('timer-count').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    if(timerSeconds<=0){
+      clearInterval(timerInterval);
+      document.getElementById('timer-count').style.display='none';
+      document.getElementById('timer-expired').style.display='block';
+      document.getElementById('pay-next-btn').disabled=true;
+    }
+  },1000);
+}
+
+function copyText(text, btn){
+  navigator.clipboard.writeText(text).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',2000); }).catch(()=>{});
+}
+function copyRefText(btn){ copyText(currentRef,btn); }
+
+function handleUpload(input){
+  const file=input.files[0]; if(!file) return;
+  const prev=document.getElementById('upload-preview');
+  prev.innerHTML='<i class="bi bi-paperclip"></i> '+file.name+' ('+Math.round(file.size/1024)+'KB)';
+  prev.style.display='block';
+  document.getElementById('uploadArea').style.borderColor='var(--teal)';
+}
+
+function submitProof(){
+  goStep(5); buildWaLink();
+}
+
+function buildWaLink(){
+  const name=document.getElementById('f-name').value||'Student';
+  const phone='2348000000000';
+  const msg=encodeURIComponent(`Hello Crown Studios,\n\nI just made payment for *${currentCourse}*\n\nName: ${name}\nReference: ${currentRef}\nBank: ${selectedBank||'PayPal'}\n\nPlease confirm my enrollment. Thank you!`);
+  document.getElementById('wa-link').href=`https://wa.me/${phone}?text=${msg}`;
+}
+
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const isOpen=item.classList.contains('open');
+  docume
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+</script>
+
+<!-- CINEMATIC LIGHTBOX (for student portfolio videos) -->
+<div class="lightbox-overlay" id="lbOverlay" onclick="lbBGClose(event)" style="position:fixed;inset:0;background:rgba(0,0,0,0);backdrop-filter:blur(0px);z-index:9500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s,background .4s,backdrop-filter .4s">
+  <div class="lb-inner" style="position:relative;max-width:1000px;width:100%;max-height:90svh;transform:scale(.92) translateY(24px);transition:transform .5s cubic-bezier(0.16,1,0.3,1)">
+    <button onclick="closeLightbox()" style="position:absolute;top:-48px;right:0;background:none;border:1px solid rgba(255,255,255,.2);color:#fff;width:40px;height:40px;cursor:none;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:background .3s"><i class="bi bi-x-lg"></i></button>
+    <div id="lbVideoWrap" style="position:relative;width:100%;padding-bottom:56.25%;display:none">
+      <video id="lbVideo" controls playsinline style="position:absolute;inset:0;width:100%;height:100%;border:1px solid rgba(255,255,255,0.08)"></video>
+    </div>
+    <div style="padding:16px 0;display:flex;justify-content:space-between;align-items:center">
+      <span id="lbTag" style="font-family:var(--font-m);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:#fcb31e"></span>
+      <span id="lbTitle" style="font-family:var(--font-d);font-size:1.4rem;color:#fff"></span>
+    </div>
+  </div>
+</div>
+<style>
+.lightbox-overlay.active{opacity:1!important;pointer-events:all!important;background:rgba(0,0,0,.88)!important;backdrop-filter:blur(12px)!important}
+.lightbox-overlay.active .lb-inner{transform:scale(1) translateY(0)!important}
+#lbVideoWrap.active{display:block!important}
+</style>
+<script>
+// Student portfolio lightbox
+const spItems=[];
+document.querySelectorAll('.spv-card[data-lb-src]').forEach((card,i)=>{
+  spItems.push({src:card.dataset.lbSrc,tag:card.dataset.lbTag,name:card.dataset.lbName});
+  card.addEventListener('click',()=>{
+    const item=spItems[i];
+    document.getElementById('lbTag').textContent=item.tag;
+    document.getElementById('lbTitle').textContent=item.name;
+    const vWrap=document.getElementById('lbVideoWrap');
+    const vid=document.getElementById('lbVideo');
+    vWrap.classList.add('active');
+    vid.src=item.src;
+    vid.play().catch(()=>{});
+    document.getElementById('lbOverlay').classList.add('active');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeLightbox(){
+  document.getElementById('lbOverlay').classList.remove('active');
+  document.body.style.overflow='';
+  const vid=document.getElementById('lbVideo');
+  vid.pause();vid.src='';
+  document.getElementById('lbVideoWrap').classList.remove('active');
+}
+function lbBGClose(e){if(e.target===document.getElementById('lbOverlay'))closeLightbox();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+</script>
+
+<!-- ══ CHAT SUPPORT WIDGET ══ -->
+<style>
+/* Chat bubble */
+.cs-chat-bubble {
+  position:fixed; bottom:28px; right:28px; z-index:8000;
+  display:flex; flex-direction:column; align-items:flex-end; gap:12px;
+}
+.cs-chat-btn {
+  width:58px; height:58px; border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  border:none; cursor:none;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 32px rgba(37,211,102,0.45);
+  transition:transform .3s var(--ease,cubic-bezier(0.16,1,0.3,1)), box-shadow .3s;
+  position:relative;
+}
+.cs-chat-btn:hover {
+  transform:scale(1.1);
+  box-shadow:0 12px 40px rgba(37,211,102,0.6);
+}
+.cs-chat-btn i { font-size:1.6rem; color:#fff; }
+/* pulse ring */
+.cs-chat-btn::after {
+  content:''; position:absolute; inset:-6px; border-radius:50%;
+  border:2px solid rgba(37,211,102,0.45);
+  animation:chatPulse 2s ease-in-out infinite;
+}
+@keyframes chatPulse {
+  0%,100%{transform:scale(1);opacity:.6}
+  50%{transform:scale(1.18);opacity:0}
+}
+/* notification dot */
+.cs-chat-dot {
+  position:absolute; top:2px; right:2px; width:14px; height:14px;
+  background:var(--gold2,#fcb31e); border-radius:50%; border:2px solid #fff;
+  font-family:'DM Mono',monospace; font-size:.45rem; color:#000;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* Chat panel */
+.cs-chat-panel {
+  position:fixed; bottom:100px; right:28px; z-index:8001;
+  width:340px; background:var(--surface,#fff);
+  border:1px solid var(--border2,rgba(0,0,0,.12));
+  border-radius:12px; overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.18);
+  transform:translateY(20px) scale(.95);
+  opacity:0; pointer-events:none;
+  transition:opacity .35s cubic-bezier(0.16,1,0.3,1), transform .35s cubic-bezier(0.16,1,0.3,1);
+}
+.cs-chat-panel.open {
+  opacity:1; pointer-events:all;
+  transform:translateY(0) scale(1);
+}
+
+/* Panel header */
+.csp-header {
+  background:linear-gradient(135deg,#128c7e,#25d366);
+  padding:20px 20px 16px;
+  display:flex; align-items:center; gap:14px;
+}
+.csp-avatar {
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(255,255,255,.2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; color:#fff; flex-shrink:0;
+  border:2px solid rgba(255,255,255,.4);
+}
+.csp-info {}
+.csp-name { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:.08em; color:#fff; line-height:1; }
+.csp-status { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-top:3px; display:flex; align-items:center; gap:5px; }
+.csp-status-dot { width:7px; height:7px; border-radius:50%; background:#adff9e; animation:chatPulse 2s infinite; }
+.csp-close { margin-left:auto; background:none; border:none; color:rgba(255,255,255,.7); cursor:none; font-size:1.1rem; padding:4px; transition:color .2s; }
+.csp-close:hover { color:#fff; }
+
+/* Panel body */
+.csp-body { padding:20px; background:var(--bg2,#f8f8f8); }
+.csp-bubble {
+  background:var(--surface,#fff); border:1px solid var(--border,rgba(0,0,0,.07));
+  border-radius:0 12px 12px 12px; padding:12px 14px; margin-bottom:14px;
+  font-family:'Syne',sans-serif; font-size:.82rem; color:var(--text,#0e0b07);
+  line-height:1.6; box-shadow:var(--shadow,0 2px 8px rgba(0,0,0,.05));
+}
+.csp-bubble strong { color:var(--gold2,#fcb31e); }
+.csp-time { font-family:'DM Mono',monospace; font-size:.45rem; letter-spacing:.15em; color:var(--text3,#8a7a60); margin-bottom:16px; text-align:right; }
+
+/* Quick options */
+.csp-options { display:flex; flex-direction:column; gap:8px; }
+.csp-opt {
+  display:flex; align-items:center; gap:10px;
+  padding:11px 14px; border:1px solid var(--border2,rgba(0,0,0,.12));
+  background:var(--surface,#fff); text-decoration:none;
+  font-family:'DM Mono',monospace; font-size:.56rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--text,#0e0b07);
+  transition:border-color .25s, background .25s, color .25s, padding-left .25s;
+  cursor:none;
+}
+.csp-opt:hover { border-color:#25d366; color:#128c7e; padding-left:20px; background:rgba(37,211,102,.04); }
+.csp-opt i { color:#25d366; font-size:.9rem; flex-shrink:0; }
+
+/* Panel footer */
+.csp-footer {
+  padding:12px 20px;
+  border-top:1px solid var(--border,rgba(0,0,0,.07));
+  font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.15em;
+  color:var(--text3,#8a7a60); text-align:center;
+  display:flex; align-items:center; justify-content:center; gap:6px;
+}
+.csp-footer i { color:#25d366; }
+
+@media(max-width:400px){
+  .cs-chat-panel { width:calc(100vw - 24px); right:12px; }
+  .cs-chat-bubble { right:16px; bottom:16px; }
+}
+</style>
+
+<div class="cs-chat-bubble">
+  <div class="cs-chat-panel" id="csChatPanel">
+    <div class="csp-header">
+      <div class="csp-avatar"><i class="bi bi-headset"></i></div>
+      <div class="csp-info">
+        <div class="csp-name">Crown Digital Support</div>
+        <div class="csp-status"><span class="csp-status-dot"></span>Typically replies instantly</div>
+      </div>
+      <button class="csp-close" onclick="toggleChat()"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="csp-body">
+      <div class="csp-bubble">
+        👋 Hi there! Welcome to <strong>Crown Digital Solutions</strong>.<br><br>
+        We're here to help — whether you have questions about our services, training programs, or want to get a quote.
+      </div>
+      <div class="csp-time">Crown Support · Just now</div>
+      <div class="csp-options">
+        <a class="csp-opt" href="https://wa.me/2348000000000?text=Hello%20Crown%20Digital%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener">
+          <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <a class="csp-opt" href="/cdn-cgi/l/email-protection#7330011c041d000706171a1c0041474433141e121a1f5d101c1e">
+          <i class="bi bi-envelope-fill"></i> Send us an Email
+        </a>
+        <a class="csp-opt" href="training.html#courses">
+          <i class="bi bi-mortarboard-fill"></i> View Training Courses
+        </a>
+        <a class="csp-opt" href="contact.html">
+          <i class="bi bi-telephone-fill"></i> Contact Page
+        </a>
+      </div>
+    </div>
+    <div class="csp-footer">
+      <i class="bi bi-shield-fill-check"></i>
+      Mon–Fri · 9am–8pm WAT · Nigeria
+    </div>
+  </div>
+  <button class="cs-chat-btn" onclick="toggleChat()" aria-label="Open chat support">
+    <i class="bi bi-whatsapp" id="csChatIcon"></i>
+    <span class="cs-chat-dot">1</span>
+  </button>
+</div>
+<script>
+function toggleChat(){
+  const panel=document.getElementById('csChatPanel');
+  const icon=document.getElementById('csChatIcon');
+  const isOpen=panel.classList.toggle('open');
+  icon.className=isOpen?'bi bi-x-lg':'bi bi-whatsapp';
+  // remove notification dot once opened
+  const dot=document.querySelector('.cs-chat-dot');
+  if(dot&&isOpen) dot.style.display='none';
+}
+// Close on outside click
+document.addEventListener('click',function(e){
+  const panel=document.getElementById('csChatPanel');
+  const btn=document.querySelector('.cs-chat-btn');
+  if(panel&&panel.classList.contains('open')&&!panel.contains(e.target)&&e.target!==btn&&!btn.conta
