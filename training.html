@@ -189,8 +189,9 @@ body { padding-top: var(--nav-h); }
 .faq-q .faq-icon { font-size:1.1rem; transition:transform .3s; flex-shrink:0; margin-left:16px; color:var(--gold); }
 .faq-item.open .faq-q .faq-icon { transform:rotate(45deg); }
 .faq-a { max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }
-.faq-a-inner { padding:0 0 20px; font-size:.85rem; line-height:1.8; color:var(--text2); }
-
+.faq-a-inner { padding:0 0 20px; font-size:.85rem; line-height:1.8; color:var(--text2);
+ }
+ .faq-item.open .faq-a { max-height: 300px; }
 @media(max-width:900px){
   .cs-grid { grid-template-columns:repeat(2,1fr); }
   .f-row { grid-template-columns:1fr; }
@@ -292,7 +293,6 @@ body { padding-top: var(--nav-h); }
   <a href="index.html" class="nav-brand">
     <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="logo-dark" style="height:32px">
     <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="logo-light" style="height:32px">
-     
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
@@ -445,8 +445,8 @@ body { padding-top: var(--nav-h); }
     <div class="course-card reveal rd3" style="--cc:var(--teal);--cc-glow:rgba(0,137,123,.15)" onclick="openCourseDetail('2d')">
       <span class="cc-badge">Beginner</span>
       <div class="cc-vis" >
-        <img src="Brand Images/House.png" alt="3D Modeling" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <i class="cc-vis-icon bi bi-stars" style="display:flex"></i>
+        <img src="Brand Images/2D Animation.png" alt="2D Animation" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i class="cc-vis-icon bi bi-stars" style="display:none"></i>
       </div>
       <div class="cc-body">
         <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;6 Weeks · Online · After Effects</p>
@@ -461,8 +461,8 @@ body { padding-top: var(--nav-h); }
     <div class="course-card reveal rd4" style="--cc:var(--blue);--cc-glow:rgba(75,168,255,.15)" onclick="openCourseDetail('video')">
       <span class="cc-badge">All Levels</span>
       <div class="cc-vis" >
-       <img src="Brand Images/House.png" alt="3D Modeling" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <i class="cc-vis-icon bi bi-scissors" style="display:flex"></i>
+       <img src="Brand Images/Premier Pro.png" alt="Video Editing" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i class="cc-vis-icon bi bi-scissors" style="display:none"></i>
       </div>
       <div class="cc-body">
         <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;4 Weeks · Online · Premiere Pro</p>
@@ -477,8 +477,8 @@ body { padding-top: var(--nav-h); }
     <div class="course-card reveal rd5" style="--cc:#a855f7;--cc-glow:rgba(168,85,247,.15)" onclick="openCourseDetail('ai')">
       <span class="cc-badge" style="background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff">New</span>
       <div class="cc-vis">
-        <img src="Brand Images/House.png" alt="3D Modeling" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <i class="cc-vis-icon bi bi-robot" style="display:flex;color:#a855f7"></i>
+        <img src="Brand Images/AI - Higgsfield.png" alt="AI Filmmaking" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i class="cc-vis-icon bi bi-robot" style="display:none"></i>
       </div>
       <div class="cc-body">
         <p class="cc-week"><i class="bi bi-calendar3"></i> &nbsp;2 Weeks · Online · Multi-tool</p>
@@ -777,7 +777,7 @@ body { padding-top: var(--nav-h); }
           <h3 class="spv-title">Mukuru Sing</h3>
         </div>
       </div>
-      <!-- Video 3:  -->
+      <!-- Video 3: Student Project II -->
       <div class="spv-card reveal rd2" data-lb-type="video" data-lb-src="Student Portfolio/Student Project II.mov" data-lb-tag="3D Environment" data-lb-name="Student Project II">
         <div class="spv-thumb">
           <video src="Student Portfolio/Student Project Ii.webm" muted autoplay loop playsinline class="spv-vid"></video>
@@ -812,7 +812,6 @@ body { padding-top: var(--nav-h); }
       <a href="index.html" class="nav-brand" style="text-decoration:none">
         <img src="Brand Logos/Crown Digital Logo v1 - Black.png" class="ft-logo-dark" style="height:32px">
         <img src="Brand Logos/Crown Digital Logo v1 - White.png" class="ft-logo-light" style="height:32px">
-         
       </a>
       <p>"We give businesses confidence and train creatives to become professionals.".</p>
     </div>
@@ -950,7 +949,7 @@ body { padding-top: var(--nav-h); }
           </div>
         </div>
 
-        <!-- Bank detail cards — one per bank, shown on selection -->
+        <!-- Bank detail cards -->
         <div class="bank-detail-card" id="bdc-gtb">
           <div class="bdc-header">
             <div class="bdc-header-logo-placeholder" style="background:#e8f0e8;color:#0a7a0a">GT</div>
@@ -1067,428 +1066,6 @@ body { padding-top: var(--nav-h); }
   </div>
 </div>
 
-<script src="shared.js"></script>
-<script>
-/* ── LOADER FAILSAFE: fires regardless of external scripts ── */
-(function(){
-  function killLoader(){
-    var loader=document.getElementById('cs-loader');
-    if(!loader||loader.dataset.dismissed) return;
-    loader.dataset.dismissed='true';
-    loader.classList.add('ld-out');
-    setTimeout(function(){
-      loader.style.display='none';
-      try{loader.remove();}catch(e){}
-    },850);
-  }
-  /* Try immediately, then at 1s, 2s and 3s as hard fallbacks */
-  setTimeout(killLoader,1000);
-  setTimeout(killLoader,2000);
-  setTimeout(killLoader,3000);
-  document.addEventListener('DOMContentLoaded',function(){ setTimeout(killLoader,500); });
-  window.addEventListener('load',function(){ setTimeout(killLoader,200); });
-})();
-</script>
-<script>
-let currentStep=1, selectedMethod=null, selectedBank=null;
-let timerInterval=null, timerSeconds=1200;
-let currentRef='', currentCourse='', currentName='';
-
-const courseData = {
-  '3D Modeling – Beginner Course':    { points:['Maya interface & workspace','Object modeling fundamentals','Materials & textures','Lights, cameras & rendering','8-week structured program','Certificate of completion'], dur:'8 Weeks · Online · Maya' },
-  '3D Animation – Beginner Course':   { points:['Timing & arcs','Squash & stretch','Ease in & ease out','Weight & gravity','Overlap & follow-through','Bipedal locomotion basics'], dur:'Flexible · Online · Maya' },
-  '3D Animation – Intermediate Course':{ points:['Character animation with weight','Action & physical scenarios','Advanced graph editor','Complex action sequences','Industry-standard workflows','Portfolio-ready shots'], dur:'Advanced · Online · Maya' },
-};
-
-function generateRef(course){
-  const code = course.includes('Modeling')?'MDL':course.includes('Intermediate')?'INT':'ANM';
-  return `CS-${code}-${Math.floor(10000+Math.random()*90000)}`;
-}
-
-function openCheckout(course, price, iconClass, dur){
-  currentCourse=course; currentRef=generateRef(course);
-  const iconEl=document.getElementById('cdc-icon');
-  iconEl.className='cdc-icon bi '+iconClass;
-  document.getElementById('cdc-title').textContent=course;
-  document.getElementById('cdc-dur').textContent=(courseData[course]||{}).dur||dur+' · Online · Maya';
-  document.getElementById('cdc-price').textContent='₦'+Number(price).toLocaleString();
-  document.getElementById('f-course-display').value=course;
-  document.getElementById('amt-display').textContent='₦'+Number(price).toLocaleString();
-  const pts=document.getElementById('cdc-points'); pts.innerHTML='';
-  ((courseData[course]||{}).points||[]).forEach(p=>{
-    const li=document.createElement('li');
-    li.style.cssText='display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--text2)';
-    li.innerHTML=`<i class="bi bi-check-circle-fill" style="color:var(--teal)"></i>${p}`;
-    pts.appendChild(li);
-  });
-  // Set ref in all bank cards
-  ['gtb','access','uba','zenith'].forEach(b=>{
-    const el=document.getElementById('ref-val-'+b);
-    if(el) el.textContent=currentRef;
-  });
-  document.getElementById('ref-display').textContent='Reference: '+currentRef;
-  document.getElementById('checkoutModal').classList.add('open');
-  document.body.style.overflow='hidden';
-  selectedMethod=null; selectedBank=null;
-  goStep(1);
-}
-
-/* ── COURSE DETAIL PANEL ── */
-const COURSE_DATA = {
-  modeling: {
-    title: '3D MODELING — BEGINNER',
-    badge: 'Beginner', duration: '8 Weeks · Online · Autodesk Maya',
-    icon: '🧊', price: '₦150,000',
-    priceRaw: '150000', priceIcon: 'bi-box-seam-fill',
-    tagline: 'Build the foundation every 3D artist needs. From zero to rendering professional-quality scenes.',
-    pills: ['Autodesk Maya','8 Weeks','Live Mentorship','Portfolio Project','Certificate'],
-    learn: [
-      'Navigate the Autodesk Maya interface with confidence',
-      'Model hard-surface and organic objects from scratch',
-      'Apply materials, textures, and UV unwrapping',
-      'Set up professional lighting rigs and cameras',
-      'Render production-quality scenes with Arnold',
-      'Complete a portfolio-ready final project',
-    ],
-    curriculum: [
-      { week:'01', title:'Maya Overview', sub:'Interface & Navigation', desc:'Get comfortable with Maya — the main interface, navigation in 3D space, and working with basic primitives. You\'ll understand the viewport, shelf, and channel box.', tags:['Interface','Viewport','Primitives','Hotkeys'] },
-      { week:'02', title:'Modeling Fundamentals', sub:'Polygons & Edge Loops', desc:'Learn polygon modeling techniques. Box modeling, edge loops, subdivisions, and how to maintain clean topology for animation-ready assets.', tags:['Poly Modeling','Topology','Edge Loops','Smoothing'] },
-      { week:'03', title:'UV Unwrapping', sub:'Texturing Prep', desc:'Understand UV mapping — how to unfold a 3D mesh so textures apply correctly. Use UV editor, seams, and packing.', tags:['UV Editor','Seams','Packing','UDIM'] },
-      { week:'04', title:'Materials & Texturing', sub:'Arnold Shaders', desc:'Create realistic and stylised materials with Arnold\'s aiStandardSurface shader. Work with PBR texture maps — albedo, roughness, metalness, normal maps.', tags:['aiStandardSurface','PBR','Normal Maps','Texture Sets'] },
-      { week:'05', title:'Lighting & Cameras', sub:'Studio Lighting Rigs', desc:'Set up three-point lighting, HDRI dome lights, and area lights. Learn camera framing, depth of field, and focal length.', tags:['HDRI','Area Lights','DOF','Composition'] },
-      { week:'06', title:'Rendering', sub:'Arnold & Render Settings', desc:'Configure Arnold render settings for quality outputs. AOV passes, denoising, batch rendering, and post-processing in Photoshop.', tags:['Arnold','AOVs','Denoising','Batch Render'] },
-      { week:'07', title:'Scene Assembly', sub:'Building a Full Scene', desc:'Combine all skills — model a complete scene with multiple assets, proper lighting, materials, and camera work.', tags:['Scene Setup','Asset Library','Composition'] },
-      { week:'08', title:'Final Project', sub:'Portfolio-Ready Render', desc:'Complete and present your final portfolio piece. Receive mentor critique and feedback for industry readiness.', tags:['Portfolio','Critique','Final Render'] },
-    ],
-    requirements: ['A computer with at least 8GB RAM (16GB recommended)','Autodesk Maya (free student version available)','No prior 3D experience needed — we start from scratch','Commitment to 6–8 hours per week'],
-    includes: ['8 weeks of structured lessons','Weekly live mentorship sessions','Access to Crown Digital Solutions asset library','PDF course notes & reference sheets','Final portfolio critique','Course completion certificate'],
-    instructor: 'Crown Digital Solutions', role: 'Industry 3D Artist & Educator',
-  },
-  animation: {
-    title: '3D ANIMATION — BEGINNER',
-    badge: 'Beginner', duration: '6 Weeks · Online · Autodesk Maya',
-    icon: '🎬', price: '₦200,000',
-    priceRaw: '200000', priceIcon: 'bi-person-bounding-box',
-    tagline: 'Master the 12 principles. Bring characters to life with personality, weight, and emotion.',
-    pills: ['Autodesk Maya','6 Weeks','Live Critique','Squirrel Rig','Stewart Biped'],
-    learn: [
-      'Apply all 12 principles of animation in Maya',
-      'Work with pre-built character rigs (Stewart & Squirrel)',
-      'Animate bounces, walks, and full character performances',
-      'Read and edit the Graph Editor for precise timing',
-      'Create an animated film-quality bouncing ball sequence',
-      'Build a beginner animation reel for your portfolio',
-    ],
-    curriculum: [
-      { week:'01', title:'Maya Animation Overview', sub:'Timeline & Graph Editor', desc:'Introduction to Maya\'s animation toolset. Keyframes, timeline, playback controls, and navigating the Graph Editor basics.', tags:['Keyframes','Timeline','Graph Editor','Playback'] },
-      { week:'02', title:'Intro to Animation', sub:'Bouncing Ball & Arcs', desc:'Start with the classic bouncing ball. Learn timing, spacing, arcs, squash & stretch, and anticipation — the building blocks of everything.', tags:['Bouncing Ball','Arcs','Squash & Stretch','Timing'] },
-      { week:'03', title:'12 Principles Deep Dive', sub:'Weight & Overlap', desc:'Apply weight, gravity, overlap & follow-through using the Squirrel rig performing a jump sequence.', tags:['Weight','Overlap','Follow-Through','Squirrel Rig'] },
-      { week:'04', title:'Character Posing I', sub:'Stewart Biped Head Turn', desc:'Introduction to full character animation with the Stewart rig. Learn appealing silhouettes, posing, and animating a dynamic head turn.', tags:['Stewart Rig','Posing','Silhouette','Head Turn'] },
-      { week:'05', title:'Character Animation II', sub:'Walk Cycles', desc:'Animate a complete walk cycle — contact, down, passing, and up positions. Understand weight shift and hip movement.', tags:['Walk Cycle','Contact Pose','Weight Shift','Polish'] },
-      { week:'06', title:'Final Performance Shot', sub:'Portfolio Reel', desc:'Animate a short character performance shot of your choice. Receive mentor critique and compile your beginner demo reel.', tags:['Performance Shot','Demo Reel','Critique','Polish'] },
-    ],
-    requirements: ['Autodesk Maya installed (free student version)','Basic Maya familiarity recommended (or take 3D Modeling first)','8GB RAM minimum, dedicated GPU preferred','5–8 hours per week commitment'],
-    includes: ['6 weeks of structured animation lessons','Live weekly critique sessions','Pre-built character rigs (Stewart & Squirrel)','Graph Editor workflow guides','Demo reel compilation support','Certificate of completion'],
-    instructor: 'Crown Digital Solutions', role: 'Lead Character Animator',
-  },
-  intermediate: {
-    title: '3D ANIMATION — INTERMEDIATE',
-    badge: 'Intermediate', duration: '8 Weeks · Online · Autodesk Maya',
-    icon: '🏆', price: '₦250,000',
-    priceRaw: '250000', priceIcon: 'bi-trophy-fill',
-    tagline: 'Complex character performances, cinematic shots, and advanced Maya workflows for industry-ready animators.',
-    pills: ['Autodesk Maya','8 Weeks','Advanced Rigs','Dialogue Animation','Industry Pipeline'],
-    learn: [
-      'Animate complex full-body character performances',
-      'Lip sync and facial animation for dialogue shots',
-      'Use advanced Graph Editor curves and breakdowns',
-      'Create action sequences with impact and secondary motion',
-      'Understand industry pipeline and production workflow',
-      'Build a professional intermediate animation reel',
-    ],
-    curriculum: [
-      { week:'01', title:'Advanced Maya Tools', sub:'Dope Sheet & Trax Editor', desc:'Master advanced Maya animation tools — Dope Sheet editing, Trax Editor for non-linear animation, and constraint systems.', tags:['Dope Sheet','Trax Editor','Constraints','NLA'] },
-      { week:'02', title:'Advanced Body Mechanics', sub:'Weight & Impact', desc:'Animate a robot arm with heavy mechanical weight. Understand force, drag, and momentum in complex character rigs.', tags:['Mechanical Rig','Force','Momentum','Drag'] },
-      { week:'03', title:'Facial Animation', sub:'Blend Shapes & Controls', desc:'Introduction to facial animation using blend shapes and face controls. Achieve nuanced expressions and emotional reads.', tags:['Blend Shapes','Face Controls','Expressions','Eyes'] },
-      { week:'04', title:'Dialogue Animation I', sub:'Audio & Lip Sync', desc:'Animate a character delivering dialogue. Work with audio in Maya, time the mouth shapes, and add body language that supports the words.', tags:['Audio Sync','Lip Sync','Visemes','Body Language'] },
-      { week:'05', title:'Dialogue Animation II', sub:'Subtext & Polish', desc:'Polish the dialogue shot — add subtext, overlapping action, and subtle eye darts. Transform it from functional to cinematic.', tags:['Subtext','Polish','Eye Darts','Overlap'] },
-      { week:'06', title:'Action Sequences', sub:'Fight & Reaction', desc:'Choreograph an action sequence — a punch, reaction, and follow-through. Learn how to maintain weight in fast movements.', tags:['Action Blocking','Fast Motion','Impact','Anticipation'] },
-      { week:'07', title:'Industry Workflow', sub:'Pipeline & Handoff', desc:'Understand the studio production pipeline. Blocking pass, spline pass, polish pass, and how to receive and implement director feedback.', tags:['Blocking Pass','Spline Pass','Polish','Feedback'] },
-      { week:'08', title:'Intermediate Demo Reel', sub:'Portfolio Presentation', desc:'Assemble, edit, and present your intermediate demo reel. One-on-one mentor feedback for industry submission readiness.', tags:['Demo Reel','Editing','Presentation','Industry Ready'] },
-    ],
-    requirements: ['Completion of 3D Animation Beginner, or equivalent experience','Autodesk Maya with a character rig library','16GB RAM recommended for complex scenes','Strong commitment — 8–12 hours per week'],
-    includes: ['8 weeks advanced animation training','Advanced pre-built character rigs','Weekly one-on-one mentor sessions','Industry pipeline workflow docs','Demo reel editing guidance','Intermediate certificate of completion'],
-    instructor: 'Crown Digital Solutions', role: 'Senior Character Animator',
-  },
-  '2d': {
-    title: '2D ANIMATION',
-    badge: 'Beginner', duration: '6 Weeks · Online · After Effects',
-    icon: '✨', price: '₦120,000',
-    priceRaw: '120000', priceIcon: 'bi-stars',
-    tagline: 'Create dynamic 2D animations, motion graphics, and character rigs using After Effects — the industry standard.',
-    pills: ['After Effects','6 Weeks','Motion Graphics','Character Rigs','Brand Content'],
-    learn: [
-      'Navigate After Effects for animation workflows',
-      'Rig and animate 2D characters with puppet tools',
-      'Create professional motion graphics and title sequences',
-      'Animate logos, infographics, and brand content',
-      'Apply easing and timing for fluid, natural motion',
-      'Export broadcast-quality content for social & TV',
-    ],
-    curriculum: [
-      { week:'01', title:'After Effects Fundamentals', sub:'Interface & Keyframes', desc:'Get up to speed with the After Effects workspace, composition settings, layers, and the timeline. Basic keyframing and transforms.', tags:['Interface','Compositions','Layers','Transforms'] },
-      { week:'02', title:'Motion Graphics Basics', sub:'Text & Shape Animation', desc:'Animate text, shapes, and simple graphics. Work with path animations, morphing shapes, and dynamic typography.', tags:['Text Animation','Shapes','Path','Typography'] },
-      { week:'03', title:'Character Rigging', sub:'Puppet Tools & Joystick', desc:'Rig a 2D character for animation using puppet pins and the Joystick & Sliders plugin. Create a reusable character rig.', tags:['Puppet Pin','Joystick & Sliders','Rigging','Character Design'] },
-      { week:'04', title:'Character Animation', sub:'Walk, Talk & Emote', desc:'Animate your rigged character — walks, lip sync, and emotional performances using the rig built in Week 3.', tags:['Walk Cycle','Lip Sync','Performance','Timing'] },
-      { week:'05', title:'Brand Animation', sub:'Logo Reveals & Idents', desc:'Create professional logo reveal animations and brand idents. The kind of content produced for TV commercials and corporate clients.', tags:['Logo Reveal','Brand Ident','Corporate','Broadcast'] },
-      { week:'06', title:'Final Project', sub:'Demo Reel', desc:'Produce a complete branded animation piece and compile a 2D animation demo reel with mentor critique.', tags:['Final Project','Demo Reel','Critique','Delivery'] },
-    ],
-    requirements: ['Adobe After Effects installed (CC subscription)','A computer with 8GB RAM minimum','Basic Photoshop knowledge helpful but not required','4–6 hours per week'],
-    includes: ['6 weeks of After Effects animation training','Pre-built 2D character rig templates','Motion graphics starter kit','Weekly live feedback sessions','Completion certificate'],
-    instructor: 'Crown Digital Solutions', role: '2D Animator & Motion Designer',
-  },
-  video: {
-    title: 'VIDEO EDITING',
-    badge: 'All Levels', duration: '4 Weeks · Online · Premiere Pro',
-    icon: '🎞', price: '₦80,000',
-    priceRaw: '80000', priceIcon: 'bi-scissors',
-    tagline: 'Edit like a professional. Master Premiere Pro, colour grading, sound design, and storytelling through the cut.',
-    pills: ['Premiere Pro','4 Weeks','Colour Grading','Sound Design','Cinematic Edits'],
-    learn: [
-      'Navigate Premiere Pro\'s full editing workflow',
-      'Cut and structure compelling narrative edits',
-      'Apply professional colour grades with Lumetri',
-      'Mix and design sound for cinematic impact',
-      'Create smooth transitions and dynamic montages',
-      'Export for YouTube, Instagram, broadcast, and client delivery',
-    ],
-    curriculum: [
-      { week:'01', title:'Premiere Pro Foundations', sub:'Workflow & Organisation', desc:'Import, organise, and manage media. Understand sequences, bins, and a professional editing workflow from ingest to export.', tags:['Import','Sequences','Bins','Workflow'] },
-      { week:'02', title:'The Edit', sub:'Cutting & Storytelling', desc:'Cut a full short film from raw footage. Learn J-cuts, L-cuts, match cuts, and how rhythm and timing carry emotional weight.', tags:['J-Cut','L-Cut','Match Cut','Rhythm'] },
-      { week:'03', title:'Colour & Sound', sub:'Lumetri & Audio Mix', desc:'Grade your footage using Lumetri Colour — from correction to creative grade. Mix dialogue, music, and effects in the audio timeline.', tags:['Lumetri','Colour Grading','Audio Mix','EQ'] },
-      { week:'04', title:'Finishing & Delivery', sub:'Motion & Export', desc:'Add motion graphics, lower thirds, and titles using Essential Graphics. Export correctly for every platform and client format.', tags:['Motion Graphics','Lower Thirds','Export','Delivery'] },
-    ],
-    requirements: ['Adobe Premiere Pro installed (CC)','A computer capable of video playback (8GB+ RAM)','Sample footage provided by Crown Digital Solutions','No prior editing experience required'],
-    includes: ['4 weeks of Premiere Pro training','Sample footage library for practice','Colour grading LUT pack','Sound effects & music library','Completion certificate'],
-    instructor: 'Crown Digital Solutions', role: 'Professional Video Editor',
-  },
-  ai: {
-    title: 'AI FILMMAKING & ANIMATION',
-    badge: 'New Course', duration: '4 Weeks · Online · Multi-Tool',
-    icon: '🤖', price: '₦100,000',
-    priceRaw: '100000', priceIcon: 'bi-robot',
-    tagline: 'The future of content creation is AI-powered. Generate, animate, and edit cinematic films without a camera.',
-    pills: ['Runway ML','Kling AI','Sora','CapCut AI','4 Weeks','Prompt Engineering'],
-    learn: [
-      'Use Runway Gen-2, Kling, and Sora to generate video from text',
-      'Write powerful prompts for cinematic AI film generation',
-      'Animate AI-generated characters and scenes',
-      'Edit and combine AI footage with real footage seamlessly',
-      'Create full short films using AI-only production pipelines',
-      'Understand the ethical and commercial use of AI content',
-    ],
-    curriculum: [
-      { week:'01', title:'AI Tools Landscape', sub:'Runway, Kling & Sora', desc:'Overview of the leading AI video generation platforms. Account setup, understanding capabilities, limitations, and how to choose the right tool for each task.', tags:['Runway','Kling','Sora','Pika'] },
-      { week:'02', title:'Prompt Engineering', sub:'Cinematic Language for AI', desc:'Learn how to write detailed, cinematic prompts that produce professional results. Camera angles, lighting, mood, and subject prompting strategies.', tags:['Prompting','Camera Language','Mood','Iteration'] },
-      { week:'03', title:'AI Animation', sub:'Consistent Characters & Scenes', desc:'Maintain character consistency across scenes. Use ControlNet, image-to-video, and seed locking to animate characters with repeatable results.', tags:['ControlNet','Img2Video','Seed Lock','Consistency'] },
-      { week:'04', title:'Full AI Short Film', sub:'Production & Delivery', desc:'Produce a complete 60–90 second AI-generated short film from script to final export. Edit with CapCut or Premiere Pro and add AI voice-over.', tags:['Short Film','AI Voiceover','Editing','Delivery'] },
-    ],
-    requirements: ['A computer or laptop with modern browser','Runway ML & Kling AI accounts (free tiers available)','Basic video understanding helpful','Creative mindset and willingness to experiment'],
-    includes: ['4 weeks of AI filmmaking training','Prompt engineering templates library','Access to Crown Digital Solutions AI tools guide','Weekly live sessions & project feedback','AI Filmmaking certificate'],
-    instructor: 'Crown Digital Solutions', role: 'AI Creative Director',
-  },
-};
-
-function openCourseDetail(courseKey) {
-  const d = COURSE_DATA[courseKey];
-  if(!d) return;
-  // Populate header
-  document.getElementById('cdTitle').textContent = d.title;
-  document.getElementById('cdBadgeTag').textContent = d.badge;
-  document.getElementById('cdDuration').textContent = d.duration;
-  document.getElementById('cdHeaderIcon').textContent = d.icon;
-  document.getElementById('cdTagline').textContent = d.tagline;
-  // Pills
-  const pillsEl = document.getElementById('cdPills');
-  pillsEl.innerHTML = d.pills.map(p=>`<span class="cd-pill">${p}</span>`).join('');
-  // Learn list
-  const learnEl = document.getElementById('cdLearnList');
-  learnEl.innerHTML = d.learn.map(l=>`<li>${l}</li>`).join('');
-  // Curriculum
-  const currEl = document.getElementById('cdCurriculum');
-  currEl.innerHTML = d.curriculum.map((w,i)=>`
-    <div class="cd-week" id="cdw-${courseKey}-${i}">
-      <button class="cd-week-btn" onclick="toggleCDWeek('cdw-${courseKey}-${i}')">
-        <span class="cd-wk-num">W${w.week}</span>
-        <div class="cd-wk-info">
-          <div class="cd-wk-title">${w.title}</div>
-          <div class="cd-wk-sub">${w.sub}</div>
-        </div>
-        <i class="bi bi-chevron-down cd-wk-arrow"></i>
-      </button>
-      <div class="cd-week-body">
-        <p>${w.desc}</p>
-        <div class="cd-week-tags">${w.tags.map(t=>`<span>${t}</span>`).join('')}</div>
-      </div>
-    </div>
-  `).join('');
-  // Requirements
-  const reqEl = document.getElementById('cdReqList');
-  reqEl.innerHTML = d.requirements.map(r=>`<li>${r}</li>`).join('');
-  // Price
-  document.getElementById('cdPriceMain').textContent = d.price;
-  // Includes
-  const incEl = document.getElementById('cdIncList');
-  incEl.innerHTML = d.includes.map(inc=>`<li><i class="bi bi-check-circle-fill"></i>${inc}</li>`).join('');
-  // Instructor
-  document.getElementById('cdInstName').textContent = d.instructor;
-  document.getElementById('cdInstRole').textContent = d.role;
-  // Enroll button
-  document.getElementById('cdEnrollBtn').onclick = () => {
-    closeCourseDetailBtn();
-    setTimeout(()=>openCheckout(d.title, d.priceRaw, d.priceIcon, d.duration.split('·')[0].trim()), 400);
-  };
-  // Open overlay
-  document.getElementById('cdOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('cdPanel').scrollTop = 0;
-}
-
-function toggleCDWeek(id) {
-  const el = document.getElementById(id);
-  const isOpen = el.classList.contains('cw-open');
-  document.querySelectorAll('.cd-week').forEach(w=>w.classList.remove('cw-open'));
-  if(!isOpen) el.classList.add('cw-open');
-}
-
-function closeCourseDetail(e) {
-  if(e.target === document.getElementById('cdOverlay')) closeCourseDetailBtn();
-}
-function closeCourseDetailBtn() {
-  document.getElementById('cdOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function closeModal(){
-  document.getElementById('checkoutModal').classList.remove('open');
-  document.body.style.overflow='';
-  if(timerInterval) clearInterval(timerInterval);
-  selectedMethod=null; selectedBank=null;
-  timerSeconds=1200; currentStep=1;
-  // hide all bank cards
-  document.querySelectorAll('.bank-detail-card').forEach(c=>c.classList.remove('show'));
-  document.querySelectorAll('.bank-btn').forEach(b=>b.classList.remove('selected'));
-  document.getElementById('bank-details-box').style.display='none';
-  document.getElementById('paypal-box').style.display='none';
-  document.querySelectorAll('.pay-method').forEach(m=>m.classList.remove('selected'));
-  document.getElementById('pay-next-btn').disabled=true;
-}
-
-function modalBGClose(e){ if(e.target===document.getElementById('checkoutModal')) closeModal(); }
-
-function goStep(n){
-  document.querySelectorAll('.checkout-step').forEach((s,i)=>s.classList.toggle('active',i===n-1));
-  for(let i=1;i<=5;i++){
-    const el=document.getElementById('mp'+i);
-    el.classList.remove('active','done');
-    if(i===n) el.classList.add('active');
-    else if(i<n) el.classList.add('done');
-  }
-  currentStep=n;
-  document.querySelector('.modal-box').scrollTop=0;
-}
-
-function validateStep2(){
-  const name=document.getElementById('f-name').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const phone=document.getElementById('f-phone').value.trim();
-  if(!name||!email||!phone){ alert('Please fill in all required fields.'); return; }
-  currentName=name;
-  goStep(3); startTimer();
-}
-
-function selectPayMethod(m){
-  selectedMethod=m;
-  document.getElementById('pm-paypal').classList.toggle('selected',m==='paypal');
-  document.getElementById('pm-bank').classList.toggle('selected',m==='bank');
-  document.getElementById('bank-details-box').style.display=m==='bank'?'block':'none';
-  document.getElementById('paypal-box').style.display=m==='paypal'?'block':'none';
-  // For PayPal enable immediately; for bank wait for bank selection
-  if(m==='paypal') document.getElementById('pay-next-btn').disabled=false;
-  else { document.getElementById('pay-next-btn').disabled=!selectedBank; }
-}
-
-function selectBank(bankId){
-  selectedBank=bankId;
-  // hide all
-  document.querySelectorAll('.bank-detail-card').forEach(c=>c.classList.remove('show'));
-  document.querySelectorAll('.bank-btn').forEach(b=>b.classList.remove('selected'));
-  // show selected
-  const card=document.getElementById('bdc-'+bankId);
-  const btn=document.querySelector(`.bank-btn[onclick="selectBank('${bankId}')"]`);
-  if(card) card.classList.add('show');
-  if(btn) btn.classList.add('selected');
-  document.getElementById('pay-next-btn').disabled=false;
-}
-
-function goPayNext(){
-  if(!selectedMethod){ alert('Please select a payment method.'); return; }
-  if(selectedMethod==='bank' && !selectedBank){ alert('Please select a bank.'); return; }
-  goStep(4);
-  document.getElementById('proof-ref').textContent='Reference: '+currentRef;
-  document.getElementById('confirm-ref').textContent=currentRef;
-  buildWaLink();
-}
-
-function startTimer(){
-  if(timerInterval) clearInterval(timerInterval);
-  timerSeconds=1200;
-  timerInterval=setInterval(()=>{
-    timerSeconds--;
-    const m=Math.floor(timerSeconds/60), s=timerSeconds%60;
-    document.getElementById('timer-count').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
-    if(timerSeconds<=0){
-      clearInterval(timerInterval);
-      document.getElementById('timer-count').style.display='none';
-      document.getElementById('timer-expired').style.display='block';
-      document.getElementById('pay-next-btn').disabled=true;
-    }
-  },1000);
-}
-
-function copyText(text, btn){
-  navigator.clipboard.writeText(text).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy',2000); }).catch(()=>{});
-}
-function copyRefText(btn){ copyText(currentRef,btn); }
-
-function handleUpload(input){
-  const file=input.files[0]; if(!file) return;
-  const prev=document.getElementById('upload-preview');
-  prev.innerHTML='<i class="bi bi-paperclip"></i> '+file.name+' ('+Math.round(file.size/1024)+'KB)';
-  prev.style.display='block';
-  document.getElementById('uploadArea').style.borderColor='var(--teal)';
-}
-
-function submitProof(){
-  goStep(5); buildWaLink();
-}
-
-function buildWaLink(){
-  const name=document.getElementById('f-name').value||'Student';
-  const phone='2348032632795';
-  const msg=encodeURIComponent(`Hello Crown Digital Solutions,\n\nI just made payment for *${currentCourse}*\n\nName: ${name}\nReference: ${currentRef}\nBank: ${selectedBank||'PayPal'}\n\nPlease confirm my enrollment. Thank you!`);
-  document.getElementById('wa-link').href=`https://wa.me/${phone}?text=${msg}`;
-}
-
-function toggleFaq(btn){
-  const item=btn.parentElement;
-  const isOpen=item.classList.contains('open');
-  docume
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen) item.classList.add('open');
-}
-</script>
-
 <!-- CINEMATIC LIGHTBOX (for student portfolio videos) -->
 <div class="lightbox-overlay" id="lbOverlay" onclick="lbBGClose(event)" style="position:fixed;inset:0;background:rgba(0,0,0,0);backdrop-filter:blur(0px);z-index:9500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s,background .4s,backdrop-filter .4s">
   <div class="lb-inner" style="position:relative;max-width:1000px;width:100%;max-height:90svh;transform:scale(.92) translateY(24px);transition:transform .5s cubic-bezier(0.16,1,0.3,1)">
@@ -1507,149 +1084,36 @@ function toggleFaq(btn){
 .lightbox-overlay.active .lb-inner{transform:scale(1) translateY(0)!important}
 #lbVideoWrap.active{display:block!important}
 </style>
-<script>
-// Student portfolio lightbox
-const spItems=[];
-document.querySelectorAll('.spv-card[data-lb-src]').forEach((card,i)=>{
-  spItems.push({src:card.dataset.lbSrc,tag:card.dataset.lbTag,name:card.dataset.lbName});
-  card.addEventListener('click',()=>{
-    const item=spItems[i];
-    document.getElementById('lbTag').textContent=item.tag;
-    document.getElementById('lbTitle').textContent=item.name;
-    const vWrap=document.getElementById('lbVideoWrap');
-    const vid=document.getElementById('lbVideo');
-    vWrap.classList.add('active');
-    vid.src=item.src;
-    vid.play().catch(()=>{});
-    document.getElementById('lbOverlay').classList.add('active');
-    document.body.style.overflow='hidden';
-  });
-});
-function closeLightbox(){
-  document.getElementById('lbOverlay').classList.remove('active');
-  document.body.style.overflow='';
-  const vid=document.getElementById('lbVideo');
-  vid.pause();vid.src='';
-  document.getElementById('lbVideoWrap').classList.remove('active');
-}
-function lbBGClose(e){if(e.target===document.getElementById('lbOverlay'))closeLightbox();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
-</script>
 
-<!-- ══ CHAT SUPPORT WIDGET ══ -->
+<!-- CHAT SUPPORT WIDGET -->
 <style>
-/* Chat bubble */
-.cs-chat-bubble {
-  position:fixed; bottom:28px; right:28px; z-index:8000;
-  display:flex; flex-direction:column; align-items:flex-end; gap:12px;
-}
-.cs-chat-btn {
-  width:58px; height:58px; border-radius:50%;
-  background:linear-gradient(135deg,#25d366,#128c7e);
-  border:none; cursor:none;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 8px 32px rgba(37,211,102,0.45);
-  transition:transform .3s var(--ease,cubic-bezier(0.16,1,0.3,1)), box-shadow .3s;
-  position:relative;
-}
-.cs-chat-btn:hover {
-  transform:scale(1.1);
-  box-shadow:0 12px 40px rgba(37,211,102,0.6);
-}
-.cs-chat-btn i { font-size:1.6rem; color:#fff; }
-/* pulse ring */
-.cs-chat-btn::after {
-  content:''; position:absolute; inset:-6px; border-radius:50%;
-  border:2px solid rgba(37,211,102,0.45);
-  animation:chatPulse 2s ease-in-out infinite;
-}
-@keyframes chatPulse {
-  0%,100%{transform:scale(1);opacity:.6}
-  50%{transform:scale(1.18);opacity:0}
-}
-/* notification dot */
-.cs-chat-dot {
-  position:absolute; top:2px; right:2px; width:14px; height:14px;
-  background:var(--gold2,#fcb31e); border-radius:50%; border:2px solid #fff;
-  font-family:'DM Mono',monospace; font-size:.45rem; color:#000;
-  display:flex; align-items:center; justify-content:center;
-}
-
-/* Chat panel */
-.cs-chat-panel {
-  position:fixed; bottom:100px; right:28px; z-index:8001;
-  width:340px; background:var(--surface,#fff);
-  border:1px solid var(--border2,rgba(0,0,0,.12));
-  border-radius:12px; overflow:hidden;
-  box-shadow:0 24px 64px rgba(0,0,0,.18);
-  transform:translateY(20px) scale(.95);
-  opacity:0; pointer-events:none;
-  transition:opacity .35s cubic-bezier(0.16,1,0.3,1), transform .35s cubic-bezier(0.16,1,0.3,1);
-}
-.cs-chat-panel.open {
-  opacity:1; pointer-events:all;
-  transform:translateY(0) scale(1);
-}
-
-/* Panel header */
-.csp-header {
-  background:linear-gradient(135deg,#128c7e,#25d366);
-  padding:20px 20px 16px;
-  display:flex; align-items:center; gap:14px;
-}
-.csp-avatar {
-  width:44px; height:44px; border-radius:50%;
-  background:rgba(255,255,255,.2);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.4rem; color:#fff; flex-shrink:0;
-  border:2px solid rgba(255,255,255,.4);
-}
-.csp-info {}
-.csp-name { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:.08em; color:#fff; line-height:1; }
-.csp-status { font-family:'DM Mono',monospace; font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-top:3px; display:flex; align-items:center; gap:5px; }
-.csp-status-dot { width:7px; height:7px; border-radius:50%; background:#adff9e; animation:chatPulse 2s infinite; }
-.csp-close { margin-left:auto; background:none; border:none; color:rgba(255,255,255,.7); cursor:none; font-size:1.1rem; padding:4px; transition:color .2s; }
-.csp-close:hover { color:#fff; }
-
-/* Panel body */
-.csp-body { padding:20px; background:var(--bg2,#f8f8f8); }
-.csp-bubble {
-  background:var(--surface,#fff); border:1px solid var(--border,rgba(0,0,0,.07));
-  border-radius:0 12px 12px 12px; padding:12px 14px; margin-bottom:14px;
-  font-family:'Syne',sans-serif; font-size:.82rem; color:var(--text,#0e0b07);
-  line-height:1.6; box-shadow:var(--shadow,0 2px 8px rgba(0,0,0,.05));
-}
-.csp-bubble strong { color:var(--gold2,#fcb31e); }
-.csp-time { font-family:'DM Mono',monospace; font-size:.45rem; letter-spacing:.15em; color:var(--text3,#8a7a60); margin-bottom:16px; text-align:right; }
-
-/* Quick options */
-.csp-options { display:flex; flex-direction:column; gap:8px; }
-.csp-opt {
-  display:flex; align-items:center; gap:10px;
-  padding:11px 14px; border:1px solid var(--border2,rgba(0,0,0,.12));
-  background:var(--surface,#fff); text-decoration:none;
-  font-family:'DM Mono',monospace; font-size:.56rem; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--text,#0e0b07);
-  transition:border-color .25s, background .25s, color .25s, padding-left .25s;
-  cursor:none;
-}
-.csp-opt:hover { border-color:#25d366; color:#128c7e; padding-left:20px; background:rgba(37,211,102,.04); }
-.csp-opt i { color:#25d366; font-size:.9rem; flex-shrink:0; }
-
-/* Panel footer */
-.csp-footer {
-  padding:12px 20px;
-  border-top:1px solid var(--border,rgba(0,0,0,.07));
-  font-family:'DM Mono',monospace; font-size:.48rem; letter-spacing:.15em;
-  color:var(--text3,#8a7a60); text-align:center;
-  display:flex; align-items:center; justify-content:center; gap:6px;
-}
-.csp-footer i { color:#25d366; }
-
-@media(max-width:400px){
-  .cs-chat-panel { width:calc(100vw - 24px); right:12px; }
-  .cs-chat-bubble { right:16px; bottom:16px; }
-}
+.cs-chat-bubble{position:fixed;bottom:28px;right:28px;z-index:8000;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.cs-chat-btn{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);border:none;cursor:none;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(37,211,102,0.45);transition:transform .3s var(--ease,cubic-bezier(0.16,1,0.3,1)),box-shadow .3s;position:relative}
+.cs-chat-btn:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(37,211,102,0.6)}
+.cs-chat-btn i{font-size:1.6rem;color:#fff}
+.cs-chat-btn::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,0.45);animation:chatPulse 2s ease-in-out infinite}
+@keyframes chatPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.18);opacity:0}}
+.cs-chat-dot{position:absolute;top:2px;right:2px;width:14px;height:14px;background:var(--gold2,#fcb31e);border-radius:50%;border:2px solid #fff;font-family:'DM Mono',monospace;font-size:.45rem;color:#000;display:flex;align-items:center;justify-content:center}
+.cs-chat-panel{position:fixed;bottom:100px;right:28px;z-index:8001;width:340px;background:var(--surface,#fff);border:1px solid var(--border2,rgba(0,0,0,.12));border-radius:12px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.18);transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(0.16,1,0.3,1),transform .35s cubic-bezier(0.16,1,0.3,1)}
+.cs-chat-panel.open{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+.csp-header{background:linear-gradient(135deg,#128c7e,#25d366);padding:20px 20px 16px;display:flex;align-items:center;gap:14px}
+.csp-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0;border:2px solid rgba(255,255,255,.4)}
+.csp-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.08em;color:#fff;line-height:1}
+.csp-status{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:3px;display:flex;align-items:center;gap:5px}
+.csp-status-dot{width:7px;height:7px;border-radius:50%;background:#adff9e;animation:chatPulse 2s infinite}
+.csp-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);cursor:none;font-size:1.1rem;padding:4px;transition:color .2s}
+.csp-close:hover{color:#fff}
+.csp-body{padding:20px;background:var(--bg2,#f8f8f8)}
+.csp-bubble{background:var(--surface,#fff);border:1px solid var(--border,rgba(0,0,0,.07));border-radius:0 12px 12px 12px;padding:12px 14px;margin-bottom:14px;font-family:'Syne',sans-serif;font-size:.82rem;color:var(--text,#0e0b07);line-height:1.6;box-shadow:var(--shadow,0 2px 8px rgba(0,0,0,.05))}
+.csp-bubble strong{color:var(--gold2,#fcb31e)}
+.csp-time{font-family:'DM Mono',monospace;font-size:.45rem;letter-spacing:.15em;color:var(--text3,#8a7a60);margin-bottom:16px;text-align:right}
+.csp-options{display:flex;flex-direction:column;gap:8px}
+.csp-opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--border2,rgba(0,0,0,.12));background:var(--surface,#fff);text-decoration:none;font-family:'DM Mono',monospace;font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text,#0e0b07);transition:border-color .25s,background .25s,color .25s,padding-left .25s;cursor:none}
+.csp-opt:hover{border-color:#25d366;color:#128c7e;padding-left:20px;background:rgba(37,211,102,.04)}
+.csp-opt i{color:#25d366;font-size:.9rem;flex-shrink:0}
+.csp-footer{padding:12px 20px;border-top:1px solid var(--border,rgba(0,0,0,.07));font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.15em;color:var(--text3,#8a7a60);text-align:center;display:flex;align-items:center;justify-content:center;gap:6px}
+.csp-footer i{color:#25d366}
+@media(max-width:400px){.cs-chat-panel{width:calc(100vw - 24px);right:12px}.cs-chat-bubble{right:16px;bottom:16px}}
 </style>
 
 <div class="cs-chat-bubble">
@@ -1693,18 +1157,462 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     <span class="cs-chat-dot">1</span>
   </button>
 </div>
+
+<script src="shared.js"></script>
 <script>
-function toggleChat(){
-  const panel=document.getElementById('csChatPanel');
-  const icon=document.getElementById('csChatIcon');
-  const isOpen=panel.classList.toggle('open');
-  icon.className=isOpen?'bi bi-x-lg':'bi bi-whatsapp';
-  // remove notification dot once opened
-  const dot=document.querySelector('.cs-chat-dot');
-  if(dot&&isOpen) dot.style.display='none';
+/* ── LOADER FAILSAFE ── */
+(function(){
+  function killLoader(){
+    var loader=document.getElementById('cs-loader');
+    if(!loader||loader.dataset.dismissed) return;
+    loader.dataset.dismissed='true';
+    loader.classList.add('ld-out');
+    setTimeout(function(){
+      loader.style.display='none';
+      try{loader.remove();}catch(e){}
+    },850);
+  }
+  setTimeout(killLoader,1000);
+  setTimeout(killLoader,2000);
+  setTimeout(killLoader,3000);
+  document.addEventListener('DOMContentLoaded',function(){ setTimeout(killLoader,500); });
+  window.addEventListener('load',function(){ setTimeout(killLoader,200); });
+})();
+
+/* ── CHECKOUT FLOW ── */
+var currentStep=1, selectedMethod=null, selectedBank=null;
+var timerInterval=null, timerSeconds=1200;
+var currentRef='', currentCourse='', currentName='';
+
+var courseData = {
+  '3D Modeling – Beginner Course':    { points:['Maya interface & workspace','Object modeling fundamentals','Materials & textures','Lights, cameras & rendering','8-week structured program','Certificate of completion'], dur:'8 Weeks · Online · Maya' },
+  '3D Animation – Beginner Course':   { points:['Timing & arcs','Squash & stretch','Ease in & ease out','Weight & gravity','Overlap & follow-through','Bipedal locomotion basics'], dur:'Flexible · Online · Maya' },
+  '3D Animation – Intermediate Course':{ points:['Character animation with weight','Action & physical scenarios','Advanced graph editor','Complex action sequences','Industry-standard workflows','Portfolio-ready shots'], dur:'Advanced · Online · Maya' },
+};
+
+function generateRef(course){
+  var code = course.indexOf('Modeling')>-1?'MDL':course.indexOf('Intermediate')>-1?'INT':'ANM';
+  return 'CS-'+code+'-'+Math.floor(10000+Math.random()*90000);
 }
-// Close on outside click
-document.addEventListener('click',function(e){
-  const panel=document.getElementById('csChatPanel');
-  const btn=document.querySelector('.cs-chat-btn');
-  if(panel&&panel.classList.contains('open')&&!panel.contains(e.target)&&e.target!==btn&&!btn.conta
+
+function openCheckout(course, price, iconClass, dur){
+  currentCourse=course; currentRef=generateRef(course);
+  var iconEl=document.getElementById('cdc-icon');
+  iconEl.className='cdc-icon bi '+iconClass;
+  document.getElementById('cdc-title').textContent=course;
+  document.getElementById('cdc-dur').textContent=(courseData[course]||{}).dur||dur+' · Online · Maya';
+  document.getElementById('cdc-price').textContent='₦'+Number(price).toLocaleString();
+  document.getElementById('f-course-display').value=course;
+  document.getElementById('amt-display').textContent='₦'+Number(price).toLocaleString();
+  var pts=document.getElementById('cdc-points'); pts.innerHTML='';
+  ((courseData[course]||{}).points||[]).forEach(function(p){
+    var li=document.createElement('li');
+    li.style.cssText='display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--text2)';
+    li.innerHTML='<i class="bi bi-check-circle-fill" style="color:var(--teal)"></i>'+p;
+    pts.appendChild(li);
+  });
+  ['gtb','access','uba','zenith'].forEach(function(b){
+    var el=document.getElementById('ref-val-'+b);
+    if(el) el.textContent=currentRef;
+  });
+  document.getElementById('ref-display').textContent='Reference: '+currentRef;
+  document.getElementById('checkoutModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  selectedMethod=null; selectedBank=null;
+  goStep(1);
+}
+
+function closeModal(){
+  document.getElementById('checkoutModal').classList.remove('open');
+  document.body.style.overflow='';
+  if(timerInterval) clearInterval(timerInterval);
+  selectedMethod=null; selectedBank=null;
+  timerSeconds=1200; currentStep=1;
+  document.querySelectorAll('.bank-detail-card').forEach(function(c){c.classList.remove('show');});
+  document.querySelectorAll('.bank-btn').forEach(function(b){b.classList.remove('selected');});
+  document.getElementById('bank-details-box').style.display='none';
+  document.getElementById('paypal-box').style.display='none';
+  document.querySelectorAll('.pay-method').forEach(function(m){m.classList.remove('selected');});
+  document.getElementById('pay-next-btn').disabled=true;
+  document.getElementById('timer-count').style.display='';
+  document.getElementById('timer-expired').style.display='none';
+}
+
+function modalBGClose(e){ if(e.target===document.getElementById('checkoutModal')) closeModal(); }
+
+function goStep(n){
+  document.querySelectorAll('.checkout-step').forEach(function(s,i){s.classList.toggle('active',i===n-1);});
+  for(var i=1;i<=5;i++){
+    var el=document.getElementById('mp'+i);
+    el.classList.remove('active','done');
+    if(i===n) el.classList.add('active');
+    else if(i<n) el.classList.add('done');
+  }
+  currentStep=n;
+  document.querySelector('.modal-box').scrollTop=0;
+}
+
+function validateStep2(){
+  var name=document.getElementById('f-name').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  if(!name||!email||!phone){ alert('Please fill in all required fields.'); return; }
+  currentName=name;
+  goStep(3); startTimer();
+}
+
+function selectPayMethod(m){
+  selectedMethod=m;
+  document.getElementById('pm-paypal').classList.toggle('selected',m==='paypal');
+  document.getElementById('pm-bank').classList.toggle('selected',m==='bank');
+  document.getElementById('bank-details-box').style.display=m==='bank'?'block':'none';
+  document.getElementById('paypal-box').style.display=m==='paypal'?'block':'none';
+  if(m==='paypal') document.getElementById('pay-next-btn').disabled=false;
+  else { document.getElementById('pay-next-btn').disabled=!selectedBank; }
+}
+
+function selectBank(bankId){
+  selectedBank=bankId;
+  document.querySelectorAll('.bank-detail-card').forEach(function(c){c.classList.remove('show');});
+  document.querySelectorAll('.bank-btn').forEach(function(b){b.classList.remove('selected');});
+  var card=document.getElementById('bdc-'+bankId);
+  var btn=document.querySelector('.bank-btn[onclick="selectBank(\''+bankId+'\')"]');
+  if(card) card.classList.add('show');
+  if(btn) btn.classList.add('selected');
+  document.getElementById('pay-next-btn').disabled=false;
+}
+
+function goPayNext(){
+  if(!selectedMethod){ alert('Please select a payment method.'); return; }
+  if(selectedMethod==='bank' && !selectedBank){ alert('Please select a bank.'); return; }
+  goStep(4);
+  document.getElementById('proof-ref').textContent='Reference: '+currentRef;
+  document.getElementById('confirm-ref').textContent=currentRef;
+  buildWaLink();
+}
+
+function startTimer(){
+  if(timerInterval) clearInterval(timerInterval);
+  timerSeconds=1200;
+  document.getElementById('timer-count').style.display='';
+  document.getElementById('timer-expired').style.display='none';
+  timerInterval=setInterval(function(){
+    timerSeconds--;
+    var m=Math.floor(timerSeconds/60), s=timerSeconds%60;
+    document.getElementById('timer-count').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    if(timerSeconds<=0){
+      clearInterval(timerInterval);
+      document.getElementById('timer-count').style.display='none';
+      document.getElementById('timer-expired').style.display='block';
+      document.getElementById('pay-next-btn').disabled=true;
+    }
+  },1000);
+}
+
+function copyText(text, btn){
+  navigator.clipboard.writeText(text).then(function(){ btn.textContent='Copied!'; setTimeout(function(){btn.textContent='Copy';},2000); }).catch(function(){});
+}
+function copyRefText(btn){ copyText(currentRef,btn); }
+
+function handleUpload(input){
+  var file=input.files[0]; if(!file) return;
+  var prev=document.getElementById('upload-preview');
+  prev.innerHTML='<i class="bi bi-paperclip"></i> '+file.name+' ('+Math.round(file.size/1024)+'KB)';
+  prev.style.display='block';
+  document.getElementById('uploadArea').style.borderColor='var(--teal)';
+}
+
+function submitProof(){
+  goStep(5); buildWaLink();
+}
+
+function buildWaLink(){
+  var name=document.getElementById('f-name').value||'Student';
+  var phone='2348032632795';
+  var msg=encodeURIComponent('Hello Crown Digital Solutions,\n\nI just made payment for *'+currentCourse+'*\n\nName: '+name+'\nReference: '+currentRef+'\nBank: '+(selectedBank||'PayPal')+'\n\nPlease confirm my enrollment. Thank you!');
+  document.getElementById('wa-link').href='https://wa.me/'+phone+'?text='+msg;
+}
+
+/* ── FAQ ACCORDION ── */
+function toggleFaq(btn){
+  var item=btn.parentElement;
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
+  if(!isOpen) item.classList.add('open');
+}
+
+/* ── COURSE DETAIL PANEL ── */
+var COURSE_DATA = {
+  modeling: {
+    title: '3D MODELING — BEGINNER',
+    badge: 'Beginner', duration: '8 Weeks · Online · Autodesk Maya',
+    icon: '🧊', price: '₦150,000',
+    priceRaw: '150000', priceIcon: 'bi-box-seam-fill',
+    tagline: 'Build the foundation every 3D artist needs. From zero to rendering professional-quality scenes.',
+    pills: ['Autodesk Maya','8 Weeks','Live Mentorship','Portfolio Project','Certificate'],
+    learn: [
+      'Navigate the Autodesk Maya interface with confidence',
+      'Model hard-surface and organic objects from scratch',
+      'Apply materials, textures, and UV unwrapping',
+      'Set up professional lighting rigs and cameras',
+      'Render production-quality scenes with Arnold',
+      'Complete a portfolio-ready final project',
+    ],
+    curriculum: [
+      { week:'01', title:'Maya Overview', sub:'Interface & Navigation', desc:'Get comfortable with Maya — the main interface, navigation in 3D space, and working with basic primitives.', tags:['Interface','Viewport','Primitives','Hotkeys'] },
+      { week:'02', title:'Modeling Fundamentals', sub:'Polygons & Edge Loops', desc:'Learn polygon modeling techniques. Box modeling, edge loops, subdivisions, and clean topology.', tags:['Poly Modeling','Topology','Edge Loops','Smoothing'] },
+      { week:'03', title:'UV Unwrapping', sub:'Texturing Prep', desc:'Understand UV mapping — how to unfold a 3D mesh so textures apply correctly.', tags:['UV Editor','Seams','Packing','UDIM'] },
+      { week:'04', title:'Materials & Texturing', sub:'Arnold Shaders', desc:'Create realistic and stylised materials with Arnold aiStandardSurface shader. PBR texture maps.', tags:['aiStandardSurface','PBR','Normal Maps','Texture Sets'] },
+      { week:'05', title:'Lighting & Cameras', sub:'Studio Lighting Rigs', desc:'Set up three-point lighting, HDRI dome lights, and area lights. Camera framing and DOF.', tags:['HDRI','Area Lights','DOF','Composition'] },
+      { week:'06', title:'Rendering', sub:'Arnold & Render Settings', desc:'Configure Arnold render settings. AOV passes, denoising, batch rendering.', tags:['Arnold','AOVs','Denoising','Batch Render'] },
+      { week:'07', title:'Scene Assembly', sub:'Building a Full Scene', desc:'Combine all skills — model a complete scene with multiple assets, lighting, and camera work.', tags:['Scene Setup','Asset Library','Composition'] },
+      { week:'08', title:'Final Project', sub:'Portfolio-Ready Render', desc:'Complete and present your final portfolio piece. Receive mentor critique.', tags:['Portfolio','Critique','Final Render'] },
+    ],
+    requirements: ['A computer with at least 8GB RAM (16GB recommended)','Autodesk Maya (free student version available)','No prior 3D experience needed','Commitment to 6–8 hours per week'],
+    includes: ['8 weeks of structured lessons','Weekly live mentorship sessions','Access to Crown Digital Solutions asset library','PDF course notes & reference sheets','Final portfolio critique','Course completion certificate'],
+    instructor: 'Crown Digital Solutions', role: 'Industry 3D Artist & Educator',
+  },
+  animation: {
+    title: '3D ANIMATION — BEGINNER',
+    badge: 'Beginner', duration: '6 Weeks · Online · Autodesk Maya',
+    icon: '🎬', price: '₦200,000',
+    priceRaw: '200000', priceIcon: 'bi-person-bounding-box',
+    tagline: 'Master the 12 principles. Bring characters to life with personality, weight, and emotion.',
+    pills: ['Autodesk Maya','6 Weeks','Live Critique','Squirrel Rig','Stewart Biped'],
+    learn: [
+      'Apply all 12 principles of animation in Maya',
+      'Work with pre-built character rigs (Stewart & Squirrel)',
+      'Animate bounces, walks, and full character performances',
+      'Read and edit the Graph Editor for precise timing',
+      'Create an animated bouncing ball sequence',
+      'Build a beginner animation reel for your portfolio',
+    ],
+    curriculum: [
+      { week:'01', title:'Maya Animation Overview', sub:'Timeline & Graph Editor', desc:'Introduction to Maya animation toolset. Keyframes, timeline, playback, and Graph Editor basics.', tags:['Keyframes','Timeline','Graph Editor','Playback'] },
+      { week:'02', title:'Intro to Animation', sub:'Bouncing Ball & Arcs', desc:'Classic bouncing ball. Timing, spacing, arcs, squash & stretch, and anticipation.', tags:['Bouncing Ball','Arcs','Squash & Stretch','Timing'] },
+      { week:'03', title:'12 Principles Deep Dive', sub:'Weight & Overlap', desc:'Apply weight, gravity, overlap & follow-through using the Squirrel rig.', tags:['Weight','Overlap','Follow-Through','Squirrel Rig'] },
+      { week:'04', title:'Character Posing I', sub:'Stewart Biped Head Turn', desc:'Full character animation with Stewart rig. Appealing silhouettes and posing.', tags:['Stewart Rig','Posing','Silhouette','Head Turn'] },
+      { week:'05', title:'Character Animation II', sub:'Walk Cycles', desc:'Animate a complete walk cycle — contact, down, passing, and up positions.', tags:['Walk Cycle','Contact Pose','Weight Shift','Polish'] },
+      { week:'06', title:'Final Performance Shot', sub:'Portfolio Reel', desc:'Animate a short character performance shot. Compile your beginner demo reel.', tags:['Performance Shot','Demo Reel','Critique','Polish'] },
+    ],
+    requirements: ['Autodesk Maya installed (free student version)','Basic Maya familiarity recommended','8GB RAM minimum, dedicated GPU preferred','5–8 hours per week commitment'],
+    includes: ['6 weeks of structured animation lessons','Live weekly critique sessions','Pre-built character rigs (Stewart & Squirrel)','Graph Editor workflow guides','Demo reel compilation support','Certificate of completion'],
+    instructor: 'Crown Digital Solutions', role: 'Lead Character Animator',
+  },
+  intermediate: {
+    title: '3D ANIMATION — INTERMEDIATE',
+    badge: 'Intermediate', duration: '8 Weeks · Online · Autodesk Maya',
+    icon: '🏆', price: '₦250,000',
+    priceRaw: '250000', priceIcon: 'bi-trophy-fill',
+    tagline: 'Complex character performances, cinematic shots, and advanced Maya workflows.',
+    pills: ['Autodesk Maya','8 Weeks','Advanced Rigs','Dialogue Animation','Industry Pipeline'],
+    learn: [
+      'Animate complex full-body character performances',
+      'Lip sync and facial animation for dialogue shots',
+      'Use advanced Graph Editor curves and breakdowns',
+      'Create action sequences with impact and secondary motion',
+      'Understand industry pipeline and production workflow',
+      'Build a professional intermediate animation reel',
+    ],
+    curriculum: [
+      { week:'01', title:'Advanced Maya Tools', sub:'Dope Sheet & Trax Editor', desc:'Master advanced tools — Dope Sheet, Trax Editor for non-linear animation, and constraints.', tags:['Dope Sheet','Trax Editor','Constraints','NLA'] },
+      { week:'02', title:'Advanced Body Mechanics', sub:'Weight & Impact', desc:'Animate a robot arm with heavy mechanical weight. Force, drag, and momentum.', tags:['Mechanical Rig','Force','Momentum','Drag'] },
+      { week:'03', title:'Facial Animation', sub:'Blend Shapes & Controls', desc:'Facial animation using blend shapes and face controls. Nuanced expressions.', tags:['Blend Shapes','Face Controls','Expressions','Eyes'] },
+      { week:'04', title:'Dialogue Animation I', sub:'Audio & Lip Sync', desc:'Animate a character delivering dialogue. Audio timing, mouth shapes, body language.', tags:['Audio Sync','Lip Sync','Visemes','Body Language'] },
+      { week:'05', title:'Dialogue Animation II', sub:'Subtext & Polish', desc:'Polish the dialogue shot — subtext, overlapping action, subtle eye darts.', tags:['Subtext','Polish','Eye Darts','Overlap'] },
+      { week:'06', title:'Action Sequences', sub:'Fight & Reaction', desc:'Choreograph an action sequence. Weight in fast movements.', tags:['Action Blocking','Fast Motion','Impact','Anticipation'] },
+      { week:'07', title:'Industry Workflow', sub:'Pipeline & Handoff', desc:'Studio production pipeline. Blocking, spline, polish passes. Director feedback.', tags:['Blocking Pass','Spline Pass','Polish','Feedback'] },
+      { week:'08', title:'Intermediate Demo Reel', sub:'Portfolio Presentation', desc:'Assemble and present your intermediate demo reel. One-on-one mentor feedback.', tags:['Demo Reel','Editing','Presentation','Industry Ready'] },
+    ],
+    requirements: ['Completion of 3D Animation Beginner, or equivalent','Autodesk Maya with character rig library','16GB RAM recommended','8–12 hours per week'],
+    includes: ['8 weeks advanced animation training','Advanced pre-built character rigs','Weekly one-on-one mentor sessions','Industry pipeline workflow docs','Demo reel editing guidance','Intermediate certificate'],
+    instructor: 'Crown Digital Solutions', role: 'Senior Character Animator',
+  },
+  '2d': {
+    title: '2D ANIMATION',
+    badge: 'Beginner', duration: '6 Weeks · Online · After Effects',
+    icon: '✨', price: '₦120,000',
+    priceRaw: '120000', priceIcon: 'bi-stars',
+    tagline: 'Create dynamic 2D animations, motion graphics, and character rigs using After Effects.',
+    pills: ['After Effects','6 Weeks','Motion Graphics','Character Rigs','Brand Content'],
+    learn: [
+      'Navigate After Effects for animation workflows',
+      'Rig and animate 2D characters with puppet tools',
+      'Create professional motion graphics and title sequences',
+      'Animate logos, infographics, and brand content',
+      'Apply easing and timing for fluid, natural motion',
+      'Export broadcast-quality content for social & TV',
+    ],
+    curriculum: [
+      { week:'01', title:'After Effects Fundamentals', sub:'Interface & Keyframes', desc:'After Effects workspace, compositions, layers, timeline, and basic keyframing.', tags:['Interface','Compositions','Layers','Transforms'] },
+      { week:'02', title:'Motion Graphics Basics', sub:'Text & Shape Animation', desc:'Animate text, shapes, and simple graphics. Path animations and dynamic typography.', tags:['Text Animation','Shapes','Path','Typography'] },
+      { week:'03', title:'Character Rigging', sub:'Puppet Tools & Joystick', desc:'Rig a 2D character using puppet pins and Joystick & Sliders plugin.', tags:['Puppet Pin','Joystick & Sliders','Rigging','Character Design'] },
+      { week:'04', title:'Character Animation', sub:'Walk, Talk & Emote', desc:'Animate your rigged character — walks, lip sync, and emotional performances.', tags:['Walk Cycle','Lip Sync','Performance','Timing'] },
+      { week:'05', title:'Brand Animation', sub:'Logo Reveals & Idents', desc:'Create professional logo reveal animations and brand idents.', tags:['Logo Reveal','Brand Ident','Corporate','Broadcast'] },
+      { week:'06', title:'Final Project', sub:'Demo Reel', desc:'Produce a complete branded animation piece and compile a 2D demo reel.', tags:['Final Project','Demo Reel','Critique','Delivery'] },
+    ],
+    requirements: ['Adobe After Effects installed (CC subscription)','A computer with 8GB RAM minimum','Basic Photoshop knowledge helpful but not required','4–6 hours per week'],
+    includes: ['6 weeks of After Effects animation training','Pre-built 2D character rig templates','Motion graphics starter kit','Weekly live feedback sessions','Completion certificate'],
+    instructor: 'Crown Digital Solutions', role: '2D Animator & Motion Designer',
+  },
+  video: {
+    title: 'VIDEO EDITING',
+    badge: 'All Levels', duration: '4 Weeks · Online · Premiere Pro',
+    icon: '🎞', price: '₦80,000',
+    priceRaw: '80000', priceIcon: 'bi-scissors',
+    tagline: 'Edit like a professional. Master Premiere Pro, colour grading, sound design, and storytelling through the cut.',
+    pills: ['Premiere Pro','4 Weeks','Colour Grading','Sound Design','Cinematic Edits'],
+    learn: [
+      'Navigate Premiere Pro full editing workflow',
+      'Cut and structure compelling narrative edits',
+      'Apply professional colour grades with Lumetri',
+      'Mix and design sound for cinematic impact',
+      'Create smooth transitions and dynamic montages',
+      'Export for YouTube, Instagram, broadcast, and client delivery',
+    ],
+    curriculum: [
+      { week:'01', title:'Premiere Pro Foundations', sub:'Workflow & Organisation', desc:'Import, organise, and manage media. Sequences, bins, and professional workflow.', tags:['Import','Sequences','Bins','Workflow'] },
+      { week:'02', title:'The Edit', sub:'Cutting & Storytelling', desc:'Cut a full short film. J-cuts, L-cuts, match cuts, rhythm and timing.', tags:['J-Cut','L-Cut','Match Cut','Rhythm'] },
+      { week:'03', title:'Colour & Sound', sub:'Lumetri & Audio Mix', desc:'Grade footage with Lumetri Colour. Mix dialogue, music, and effects.', tags:['Lumetri','Colour Grading','Audio Mix','EQ'] },
+      { week:'04', title:'Finishing & Delivery', sub:'Motion & Export', desc:'Add motion graphics, lower thirds, titles. Export for every platform.', tags:['Motion Graphics','Lower Thirds','Export','Delivery'] },
+    ],
+    requirements: ['Adobe Premiere Pro installed (CC)','A computer capable of video playback (8GB+ RAM)','Sample footage provided by Crown Digital Solutions','No prior editing experience required'],
+    includes: ['4 weeks of Premiere Pro training','Sample footage library for practice','Colour grading LUT pack','Sound effects & music library','Completion certificate'],
+    instructor: 'Crown Digital Solutions', role: 'Professional Video Editor',
+  },
+  ai: {
+    title: 'AI FILMMAKING & ANIMATION',
+    badge: 'New Course', duration: '4 Weeks · Online · Multi-Tool',
+    icon: '🤖', price: '₦100,000',
+    priceRaw: '100000', priceIcon: 'bi-robot',
+    tagline: 'The future of content creation is AI-powered. Generate, animate, and edit cinematic films without a camera.',
+    pills: ['Runway ML','Kling AI','Sora','CapCut AI','4 Weeks','Prompt Engineering'],
+    learn: [
+      'Use Runway Gen-2, Kling, and Sora to generate video from text',
+      'Write powerful prompts for cinematic AI film generation',
+      'Animate AI-generated characters and scenes',
+      'Edit and combine AI footage with real footage seamlessly',
+      'Create full short films using AI-only production pipelines',
+      'Understand the ethical and commercial use of AI content',
+    ],
+    curriculum: [
+      { week:'01', title:'AI Tools Landscape', sub:'Runway, Kling & Sora', desc:'Overview of leading AI video generation platforms. Capabilities, limitations, and tool selection.', tags:['Runway','Kling','Sora','Pika'] },
+      { week:'02', title:'Prompt Engineering', sub:'Cinematic Language for AI', desc:'Write detailed, cinematic prompts. Camera angles, lighting, mood, and subject strategies.', tags:['Prompting','Camera Language','Mood','Iteration'] },
+      { week:'03', title:'AI Animation', sub:'Consistent Characters & Scenes', desc:'Maintain character consistency. ControlNet, image-to-video, and seed locking.', tags:['ControlNet','Img2Video','Seed Lock','Consistency'] },
+      { week:'04', title:'Full AI Short Film', sub:'Production & Delivery', desc:'Produce a complete 60-90 second AI-generated short film from script to final export.', tags:['Short Film','AI Voiceover','Editing','Delivery'] },
+    ],
+    requirements: ['A computer or laptop with modern browser','Runway ML & Kling AI accounts (free tiers available)','Basic video understanding helpful','Creative mindset and willingness to experiment'],
+    includes: ['4 weeks of AI filmmaking training','Prompt engineering templates library','Access to Crown Digital Solutions AI tools guide','Weekly live sessions & project feedback','AI Filmmaking certificate'],
+    instructor: 'Crown Digital Solutions', role: 'AI Creative Director',
+  },
+};
+
+function openCourseDetail(courseKey) {
+  var d = COURSE_DATA[courseKey];
+  if(!d) return;
+  document.getElementById('cdTitle').textContent = d.title;
+  document.getElementById('cdBadgeTag').textContent = d.badge;
+  document.getElementById('cdDuration').textContent = d.duration;
+  document.getElementById('cdHeaderIcon').textContent = d.icon;
+  document.getElementById('cdTagline').textContent = d.tagline;
+  var pillsEl = document.getElementById('cdPills');
+  pillsEl.innerHTML = d.pills.map(function(p){ return '<span class="cd-pill">'+p+'</span>'; }).join('');
+  var learnEl = document.getElementById('cdLearnList');
+  learnEl.innerHTML = d.learn.map(function(l){ return '<li>'+l+'</li>'; }).join('');
+  var currEl = document.getElementById('cdCurriculum');
+  currEl.innerHTML = d.curriculum.map(function(w,i){
+    return '<div class="cd-week" id="cdw-'+courseKey+'-'+i+'">' +
+      '<button class="cd-week-btn" onclick="toggleCDWeek(\'cdw-'+courseKey+'-'+i+'\')">' +
+        '<span class="cd-wk-num">W'+w.week+'</span>' +
+        '<div class="cd-wk-info"><div class="cd-wk-title">'+w.title+'</div><div class="cd-wk-sub">'+w.sub+'</div></div>' +
+        '<i class="bi bi-chevron-down cd-wk-arrow"></i>' +
+      '</button>' +
+      '<div class="cd-week-body"><p>'+w.desc+'</p><div class="cd-week-tags">'+w.tags.map(function(t){ return '<span>'+t+'</span>'; }).join('')+'</div></div>' +
+    '</div>';
+  }).join('');
+  var reqEl = document.getElementById('cdReqList');
+  reqEl.innerHTML = d.requirements.map(function(r){ return '<li>'+r+'</li>'; }).join('');
+  document.getElementById('cdPriceMain').textContent = d.price;
+  var incEl = document.getElementById('cdIncList');
+  incEl.innerHTML = d.includes.map(function(inc){ return '<li><i class="bi bi-check-circle-fill"></i>'+inc+'</li>'; }).join('');
+  document.getElementById('cdInstName').textContent = d.instructor;
+  document.getElementById('cdInstRole').textContent = d.role;
+  document.getElementById('cdEnrollBtn').onclick = function() {
+    closeCourseDetailBtn();
+    setTimeout(function(){ openCheckout(d.title, d.priceRaw, d.priceIcon, d.duration.split('·')[0].trim()); }, 400);
+  };
+  document.getElementById('cdOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('cdPanel').scrollTop = 0;
+}
+
+function toggleCDWeek(id) {
+  var el = document.getElementById(id);
+  var isOpen = el.classList.contains('cw-open');
+  document.querySelectorAll('.cd-week').forEach(function(w){w.classList.remove('cw-open');});
+  if(!isOpen) el.classList.add('cw-open');
+}
+
+function closeCourseDetail(e) {
+  if(e.target === document.getElementById('cdOverlay')) closeCourseDetailBtn();
+}
+function closeCourseDetailBtn() {
+  document.getElementById('cdOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── STUDENT PORTFOLIO LIGHTBOX ── */
+var spItems = [];
+document.querySelectorAll('.spv-card[data-lb-src]').forEach(function(card, i){
+  spItems.push({src:card.dataset.lbSrc, tag:card.dataset.lbTag, name:card.dataset.lbName});
+  card.addEventListener('click', function(){
+    var item = spItems[i];
+    document.getElementById('lbTag').textContent = item.tag;
+    document.getElementById('lbTitle').textContent = item.name;
+    var vWrap = document.getElementById('lbVideoWrap');
+    var vid = document.getElementById('lbVideo');
+    vWrap.classList.add('active');
+    vid.src = item.src;
+    vid.play().catch(function(){});
+    document.getElementById('lbOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox(){
+  document.getElementById('lbOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  var vid = document.getElementById('lbVideo');
+  vid.pause();
+  vid.src = '';
+  document.getElementById('lbVideoWrap').classList.remove('active');
+}
+function lbBGClose(e){ if(e.target === document.getElementById('lbOverlay')) closeLightbox(); }
+
+/* ── CHAT WIDGET ── */
+function toggleChat(){
+  var panel = document.getElementById('csChatPanel');
+  var icon = document.getElementById('csChatIcon');
+  var isOpen = panel.classList.toggle('open');
+  icon.className = isOpen ? 'bi bi-x-lg' : 'bi bi-whatsapp';
+  var dot = document.querySelector('.cs-chat-dot');
+  if(dot && isOpen) dot.style.display = 'none';
+}
+
+/* Close chat on outside click */
+document.addEventListener('click', function(e){
+  var panel = document.getElementById('csChatPanel');
+  var btn = document.querySelector('.cs-chat-btn');
+  if(panel && panel.classList.contains('open') && !panel.contains(e.target) && !btn.contains(e.target)){
+    panel.classList.remove('open');
+    document.getElementById('csChatIcon').className = 'bi bi-whatsapp';
+  }
+});
+
+/* Close lightbox on Escape */
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>
