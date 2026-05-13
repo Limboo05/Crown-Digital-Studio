@@ -749,51 +749,63 @@ body { padding-top: var(--nav-h); }
   </div>
 
   <div class="gp-mosaic">
-    <div class="gp-cell reveal" data-lb-type="video" data-lb-src="Brand Videos/CrownYTEdits_Sample" data-lb-tag="Brand Identity" data-lb-name="Wisdom Reveal">
-      <video class="gp-cell-media" src="Brand Videos/Client Work.webm" muted autoplay loop playsinline></video>
+    <!-- 1. Main video - Client Work -->
+    <div class="gp-cell reveal" data-lb-type="video" data-lb-src="Brand Videos/Client Work.mp4" data-lb-tag="Brand Identity" data-lb-name="Youtube Video Edit">
+      <video class="gp-cell-media" src="Brand Videos/Client Work.mp4" muted autoplay loop playsinline></video>
       <div class="gp-play-btn"><i class="bi bi-play-fill"></i></div>
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">Brand Identity</p><p class="gpi-name">Youtube Video Edit</p></div>
     </div>
-    <div class="gp-cell reveal rd1" data-lb-type="image" data-lb-src="Brand Images/Crown_Jnr1.png" data-lb-tag="Character Animation" data-lb-name="Crown Jnr Series">
-      <img class="gp-cell-media" src="Brand Images/Coco.jpeg" alt="Crown Jnr Character">
+    
+    <!-- 2. AI Animation Image -->
+    <div class="gp-cell reveal rd1" data-lb-type="image" data-lb-src="Brand Images/Coco.jpeg" data-lb-tag="AI Animation" data-lb-name="Coco Youtube Series">
+      <img class="gp-cell-media" src="Brand Images/Coco.jpeg" alt="Coco Youtube Series">
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">AI Animation</p><p class="gpi-name">Coco Youtube Series</p></div>
     </div>
+    
+    <!-- 3. Clothing Design Image -->
     <div class="gp-cell reveal rd2" data-lb-type="image" data-lb-src="Brand Images/Crown_Jnr2.png" data-lb-tag="Character Design" data-lb-name="Crown Jnr — Pose Study">
       <img class="gp-cell-media" src="Brand Images/female  bedroom.jpg" alt="Crown Jnr Character 2">
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">Clothing Design</p><p class="gpi-name">TNB Clothing Brand</p></div>
     </div>
-    <div class="gp-cell reveal rd3" data-lb-type="video" data-lb-src="Brand Videos/Student Project.mp4" data-lb-tag="Education" data-lb-name="Student Project Showcase">
+    
+    <!-- 4. Motion Graphics Video -->
+    <div class="gp-cell reveal rd3" data-lb-type="video" data-lb-src="Brand Videos/Motion Graphics.mp4" data-lb-tag="Product Showcase" data-lb-name="Estoteric Application">
       <video class="gp-cell-media" src="Brand Videos/Motion Graphics.mp4" muted autoplay loop playsinline></video>
       <div class="gp-play-btn"><i class="bi bi-play-fill"></i></div>
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">Product Showcase</p><p class="gpi-name">Estoteric Application</p></div>
     </div>
-    <div class="gp-cell reveal rd4" data-lb-type="image" data-lb-src="Brand Images/Wisdom01.png" data-lb-tag="Character Animation" data-lb-name="Wisdom — Character Design">
-      <img class="gp-cell-media" src="Brand Images/God Lives Within.png" alt="Wisdom Character">
+    
+    <!-- 5. Adam & Eve Image -->
+    <div class="gp-cell reveal rd4" data-lb-type="image" data-lb-src="Brand Images/God Lives Within.png" data-lb-tag="Youtube Series" data-lb-name="Adam & Eve">
+      <img class="gp-cell-media" src="Brand Images/God Lives Within.png" alt="Adam & Eve Series">
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">Youtube Series</p><p class="gpi-name">Adam & Eve</p></div>
     </div>
   </div>
 
   <div class="gp-more-grid" id="gpMoreGrid">
-    <div class="gp-more-cell gp-cell" data-lb-type="image" data-lb-src="Brand Images/Minecraft rend.png" data-lb-tag="3D Character" data-lb-name="Jumpsuit Hero — Full Body Render">
-      <img class="gp-cell-media" src="Brand Images/Minecraft Render.png" alt="Jumpsuit Character">
+    <!-- 6. Minecraft Render -->
+    <div class="gp-more-cell gp-cell" data-lb-type="image" data-lb-src="Brand Images/Minecraft Render.png" data-lb-tag="3D Characters" data-lb-name="Minecraft Modeling">
+      <img class="gp-cell-media" src="Brand Images/Minecraft Render.png" alt="Minecraft Character">
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">3D Characters</p><p class="gpi-name">Minecraft Modeling</p></div>
     </div>
+    
+    <!-- 7. Wisdom Reveal Video - FIXED: removed overlay div blocking the video -->
     <div class="gp-more-cell gp-cell" data-lb-type="video" data-lb-src="Brand Videos/Wisdom Reveal.mp4" data-lb-tag="Motion Graphics" data-lb-name="Logo Animation Study">
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a0805,#1a1208);display:flex;align-items:center;justify-content:center;">
-        <i class="bi bi-play-circle" style="font-size:4rem;color:rgba(252,179,30,0.4);"></i>
-      </div>
+      <video class="gp-cell-media" src="Brand Videos/Wisdom Reveal.mp4" muted autoplay loop playsinline></video>
       <div class="gp-play-btn"><i class="bi bi-play-fill"></i></div>
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">Motion Graphics</p><p class="gpi-name">Logo Animation Study</p></div>
     </div>
-    <div class="gp-more-cell gp-cell" data-lb-type="image" data-lb-src="Brand Images/Crown_Jnr1.png" data-lb-tag="Character Design" data-lb-name="Crown Jnr — Expression Sheet">
-      <img class="gp-cell-media" src="Brand Images/God Lives Within.png" alt="Crown Jnr Expression">
+    
+    <!-- 8. Adam & Eve Second Image -->
+    <div class="gp-more-cell gp-cell" data-lb-type="image" data-lb-src="Brand Images/God Lives Within.png" data-lb-tag="Youtube Series" data-lb-name="Adam & Eve">
+      <img class="gp-cell-media" src="Brand Images/God Lives Within.png" alt="Adam & Eve Series">
       <div class="gp-cell-over"></div>
       <div class="gp-cell-info"><p class="gpi-tag">Youtube Series</p><p class="gpi-name">Adam & Eve</p></div>
     </div>
