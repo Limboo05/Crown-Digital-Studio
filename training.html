@@ -929,81 +929,33 @@ body { padding-top: var(--nav-h); }
         </div>
 
         <!-- Select a Bank -->
-        <p style="font-family:var(--font-m);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:12px">Select Your Bank:</p>
-        <div class="bank-select-grid">
-          <div class="bank-btn" onclick="selectBank('gtb')">
-            <div class="bank-btn-logo-placeholder" style="background:#e8f0e8;color:#0a7a0a">GT</div>
-            <div class="bank-btn-info"><span class="bank-btn-name">GTBank</span><span class="bank-btn-type">Guaranty Trust Bank</span></div>
-          </div>
-          <div class="bank-btn" onclick="selectBank('access')">
-            <div class="bank-btn-logo-placeholder" style="background:#ffe0e0;color:#cc0000">AC</div>
-            <div class="bank-btn-info"><span class="bank-btn-name">Access Bank</span><span class="bank-btn-type">Access Diamond</span></div>
-          </div>
-          <div class="bank-btn" onclick="selectBank('uba')">
-            <div class="bank-btn-logo-placeholder" style="background:#e8e8f8;color:#0000aa">UB</div>
-            <div class="bank-btn-info"><span class="bank-btn-name">UBA</span><span class="bank-btn-type">United Bank for Africa</span></div>
-          </div>
-          <div class="bank-btn" onclick="selectBank('zenith')">
-            <div class="bank-btn-logo-placeholder" style="background:#fff0e0;color:#c07000">ZB</div>
-            <div class="bank-btn-info"><span class="bank-btn-name">Zenith Bank</span><span class="bank-btn-type">Zenith International</span></div>
-          </div>
-        </div>
+<p style="font-family:var(--font-m);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);margin-bottom:12px">Select Your Bank:</p>
+<div class="bank-select-grid">
+  <div class="bank-btn" onclick="selectBank('gtb')">
+    <img src="Brand Logos/providus bank.png" alt="Providus Bank" style="width:48px;height:48px;border-radius:12px;object-fit:contain">
+    <div class="bank-btn-info"><span class="bank-btn-name">Providus Bank</span><span class="bank-btn-type">Providus Bank PLC</span></div>
+  </div>
+</div>
 
-        <!-- Bank detail cards -->
-        <div class="bank-detail-card" id="bdc-gtb">
-          <div class="bdc-header">
-            <div class="bdc-header-logo-placeholder" style="background:#e8f0e8;color:#0a7a0a">GT</div>
-            <div><div class="bdc-header-name">GTBank</div><div class="bdc-header-sub">Guaranty Trust Bank PLC</div></div>
-          </div>
-          <div class="bdc-rows">
-            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">0123456789</span><button class="bd-copy" onclick="copyText('0123456789',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">GTBank</span></div>
-            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-gtb">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
-          </div>
-        </div>
+<!-- Bank detail cards -->
+<div class="bank-detail-card" id="bdc-gtb">
+  <div class="bdc-header">
+    <img src="Brand Logos/providus bank.png" alt="Providus Bank" style="width:48px;height:48px;border-radius:12px;object-fit:contain">
+    <div>
+      <div class="bdc-header-name">Providus Bank</div>
+      <div class="bdc-header-sub">Providus Bank PLC</div>
+    </div>
+  </div>
+  <div class="bdc-rows">
+    <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions Ltd</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions Ltd',this)">Copy</button></div>
+    <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">1309071054</span><button class="bd-copy" onclick="copyText('1309071054',this)">Copy</button></div>
+    <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">Providus Bank</span></div>
+    <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-gtb">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
+  </div>
+</div>
 
-        <div class="bank-detail-card" id="bdc-access">
-          <div class="bdc-header">
-            <div class="bdc-header-logo-placeholder" style="background:#ffe0e0;color:#cc0000">AC</div>
-            <div><div class="bdc-header-name">Access Bank</div><div class="bdc-header-sub">Access Bank PLC (Diamond)</div></div>
-          </div>
-          <div class="bdc-rows">
-            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">0987654321</span><button class="bd-copy" onclick="copyText('0987654321',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">Access Bank</span></div>
-            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-access">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="bank-detail-card" id="bdc-uba">
-          <div class="bdc-header">
-            <div class="bdc-header-logo-placeholder" style="background:#e8e8f8;color:#0000aa">UB</div>
-            <div><div class="bdc-header-name">UBA</div><div class="bdc-header-sub">United Bank for Africa PLC</div></div>
-          </div>
-          <div class="bdc-rows">
-            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">1122334455</span><button class="bd-copy" onclick="copyText('1122334455',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">UBA</span></div>
-            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-uba">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
-          </div>
-        </div>
-
-        <div class="bank-detail-card" id="bdc-zenith">
-          <div class="bdc-header">
-            <div class="bdc-header-logo-placeholder" style="background:#fff0e0;color:#c07000">ZB</div>
-            <div><div class="bdc-header-name">Zenith Bank</div><div class="bdc-header-sub">Zenith Bank International PLC</div></div>
-          </div>
-          <div class="bdc-rows">
-            <div class="bd-row"><span class="bd-label">Account Name</span><span class="bd-val">Crown Digital Solutions</span><button class="bd-copy" onclick="copyText('Crown Digital Solutions',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Account Number</span><span class="bd-val">2233445566</span><button class="bd-copy" onclick="copyText('2233445566',this)">Copy</button></div>
-            <div class="bd-row"><span class="bd-label">Bank</span><span class="bd-val">Zenith Bank</span></div>
-            <div class="bd-row"><span class="bd-label">Reference</span><span class="bd-val" id="ref-val-zenith">CS-XXXX</span><button class="bd-copy" onclick="copyRefText(this)">Copy</button></div>
-          </div>
-        </div>
-
-        <p style="font-family:var(--font-m);font-size:.55rem;color:var(--text3);line-height:1.7;margin-bottom:16px;margin-top:8px"><i class="bi bi-exclamation-triangle-fill" style="color:var(--gold)"></i> &nbsp;Use the reference code above as your payment narration to help us identify your payment instantly.</p>
-      </div>
+<p style="font-family:var(--font-m);font-size:.55rem;color:var(--text3);line-height:1.7;margin-bottom:16px;margin-top:8px"><i class="bi bi-exclamation-triangle-fill" style="color:var(--gold)"></i> &nbsp;Use the reference code above as your payment narration to help us identify your payment instantly.</p>
+</div>
 
       <div class="step-nav">
         <button class="btn-outline" onclick="goStep(2)"><i class="bi bi-arrow-left"></i> Back</button>
@@ -1211,7 +1163,7 @@ function openCheckout(course, price, iconClass, dur){
     li.innerHTML='<i class="bi bi-check-circle-fill" style="color:var(--teal)"></i>'+p;
     pts.appendChild(li);
   });
-  ['gtb','access','uba','zenith'].forEach(function(b){
+  ['providus',].forEach(function(b){
     var el=document.getElementById('ref-val-'+b);
     if(el) el.textContent=currentRef;
   });
